@@ -6,9 +6,41 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.EducationCreationScreenController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EducationCreationScreenController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <top>
+            <AnchorPane prefHeight="27.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="6.0" layoutY="5.0" text="Education Creation" />
+               </children>
+            </AnchorPane>
+         </top>
+         <bottom>
+            <AnchorPane fx:id="educationCreationSave" prefHeight="49.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="educationCreationSave" layoutX="551.0" layoutY="12.0" mnemonicParsing="false" text="Save" />
+                  <Button fx:id="educationCreationCancel" layoutX="468.0" layoutY="12.0" mnemonicParsing="false" text="Cancel" />
+               </children>
+            </AnchorPane>
+         </bottom>
+         <left>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="educationCreationName" layoutY="21.0" promptText="Edcuation name" />
+                  <TextField fx:id="educationCreationProvider" layoutY="60.0" promptText="Education provider" />
+                  <TextField fx:id="educationCreationZipCode" layoutY="100.0" promptText="Education zipcode" />
+                  <TextField fx:id="educationCreationCity" layoutY="137.0" promptText="Educaiton city" />
+                  <TextField fx:id="educationCreationStart" layoutY="172.0" promptText="Education start" />
+                  <TextField fx:id="educationCreationEnd" layoutY="208.0" promptText="Education end" />
+                  <TextField fx:id="educationCreationAMU" layoutY="246.0" promptText="Education AMU" />
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <TextArea fx:id="educationCreationDescription" prefHeight="164.0" prefWidth="118.0" promptText="Education description" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
 </AnchorPane>
