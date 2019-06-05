@@ -10,7 +10,7 @@
    <left>
       <AnchorPane prefHeight="361.0" prefWidth="865.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView layoutX="23.0" layoutY="96.0" prefHeight="967.0" prefWidth="1659.0">
+            <TableView fx:id="ComOTableView" layoutX="23.0" layoutY="96.0" prefHeight="967.0" prefWidth="1659.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="C1" />
                 <TableColumn prefWidth="75.0" text="C2" />
