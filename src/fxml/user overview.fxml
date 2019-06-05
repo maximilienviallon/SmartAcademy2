@@ -6,9 +6,38 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.UserOverviewController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserOverviewController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0">
+         <left>
+            <AnchorPane prefHeight="361.0" prefWidth="865.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView fx:id="UOTableView" layoutX="23.0" layoutY="96.0" prefHeight="967.0" prefWidth="1659.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="C1" />
+                      <TableColumn prefWidth="75.0" text="C2" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="UOSetBut" layoutX="42.0" layoutY="37.0" mnemonicParsing="false" text="Settings" />
+               </children>
+            </AnchorPane>
+         </left>
+         <right>
+            <AnchorPane prefHeight="400.0" prefWidth="228.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="UOEduOverBut" layoutX="39.0" layoutY="106.0" mnemonicParsing="false" text="Education Overview" />
+                  <Button fx:id="UOAppOverBut" layoutX="37.0" layoutY="254.0" mnemonicParsing="false" text="Apprentice Overview" />
+                  <Button fx:id="UOComOverBut" layoutX="40.0" layoutY="390.0" mnemonicParsing="false" text="Company Overview" />
+                  <Button fx:id="UOExpCsvBut" layoutX="71.0" layoutY="509.0" mnemonicParsing="false" text="Export .csv" />
+                  <Button fx:id="UOPrintBut" layoutX="89.0" layoutY="617.0" mnemonicParsing="false" text="Print" />
+                  <Button fx:id="UOCreaNewBut" layoutX="68.0" layoutY="794.0" mnemonicParsing="false" text="Create New" />
+                  <Button fx:id="UOSelectBut" layoutX="86.0" layoutY="1004.0" mnemonicParsing="false" text="Select" />
+                  <Button fx:id="UOViewLogBut" layoutX="74.0" layoutY="709.0" mnemonicParsing="false" text="View Log" />
+                  <Button fx:id="UOPerOverBut" layoutX="36.0" layoutY="894.0" mnemonicParsing="false" text="Permissions overview" />
+               </children>
+            </AnchorPane>
+         </right>
+      </BorderPane>
+   </children>
 </AnchorPane>
