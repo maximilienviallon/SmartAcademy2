@@ -6,9 +6,42 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.CompanyCreationScreenController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CompanyCreationScreenController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <top>
+            <AnchorPane prefHeight="27.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="6.0" layoutY="5.0" text="Company Creation" />
+               </children>
+            </AnchorPane>
+         </top>
+         <bottom>
+            <AnchorPane fx:id="companyCreationSave" prefHeight="49.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button layoutX="551.0" layoutY="12.0" mnemonicParsing="false" text="Save" />
+                  <Button fx:id="companyCreationCancel" layoutX="468.0" layoutY="12.0" mnemonicParsing="false" text="Cancel" />
+               </children>
+            </AnchorPane>
+         </bottom>
+         <left>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="companyCreationName" layoutY="21.0" promptText="Comany name" />
+                  <TextField fx:id="CompanyCreationFieldOfExp" layoutY="59.0" promptText="Field of expertise" />
+                  <TextField fx:id="CompanyCreationZipCode" layoutY="98.0" promptText="Company zipcode" />
+                  <TextField fx:id="creationCvrNumber" layoutY="137.0" promptText="CVR number" />
+                  <TextField fx:id="companyCreationStreet" layoutY="255.0" promptText="Street" />
+                  <TextField fx:id="creationPNumber" layoutY="178.0" promptText="P number" />
+                  <TextField fx:id="creationWebPage" layoutY="216.0" promptText="Webpage" />
+                  <TextField fx:id="companyCreationCity" layoutY="291.0" promptText="company city" />
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <TextArea fx:id="CompanyCreationInformation" prefHeight="164.0" prefWidth="118.0" promptText="company information" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
 </AnchorPane>
