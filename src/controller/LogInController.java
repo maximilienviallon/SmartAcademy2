@@ -38,7 +38,7 @@ public class LogInController extends Controller {
                     title = "Company overview";
                     fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
                     break;
-                case "Admin":
+                case "Administrator":
                     System.out.println("permission identified... \nAdmin, directing you to company overview");
                     title = "Company overview";
                     fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
