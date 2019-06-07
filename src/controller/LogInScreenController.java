@@ -11,17 +11,23 @@ public class LogInScreenController extends Controller {
     @FXML
     TextField loginIDTextField;
     @FXML
-    TextField logInPasswordID;
+    public TextField logInPasswordID;
+
+
+
+    private String userName;
     String title;
 
 
 
+
     public void handleLogIn(ActionEvent event) throws Exception {
+        KeeperOfKeys.getInstance().currentUserName().setUserName(loginIDTextField.getText());
+
         if (DBFacade.checkLogin(true, loginIDTextField.getText(), logInPasswordID.getText())) {
             System.out.println("new window");
             String permissionValue = DBFacade.checkPermission(loginIDTextField.getText());
             FXMLLoader fxmlLoader = null;
-
                 switch(permissionValue) {
                     case "SmartAdmin":
                         System.out.println("permission identified... \nSmartAdmin, directing you to company overview");
@@ -55,4 +61,12 @@ public class LogInScreenController extends Controller {
                 else System.out.println("no window");
 
         }
+    public String getUserName() {
+        return userName;
     }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+}
