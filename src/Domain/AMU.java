@@ -1,4 +1,4 @@
 package Domain;
 
-public class Amu {
+public class AMU {
 }
