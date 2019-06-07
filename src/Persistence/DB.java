@@ -1,4 +1,4 @@
-package sample;
+package Persistence;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -66,8 +66,10 @@ public class DB {
         }
         
     }
-    private static void disconnect(){
+    public static void disconnect(){
         try {
+            ps.close();
+            rs.close();
             con.close();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -100,6 +102,24 @@ public class DB {
           System.err.println("Error in the sql parameter, please test this in SQLServer first");
           System.err.println(e.getMessage());
       }
+    }
+
+    public static boolean execute(String statement){
+        con = null;
+        ps = null;
+        try {
+            //Step 3 open connection
+            connect();
+            //Step 4 Execute query
+            ps = con.prepareStatement(statement);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }finally {
+            disconnect();
+        }
+        return true;
     }
     /**
      * 
@@ -201,6 +221,7 @@ public class DB {
           System.err.println(e.getMessage());
         } finally{
             disconnect();
+
         }
         return false;   
     } 
