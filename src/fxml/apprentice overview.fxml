@@ -18,21 +18,21 @@
                       <TableColumn prefWidth="75.0" text="C2" />
                     </columns>
                   </TableView>
-                  <Button fx:id="AOSetBut" layoutX="42.0" layoutY="37.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Settings" />
+                  <Button fx:id="AOSetBut" layoutX="42.0" layoutY="37.0" mnemonicParsing="false" onAction="#AOSetButHandle" text="Settings" />
                </children>
             </AnchorPane>
          </left>
          <right>
             <AnchorPane prefHeight="400.0" prefWidth="228.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="AOEduOverBut" layoutX="45.0" layoutY="99.0" mnemonicParsing="false" text="Education Overview" />
-                  <Button fx:id="AOUseOverBut" layoutX="16.0" layoutY="256.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="User Overview" />
-                  <Button fx:id="AOComOverBut" layoutX="17.0" layoutY="385.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Company Overview" />
-                  <Button fx:id="AOExpCsvBut" layoutX="17.0" layoutY="523.0" minHeight="0.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Export .csv" />
-                  <Button fx:id="AOPrintBut" layoutX="17.0" layoutY="650.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Print" />
-                  <Button fx:id="AOCreaNewBut" layoutX="17.0" layoutY="791.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Create New" />
-                  <Button fx:id="AOSelectBut" layoutX="17.0" layoutY="1004.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Select" />
-                  <Button fx:id="AODisMatBut" layoutX="17.0" layoutY="892.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Display Matrix" />
+                  <Button fx:id="AOEduOverBut" layoutX="45.0" layoutY="99.0" mnemonicParsing="false" onAction="#AOEduOverButHandle" text="Education Overview" />
+                  <Button fx:id="AOUseOverBut" layoutX="16.0" layoutY="256.0" mnemonicParsing="false" onAction="#AOUseOverButHandle" prefHeight="30.0" prefWidth="200.0" text="User Overview" />
+                  <Button fx:id="AOComOverBut" layoutX="17.0" layoutY="385.0" mnemonicParsing="false" onAction="#AOComOverButHandle" prefHeight="30.0" prefWidth="200.0" text="Company Overview" />
+                  <Button fx:id="AOExpCsvBut" layoutX="17.0" layoutY="523.0" minHeight="0.0" mnemonicParsing="false" onAction="#AOExpCsvButHandle" prefHeight="30.0" prefWidth="200.0" text="Export .csv" />
+                  <Button fx:id="AOPrintBut" layoutX="17.0" layoutY="650.0" mnemonicParsing="false" onAction="#AOPrintButHandle" prefHeight="30.0" prefWidth="200.0" text="Print" />
+                  <Button fx:id="AOCreaNewBut" layoutX="17.0" layoutY="791.0" mnemonicParsing="false" onAction="#AOCreaNewButHandle" prefHeight="30.0" prefWidth="200.0" text="Create New" />
+                  <Button fx:id="AOSelectBut" layoutX="17.0" layoutY="1004.0" mnemonicParsing="false" onAction="#AOSelectButHandle" prefHeight="30.0" prefWidth="200.0" text="Select" />
+                  <Button fx:id="AODisMatBut" layoutX="17.0" layoutY="892.0" mnemonicParsing="false" onAction="#AODisMatButHandle" prefHeight="30.0" prefWidth="200.0" text="Display Matrix" />
                </children>
             </AnchorPane>
          </right>

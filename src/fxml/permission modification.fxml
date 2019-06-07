@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PermissionModificationController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0">
+               <top>
+                  <AnchorPane prefHeight="27.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+               </top>
+               <left>
+                  <AnchorPane prefHeight="760.0" prefWidth="1235.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField fx:id="EMProText" layoutX="923.0" layoutY="636.0" prefHeight="31.0" prefWidth="275.0" promptText="Education Provider" />
+                        <TextField fx:id="EMZipCodText" layoutX="923.0" layoutY="676.0" prefHeight="31.0" prefWidth="275.0" promptText="Education Zip Code" />
+                        <TextField fx:id="EMStartText" layoutX="923.0" layoutY="715.0" prefHeight="31.0" prefWidth="275.0" promptText="Education Start" />
+                        <TextField fx:id="EMEndText" layoutX="923.0" layoutY="754.0" prefHeight="31.0" prefWidth="275.0" promptText="Education End" />
+                        <TextField fx:id="EMDesText" layoutX="920.0" layoutY="96.0" prefHeight="500.0" prefWidth="275.0" promptText="Education Description" />
+                        <Button fx:id="EMSaveBut" layoutX="1137.0" layoutY="830.0" mnemonicParsing="false" onAction="#EMSaveButHandle" text="Save" />
+                        <TextField fx:id="EMAmuNumText" layoutX="923.0" layoutY="792.0" prefHeight="31.0" prefWidth="275.0" promptText="AMU Number" />
+                     </children>
+                  </AnchorPane>
+               </left>
+               <right>
+                  <AnchorPane prefHeight="948.0" prefWidth="256.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="EMBacToOveBut" layoutX="56.0" layoutY="85.0" mnemonicParsing="false" onAction="#EMBacToOveButHandle" prefWidth="160.0" text="Back to Overview" />
+                        <Button fx:id="CMBackToDetBut" layoutX="56.0" layoutY="211.0" mnemonicParsing="false" onAction="#CMBackToDetButHandle" prefWidth="160.0" text="Back to Detail" />
+                        <Button fx:id="CMRemoveBut" layoutX="56.0" layoutY="321.0" mnemonicParsing="false" onAction="#CMRemoveButHandle" prefWidth="160.0" text="Remove" />
+                     </children>
+                  </AnchorPane>
+               </right>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

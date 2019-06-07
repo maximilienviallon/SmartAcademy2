@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LogBrowserController">
+   <children>
+      <BorderPane layoutY="-2.0" prefHeight="400.0" prefWidth="600.0">
+         <left>
+            <AnchorPane prefHeight="307.0" prefWidth="301.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextArea fx:id="logInfo" layoutY="-1.0" prefHeight="254.0" prefWidth="313.0" />
+               </children>
+            </AnchorPane>
+         </left>
+         <top>
+            <AnchorPane prefHeight="93.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField layoutX="4.0" layoutY="34.0" prefHeight="25.0" prefWidth="100.0" />
+                  <TextField layoutX="127.0" layoutY="34.0" prefHeight="25.0" prefWidth="100.0" />
+                  <TextField layoutX="250.0" layoutY="34.0" prefWidth="100.0" />
+                  <Button fx:id="logSearch" layoutX="376.0" layoutY="36.0" mnemonicParsing="false" onAction="#logSearchHandle" text="Search" />
+               </children>
+            </AnchorPane>
+         </top>
+         <right>
+            <AnchorPane prefHeight="307.0" prefWidth="286.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="logBackToOverview" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#logBackToOverviewHandle" prefWidth="115.0" text="Back to Overview" />
+                  <Button fx:id="logExport" layoutX="7.0" layoutY="43.0" mnemonicParsing="false" onAction="#logExportHandle" prefWidth="115.0" text="export .cvs" />
+                  <Button fx:id="logPrint" layoutX="7.0" layoutY="78.0" mnemonicParsing="false" onAction="#logPrintHandle" prefWidth="115.0" text="Print" />
+               </children>
+            </AnchorPane>
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>

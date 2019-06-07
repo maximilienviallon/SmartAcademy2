@@ -6,8 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MatrixController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MatrixController">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="600.0">
          <left>
@@ -19,16 +18,15 @@
                       <TableColumn prefWidth="75.0" text="C2" />
                     </columns>
                   </TableView>
-                  <Label layoutX="4.0" layoutY="10.0" text="Matrix" />
                </children>
             </AnchorPane>
          </left>
          <right>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="matrixBackToOverview" layoutX="12.0" layoutY="60.0" mnemonicParsing="false" text="Back to Overview" />
-                  <Button fx:id="matrixExport" layoutX="14.0" layoutY="101.0" mnemonicParsing="false" text="Export .csv" />
-                  <Button fx:id="matrixPrint" layoutX="14.0" layoutY="144.0" mnemonicParsing="false" text="Print" />
+                  <Button fx:id="matrixBackToOverview" layoutX="12.0" layoutY="60.0" mnemonicParsing="false" onAction="#matrixBackToOverviewHandle" text="Back to Overview" />
+                  <Button fx:id="matrixExport" layoutX="14.0" layoutY="101.0" mnemonicParsing="false" onAction="#matrixExportHandle" text="Export .csv" />
+                  <Button fx:id="matrixPrint" layoutX="14.0" layoutY="144.0" mnemonicParsing="false" onAction="#matrixPrintHandle" text="Print" />
                </children>
             </AnchorPane>
          </right>
