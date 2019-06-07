@@ -6,7 +6,7 @@ public class DBFacade {
 
         try {
 
-            DB.selectSQL("select fldUserName from tblUsers");
+            DB.selectSQL("select fldUserName from tblUsers where fldUsername =");
             do  {
 
 
@@ -16,7 +16,7 @@ public class DBFacade {
                     System.out.println("Email Found in DB: " + username);
 
                     do {
-                        DB.selectSQL("select fldPassword from tblUsers");
+                        DB.selectSQL("select fldPassword from tblUsers ");
                         String pass = DB.getData();
                         if (pass.equals(logInPasswordID)) {
                             System.out.println("Password Match the Email...Login Done ");

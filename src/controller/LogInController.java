@@ -44,9 +44,9 @@ public class LogInController extends Controller {
                     fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
                     break;
                 case "HR":
-                    System.out.println("permission identified... \nHuman resources directing you to permission overview");
+                    System.out.println("apprentice identified... \nHuman resources directing you to Apprentice overview");
                     title = "Permission overview";
-                    fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/permission overview.fxml"));
+                    fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice overview.fxml"));
                     break;
                 case "Interviewer":
                     System.out.println("permission identified... \nInterviewer directing you to company overview");
@@ -56,7 +56,7 @@ public class LogInController extends Controller {
                 default:
                     System.out.println("permission identified... \nGuest, directing you to logged user detail");
                     title = "logged user detail overview";
-                    fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/logged user detail screen overview.fxml"));
+                    fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/logged user detail.fxml"));
                     break;
             }
             fxmlLoading(fxmlLoader,title);
