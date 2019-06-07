@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CompanyModificationController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0">
+               <left>
+                  <AnchorPane prefHeight="760.0" prefWidth="1235.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField fx:id="ComMComNameText" layoutX="903.0" layoutY="146.0" prefHeight="31.0" prefWidth="275.0" promptText="Company name" />
+                        <TextField fx:id="ComMFieOfExpText" layoutX="903.0" layoutY="186.0" prefHeight="31.0" prefWidth="275.0" promptText="Field of Expertise" />
+                        <TextField fx:id="ComMComCitText" layoutX="903.0" layoutY="225.0" prefHeight="31.0" prefWidth="275.0" promptText="Company City" />
+                        <TextField fx:id="ComMComZipText" layoutX="903.0" layoutY="264.0" prefHeight="31.0" prefWidth="275.0" promptText="Company Zipcode" />
+                        <TextField fx:id="ComMComInfText" layoutX="903.0" layoutY="473.0" prefHeight="440.0" prefWidth="275.0" promptText="Company Info" />
+                        <Button fx:id="ComMSaveBut" layoutX="1127.0" layoutY="926.0" mnemonicParsing="false" onAction="#ComMSaveButHandle" text="Save" />
+                        <TextField fx:id="ComMComPNumText" layoutX="903.0" layoutY="383.0" prefHeight="31.0" prefWidth="275.0" promptText="P Number" />
+                        <TextField fx:id="ComMComCVRNumText" layoutX="903.0" layoutY="342.0" prefHeight="31.0" prefWidth="275.0" promptText="CVR Number" />
+                        <TextField fx:id="ComMComWebText" layoutX="903.0" layoutY="423.0" prefHeight="31.0" prefWidth="275.0" promptText="Company Webpage" />
+                        <TextField fx:id="ComMComStreText" layoutX="903.0" layoutY="304.0" prefHeight="31.0" prefWidth="275.0" promptText="Company Street" />
+                     </children>
+                  </AnchorPane>
+               </left>
+               <right>
+                  <AnchorPane prefHeight="948.0" prefWidth="256.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="ComMBackToOBut" layoutX="56.0" layoutY="85.0" mnemonicParsing="false" onAction="#ComMBackToOButHandle" prefWidth="160.0" text="Back to Overview" />
+                        <Button fx:id="ComMBackToDetBut" layoutX="56.0" layoutY="211.0" mnemonicParsing="false" onAction="#ComMBackToDetButHandle" prefWidth="160.0" text="Back to Detail" />
+                        <Button fx:id="ComMRemoveBut" layoutX="56.0" layoutY="321.0" mnemonicParsing="false" onAction="#ComMRemoveButHandle" prefWidth="160.0" text="Remove" />
+                     </children>
+                  </AnchorPane>
+               </right>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

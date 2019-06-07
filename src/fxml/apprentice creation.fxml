@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ApprenticeCreationController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <top>
+            <AnchorPane prefHeight="27.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <AnchorPane fx:id="companyCreationSave" prefHeight="49.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="apprenticeCreationSave" layoutX="551.0" layoutY="12.0" mnemonicParsing="false" onAction="#apprenticeCreationSaveHandle" text="Save" />
+                  <Button fx:id="apprenticeCreationCancel" layoutX="468.0" layoutY="12.0" mnemonicParsing="false" onAction="#apprenticeCreationCancelHandle" text="Cancel" />
+               </children>
+            </AnchorPane>
+         </bottom>
+         <left>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="apprenticeCreationCPR" layoutY="21.0" promptText="CPR" />
+                  <TextField fx:id="apprenticeCreationName" layoutY="59.0" promptText="Name" />
+                  <TextField fx:id="apprenticeCreationCompanyName" layoutY="98.0" promptText="CompanyName" />
+                  <TextField fx:id="apprenticeCreationEmail" layoutY="137.0" promptText="Email" />
+                  <TextField fx:id="apprenticeCreationPhoneNumber" layoutY="177.0" promptText="Phone number" />
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="97.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextArea fx:id="apprenticeCreationWorkExp" prefHeight="170.0" prefWidth="400.0" promptText="Work experience" />
+                  <TextArea fx:id="apprenticeCreationGeneralExp" layoutY="170.0" prefHeight="160.0" prefWidth="400.0" promptText="General expertise" />
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
