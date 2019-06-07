@@ -6,9 +6,37 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.ContactModificationScreenController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ContactModificationScreenController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0">
+         <top>
+            <AnchorPane prefHeight="27.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="6.0" layoutY="5.0" text="Contact Modification" />
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane prefHeight="760.0" prefWidth="1235.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="companyCreationName" layoutX="903.0" layoutY="146.0" prefHeight="31.0" prefWidth="275.0" promptText="Contact name" />
+                  <TextField fx:id="CompanyCreationFieldOfExp" layoutX="903.0" layoutY="186.0" prefHeight="31.0" prefWidth="275.0" promptText="Contact E-Mail" />
+                  <TextField fx:id="CompanyCreationZipCode" layoutX="903.0" layoutY="225.0" prefHeight="31.0" prefWidth="275.0" promptText="Contact Phone Number" />
+                  <TextField fx:id="creationCvrNumber" layoutX="903.0" layoutY="264.0" prefHeight="31.0" prefWidth="275.0" promptText="Contact Landline" />
+                  <TextField fx:id="creationPNumber" layoutX="903.0" layoutY="305.0" prefHeight="500.0" prefWidth="275.0" promptText="Contact Info" />
+                  <Button fx:id="CMSaveBut" layoutX="1125.0" layoutY="829.0" mnemonicParsing="false" text="Save" />
+               </children>
+            </AnchorPane>
+         </left>
+         <right>
+            <AnchorPane prefHeight="948.0" prefWidth="256.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="CMBackToOBut" layoutX="56.0" layoutY="85.0" mnemonicParsing="false" prefWidth="160.0" text="Back to Overview" />
+                  <Button fx:id="CMBackToDetBut" layoutX="56.0" layoutY="211.0" mnemonicParsing="false" prefWidth="160.0" text="Back to Detail" />
+                  <Button fx:id="CMRemoveBut" layoutX="56.0" layoutY="321.0" mnemonicParsing="false" prefWidth="160.0" text="Remove" />
+               </children>
+            </AnchorPane>
+         </right>
+      </BorderPane>
+   </children>
 </AnchorPane>
