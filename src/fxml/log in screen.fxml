@@ -6,9 +6,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.LogInScreenController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LogInScreenController">
+   <children>
+      <BorderPane layoutX="-1.0" layoutY="-1.0" prefHeight="400.0" prefWidth="600.0">
+         <top>
+            <AnchorPane prefHeight="27.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="9.0" layoutY="5.0" text="Log in" />
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane prefHeight="373.0" prefWidth="601.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="loginIDTextField" layoutX="211.0" layoutY="45.0" promptText="ID" />
+                  <TextField fx:id="logInPasswordID" layoutX="211.0" layoutY="88.0" promptText="Password" />
+                  <Button fx:id="logInButton" layoutX="211.0" layoutY="137.0" mnemonicParsing="false" text="Log In" />
+               </children>
+            </AnchorPane>
+         </left>
+      </BorderPane>
+   </children>
 </AnchorPane>
