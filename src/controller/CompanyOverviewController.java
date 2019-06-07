@@ -23,7 +23,7 @@ public class CompanyOverviewController implements Initializable {
     TableColumn<Companies, String> colCvr = new TableColumn<>();
     TableColumn<Companies, String> colPNumber = new TableColumn<>();
     TableColumn<Companies, String> colCity = new TableColumn<>();
-
+    
     public void ComOSetButHandle(ActionEvent actionEvent) {
     }
 

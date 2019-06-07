@@ -10,9 +10,9 @@ public class KeeperOfKeys {
 
 
 
-    private LogInScreenController logInCont = new LogInScreenController();
+    private LogInController logInCont = new LogInController();
 
-    public LogInScreenController currentUserName(){
+    public LogInController currentUserName(){
         return logInCont;
     }
 
