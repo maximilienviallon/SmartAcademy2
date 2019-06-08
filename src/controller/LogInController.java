@@ -36,27 +36,27 @@ public class LogInController extends Controller {
             switch(permissionValue) {
                 case "SmartAdmin":
                     System.out.println("permission identified... \nSmartAdmin, directing you to company overview");
-                    title = "Company overview";
+                    title = "Company Overview";
                     fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
                     break;
                 case "Administrator":
                     System.out.println("permission identified... \nAdmin, directing you to company overview");
-                    title = "Company overview";
+                    title = "Company Overview";
                     fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
                     break;
                 case "HR":
                     System.out.println("permission identified... \nHuman resources directing you to apprentice overview");
-                    title = "Permission overview";
+                    title = "Apprentice Overview";
                     fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice overview.fxml"));
                     break;
                 case "Interviewer":
                     System.out.println("permission identified... \nInterviewer directing you to company overview");
-                    title = "Company overview";
+                    title = "Company Overview";
                     fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
                     break;
                 default:
                     System.out.println("permission identified... \nGuest, directing you to logged user detail");
-                    title = "logged user detail overview";
+                    title = "Logged User Detail Overview";
                     fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/logged user detail.fxml"));
                     break;
             }

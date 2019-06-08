@@ -1,8 +1,12 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 
-public class PermissionModificationController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class PermissionModificationController  extends Controller implements Initializable {
     public void EMBacToDetBut(ActionEvent actionEvent) {
     }
 
@@ -19,5 +23,10 @@ public class PermissionModificationController {
     }
 
     public void CMRemoveButHandle(ActionEvent actionEvent) {
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        String userName = KeeperOfKeys.getInstance().currentUserName().getUserName();
+        System.out.println(userName);
     }
 }
