@@ -5,6 +5,7 @@ import Persistence.DBFacade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -44,7 +45,7 @@ public class LogInController extends Controller {
                     fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
                     break;
                 case "HR":
-                    System.out.println("permission identified... \nHuman resources directing you to permission overview");
+                    System.out.println("permission identified... \nHuman resources directing you to apprentice overview");
                     title = "Permission overview";
                     fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice overview.fxml"));
                     break;
@@ -60,7 +61,7 @@ public class LogInController extends Controller {
                     break;
             }
             fxmlLoading(fxmlLoader,title);
-
+            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         }
         else System.out.println("no window");
 

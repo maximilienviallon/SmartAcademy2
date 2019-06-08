@@ -6,20 +6,20 @@ public class DBFacade {
 
         try {
 
-            DB.selectSQL("select fldUserName from tblUsers");
+            DB.selectSQL("select fldUsername from tblUsers");
             do  {
 
 
                 String username = DB.getData();
 
                 if (username.equals(loginIDTextField)) {
-                    System.out.println("Email Found in DB: " + username);
+                    System.out.println("Username has been found in DB: " + username);
 
                     do {
-                        DB.selectSQL("select fldPassword from tblUsers");
+                        DB.selectSQL("select fldPassword from tblUsers where fldUsername = '"+ loginIDTextField + "'");
                         String pass = DB.getData();
                         if (pass.equals(logInPasswordID)) {
-                            System.out.println("Password Match the Email...Login Done ");
+                            System.out.println("Password is a match for given username...Login Done ");
                             return doneLogin == true;
                         } else System.out.println("Access Denied , wrong password");
                     }while (true);
