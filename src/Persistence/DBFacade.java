@@ -73,10 +73,10 @@ query = query.substring(0,query.length()-1) + ")";
 
                 for (Object[] objects : companyQuery) {
                     String name = (String) objects[0];
-                    String fieldOfExpertise = (String) objects[0];
-                    String zipcode = (String) objects[0];
-                    String cvr = (String) objects[0];
-                    String pNum = (String) objects[0];
+                    String fieldOfExpertise = (String) objects[1];
+                    String zipcode = (String) objects[2];
+                    String cvr = (String) objects[3];
+                    String pNum = (String) objects[4];
                     //String city = (String) objects[0];
 
                     Companies companies = new Companies(name,fieldOfExpertise,zipcode,cvr,pNum, null);

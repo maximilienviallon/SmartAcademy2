@@ -65,10 +65,10 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOPrintButHandle(ActionEvent actionEvent) {
-        ArrayList<Companies> unobservable = new ArrayList<>();
-        unobservable = DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(username));
+        ArrayList<Companies> unobservable = DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(username));
         System.out.println(unobservable.get(0).getCvr());
         System.out.println(unobservable.get(1).getName());
+        System.out.println(unobservable.get(1).getCvr());
         System.out.println(unobservable.get(2).getFieldOfExpertise());
     }
 
