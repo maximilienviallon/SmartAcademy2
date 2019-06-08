@@ -204,7 +204,7 @@ public class DB {
         }
         if (pendingData){
             terminated=true;
-            throw new RuntimeException("ERROR! There were pending data from previous select, communication with the database is lost! "); 
+            throw new RuntimeException("ERROR! There were pending data from previous select, communication with the database is lost! ");
         }
         try{
             if (ps!=null){
@@ -216,13 +216,13 @@ public class DB {
             ps.close();
             if (rows>0){
                return true;
-            }  
+            }
         }catch (RuntimeException | SQLException e){
           System.err.println(e.getMessage());
         } finally{
             disconnect();
 
         }
-        return false;   
-    } 
+        return false;
+    }
 }
