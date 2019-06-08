@@ -25,13 +25,14 @@
          <right>
             <AnchorPane prefHeight="400.0" prefWidth="228.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="ConOAppOverBut" layoutX="30.0" layoutY="99.0" mnemonicParsing="false" onAction="#ConOEduOverButHandle" prefWidth="160.0" text="Education Overview" />
-                  <Button fx:id="ConOUseOverBut" layoutX="30.0" layoutY="258.0" mnemonicParsing="false" onAction="#ConOUseOverButHandle" prefWidth="160.0" text="User Overview" />
+                  <Button fx:id="ConOEduOverBut" layoutX="30.0" layoutY="99.0" mnemonicParsing="false" onAction="#ConOEduOverButHandle" prefWidth="160.0" text="Education Overview" />
+                  <Button fx:id="ConOUseOverBut" layoutX="30.0" layoutY="286.0" mnemonicParsing="false" onAction="#ConOUseOverButHandle" prefWidth="160.0" text="User Overview" />
                   <Button fx:id="ConOEduOverBut" layoutX="30.0" layoutY="390.0" mnemonicParsing="false" onAction="#ConOComOverButHandle" prefWidth="160.0" text="Company Overview" />
                   <Button fx:id="ConOExpCsvBut" layoutX="30.0" layoutY="523.0" mnemonicParsing="false" onAction="#ConOExpCsvButHandle" prefWidth="160.0" text="Export .csv" />
                   <Button fx:id="ConOPrintBut" layoutX="30.0" layoutY="653.0" mnemonicParsing="false" onAction="#ConOPrintButHandle" prefWidth="160.0" text="Print" />
                   <Button fx:id="ConOCreaNewBut" layoutX="30.0" layoutY="791.0" mnemonicParsing="false" onAction="#ConOCreaNewButHandle" prefWidth="160.0" text="Create New" />
                   <Button fx:id="ConOSelectBut" layoutX="86.0" layoutY="1004.0" mnemonicParsing="false" onAction="#ConOSelectButHandle" text="Select" />
+                  <Button fx:id="ConOAppOverBut" layoutX="34.0" layoutY="184.0" mnemonicParsing="false" onAction="#ConOAppOverButHandle" prefWidth="160.0" text="Apprentice Overview" />
                </children>
             </AnchorPane>
          </right>
