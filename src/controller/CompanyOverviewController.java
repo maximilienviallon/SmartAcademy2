@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CompanyOverviewController extends Controller implements Initializable {
@@ -29,6 +30,7 @@ public class CompanyOverviewController extends Controller implements Initializab
 
     FXMLLoader fxmlLoader;
     String title;
+    String username;
 
 
     public void ComOSetButHandle(ActionEvent actionEvent) throws IOException{
@@ -63,6 +65,11 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOPrintButHandle(ActionEvent actionEvent) {
+        ArrayList<Companies> unobservable = new ArrayList<>();
+        unobservable = DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(username));
+        System.out.println(unobservable.get(0).getCvr());
+        System.out.println(unobservable.get(1).getName());
+        System.out.println(unobservable.get(2).getFieldOfExpertise());
     }
 
     public void ComOCreaNewButHandle(ActionEvent actionEvent) throws IOException{
@@ -81,8 +88,7 @@ public class CompanyOverviewController extends Controller implements Initializab
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getInstance().currentUserName().getUserName();
-        System.out.println(userName);
+        username = KeeperOfKeys.getInstance().currentUserName().getUserName();
     }
 }
 
