@@ -1,11 +1,20 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 
-public class ApprenticeCreationController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ApprenticeCreationController  extends Controller implements Initializable {
     public void apprenticeCreationSaveHandle(ActionEvent actionEvent) {
     }
 
     public void apprenticeCreationCancelHandle(ActionEvent actionEvent) {
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        String userName = KeeperOfKeys.getInstance().currentUserName().getUserName();
+        System.out.println(userName);
     }
 }
