@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 /**
@@ -224,5 +225,31 @@ public class DB {
 
         }
         return false;
+    }
+    public static ArrayList<Object[]> select(String statement) {
+        con = null;
+        ps = null;
+        ArrayList<Object[]> returnArrayList = new ArrayList<>();
+        try {
+            //Step 3 open connection
+            connect();
+            //Step 4 Execute query
+            ps = con.prepareStatement(statement);
+            rs = ps.executeQuery();
+            Integer noOfColumns = rs.getMetaData().getColumnCount();
+            //Structuring return data
+            while (rs.next()){
+                Object[] tempArray = new Object[noOfColumns];
+                for (int i = 0; i < tempArray.length; i++) {
+                    tempArray[i] = rs.getObject(i+1);
+                }
+                returnArrayList.add(tempArray);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            disconnect();
+        }
+        return returnArrayList;
     }
 }
