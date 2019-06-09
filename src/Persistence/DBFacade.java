@@ -1,5 +1,10 @@
 package Persistence;
 
+import Domain.Companies;
+
+import java.sql.Date;
+import java.util.ArrayList;
+
 public class DBFacade {
 
     public static boolean checkLogin (boolean doneLogin, String loginIDTextField, String logInPasswordID) {
@@ -35,7 +40,6 @@ public class DBFacade {
     }
 
     public static String checkPermission(String userName){
-
         DB.selectSQL("select fldPermission from tblPermissions where fldPermissionID in (select fldPermissionID from tblUserPermissionBridge where fldUsername = '" + userName + "')");
         String permissionTier = DB.getData();
         System.out.println(permissionTier);
@@ -43,5 +47,50 @@ public class DBFacade {
         return permissionTier;
     }
 
+    public static Integer[] checkYourPrivilege(String userName){
+        String query = ("select fldCompanyID from tblPermissions where fldPermissionID in (select fldPermissionID from tblUserPermissionBridge where fldUsername = '" + userName + "')");
+        ArrayList<Object[]> privilegeQuery = DB.select(query);
+        Integer[] companyPrivileges = new Integer[privilegeQuery.size()];
+        int positionChecker = 0;
+        for (Object[] objects : privilegeQuery) {
+            companyPrivileges[positionChecker]= (int) objects[0];
+            positionChecker++;
+        }
+        return companyPrivileges;
+    }
+
+    public static ArrayList<Companies> retrieveCompanies(Integer[] companyList){
+            ArrayList<Companies> retrievedCompanies = new ArrayList<>();
+
+            try {
+                String query = ("select fldCompanyName, fldFieldOfExpertise, fldCompanyZipcode, fldCVRNum, fldPNum from tblCompanies where fldCompanyID in (");
+                for (int companyID:companyList) {
+                    query+= (companyID + ",");
+                }
+query = query.substring(0,query.length()-1) + ")";
+
+                ArrayList<Object[]> companyQuery = DB.select(query);
+
+                for (Object[] objects : companyQuery) {
+                    String name = (String) objects[0];
+                    String fieldOfExpertise = (String) objects[1];
+                    String zipcode = (String) objects[2];
+                    String cvr = (String) objects[3];
+                    String pNum = (String) objects[4];
+                    //String city = (String) objects[0];
+
+                    Companies companies = new Companies(name,fieldOfExpertise,zipcode,cvr,pNum, null);
+
+                    retrievedCompanies.add(companies);
+                }
+
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+
+
+            }
+            return retrievedCompanies;
+
+    }
 
 }
