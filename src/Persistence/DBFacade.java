@@ -3,7 +3,9 @@ package Persistence;
 import Domain.Apprentices;
 import Domain.Companies;
 import Domain.Contacts;
+import Domain.Educations;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class DBFacade {
@@ -148,6 +150,36 @@ public class DBFacade {
 
         }
         return retrievedContacts;
+
+    }
+
+    public static ArrayList<Educations> retrieveEducations() {
+        ArrayList<Educations> retrievedEducations = new ArrayList<>();
+
+        try {
+            String query = ("select tblEducations.fldEduID, tblAMU.fldEduName, tblZipcode.fldCity,fldEduStart, tblEducations.fldEduEnd,tblEducations.fldAMU,tblEducations.fldEduZipcode from tblEducations left join tblAMU on tblEducations.fldAMU = tblAMU.fldAMU left join tblZipcode on tblEducations.fldEduZipcode = tblZipcode.fldZipcode");
+            ArrayList<Object[]> educationsQuery = DB.select(query);
+
+            for (Object[] objects : educationsQuery) {
+                Integer eduID = (Integer) objects[0];
+                String name = (String) objects[1];
+                String city = (String) objects[2];
+                Date eduStart = (Date) objects[3];
+                Date eduEnd = (Date) objects[4];
+                Integer AMU = (Integer) objects[5];
+                String zipcode = (String) objects[6];
+
+                Educations educations = new Educations(eduID,name,city,eduStart,eduEnd,AMU,zipcode);
+
+                retrievedEducations.add(educations);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+
+        }
+        return retrievedEducations;
 
     }
 }
