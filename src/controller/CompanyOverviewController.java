@@ -113,20 +113,7 @@ public class CompanyOverviewController extends Controller implements Initializab
 
 
 
-   /* public void initialize(){
-
-        ObservableList companyList = FXCollections.observableArrayList(DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(userName)));
-
-        ComOTableView.setItems(companyList);
-
-        colName.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
-        colCity.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCity()));
-        colCVR.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCvr()));
-        colFieldOfExp.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getFieldOfExpertise()));
-        colPNumber.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getpNum()));
-        colZipcode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getZipcode()));
-        ComOTableView.getColumns().setAll(colName,colCity,colCVR,colFieldOfExp,colPNumber,colZipcode);
-    }*/
+   
 }
 
 
