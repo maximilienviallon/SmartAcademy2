@@ -1,5 +1,6 @@
 package Persistence;
 
+import Domain.Apprentices;
 import Domain.Companies;
 
 import java.sql.Date;
@@ -60,37 +61,64 @@ public class DBFacade {
     }
 
     public static ArrayList<Companies> retrieveCompanies(Integer[] companyList){
-            ArrayList<Companies> retrievedCompanies = new ArrayList<>();
+        ArrayList<Companies> retrievedCompanies = new ArrayList<>();
 
-            try {
-                String query = ("select fldCompanyName, fldFieldOfExpertise, fldCompanyZipcode, fldCVRNum, fldPNum from tblCompanies where fldCompanyID in (");
-                for (int companyID:companyList) {
-                    query+= (companyID + ",");
-                }
-query = query.substring(0,query.length()-1) + ")";
-
-                ArrayList<Object[]> companyQuery = DB.select(query);
-
-                for (Object[] objects : companyQuery) {
-                    String name = (String) objects[0];
-                    String fieldOfExpertise = (String) objects[1];
-                    String zipcode = (String) objects[2];
-                    String cvr = (String) objects[3];
-                    String pNum = (String) objects[4];
-                    //String city = (String) objects[0];
-
-                    Companies companies = new Companies(name,fieldOfExpertise,zipcode,cvr,pNum, null);
-
-                    retrievedCompanies.add(companies);
-                }
-
-            } catch (NullPointerException e) {
-                e.printStackTrace();
-
-
+        try {
+            String query = ("select fldCompanyID, fldCompanyName, fldFieldOfExpertise, fldCompanyZipcode, fldCVRNum, fldPNum from tblCompanies where fldCompanyID in (");
+            for (int companyID:companyList) {
+                query+= (companyID + ",");
             }
-            return retrievedCompanies;
+            query = query.substring(0,query.length()-1) + ")";
+
+            ArrayList<Object[]> companyQuery = DB.select(query);
+
+            for (Object[] objects : companyQuery) {
+                int companyID = (int) objects[0];
+                String name = (String) objects[1];
+                String fieldOfExpertise = (String) objects[2];
+                String zipcode = (String) objects[3];
+                String cvr = (String) objects[4];
+                String pNum = (String) objects[5];
+
+                Companies companies = new Companies(companyID,name,fieldOfExpertise,zipcode,cvr,pNum, null);
+
+                retrievedCompanies.add(companies);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+
+        }
+        return retrievedCompanies;
 
     }
+    public static ArrayList<Apprentices> retrieveApprentices(int selectedCompany){
+        ArrayList<Apprentices> retrievedApprentices = new ArrayList<>();
 
+        try {
+            String query = ("select fldApprenticeCPR, fldApprenticeName, fldCompanyID, fldApprenticeEmail, fldApprenticePhone, fldApprenticeID from tblApprentices where fldCompanyID = "+ selectedCompany);
+            ArrayList<Object[]> apprenticeQuery = DB.select(query);
+
+            for (Object[] objects : apprenticeQuery) {
+                String CPR = (String) objects[0];
+                String name = (String) objects[1];
+                int companyID = (int) objects[2];
+                String email = (String) objects[3];
+                String phone = (String) objects[4];
+                int apprenticeID = (int) objects[5];
+
+                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID);
+
+                retrievedApprentices.add(apprentices);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+
+        }
+        return retrievedApprentices;
+
+    }
 }

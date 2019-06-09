@@ -1,13 +1,16 @@
 package Domain;
 
 public class Companies {
+private int CompanyID;
 private String name;
 private String fieldOfExpertise;
 private String zipcode;
 private String cvr;
 private String pNum;
 private String city;
-    public Companies(String name, String fieldOfExpertise, String zipcode, String cvr, String pNum, String city){
+
+    public Companies(int CompanyID, String name, String fieldOfExpertise, String zipcode, String cvr, String pNum, String city){
+        this.CompanyID = CompanyID;
         this.name = name;
         this.fieldOfExpertise = fieldOfExpertise;
         this.zipcode = zipcode;
@@ -61,5 +64,13 @@ private String city;
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public int getCompanyID() {
+        return CompanyID;
+    }
+
+    public void setCompanyID(int companyID) {
+        CompanyID = companyID;
     }
 }

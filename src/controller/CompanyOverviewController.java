@@ -1,5 +1,6 @@
 package controller;
 
+import Domain.Apprentices;
 import Domain.Companies;
 import Persistence.DBFacade;
 import javafx.collections.ObservableList;
@@ -62,6 +63,10 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOExpCsvButHandle(ActionEvent actionEvent) {
+        ArrayList<Apprentices> unobservable2 = DBFacade.retrieveApprentices(6);
+        System.out.println(unobservable2.get(0).getName());
+        System.out.println(unobservable2.get(1).getName());
+        System.out.println(unobservable2.get(2).getName());
     }
 
     public void ComOPrintButHandle(ActionEvent actionEvent) {
