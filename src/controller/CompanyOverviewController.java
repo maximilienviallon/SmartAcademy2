@@ -2,6 +2,8 @@ package controller;
 
 import Domain.Companies;
 import Persistence.DBFacade;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,16 +23,22 @@ public class CompanyOverviewController extends Controller implements Initializab
     public LogInController logInCont;
     @FXML
     TableView ComOTableView = new TableView();
+    @FXML
     TableColumn<Companies, String> colName = new TableColumn<>();
+    @FXML
     TableColumn<Companies, String> colFieldOfExp = new TableColumn<>();
+    @FXML
     TableColumn<Companies, String> colZipcode = new TableColumn<>();
-    TableColumn<Companies, String> colCvr = new TableColumn<>();
+    @FXML
+    TableColumn<Companies, String> colCVR = new TableColumn<>();
+    @FXML
     TableColumn<Companies, String> colPNumber = new TableColumn<>();
+    @FXML
     TableColumn<Companies, String> colCity = new TableColumn<>();
 
     FXMLLoader fxmlLoader;
     String title;
-    String username;
+    String userName;
 
 
     public void ComOSetButHandle(ActionEvent actionEvent) throws IOException{
@@ -65,7 +73,7 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOPrintButHandle(ActionEvent actionEvent) {
-        ArrayList<Companies> unobservable = DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(username));
+        ArrayList<Companies> unobservable = DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(userName));
         System.out.println(unobservable.get(0).getCvr());
         System.out.println(unobservable.get(1).getName());
         System.out.println(unobservable.get(1).getCvr());
@@ -88,8 +96,24 @@ public class CompanyOverviewController extends Controller implements Initializab
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        username = KeeperOfKeys.getInstance().currentUserName().getUserName();
+        userName = KeeperOfKeys.getInstance().currentUserName().getUserName();
+
+        ObservableList companyList = FXCollections.observableArrayList(DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(userName)));
+
+        ComOTableView.setItems(companyList);
+
+        colName.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
+        colCity.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCity()));
+        colCVR.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCvr()));
+        colFieldOfExp.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getFieldOfExpertise()));
+        colPNumber.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getpNum()));
+        colZipcode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getZipcode()));
+        ComOTableView.getColumns().setAll(colName,colCity,colCVR,colFieldOfExp,colPNumber,colZipcode);
     }
+
+
+
+   
 }
 
 
