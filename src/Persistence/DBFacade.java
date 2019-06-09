@@ -63,7 +63,7 @@ public class DBFacade {
         ArrayList<Companies> retrievedCompanies = new ArrayList<>();
 
         try {
-            String query = ("select fldCompanyID, fldCompanyName, fldFieldOfExpertise, fldCompanyZipcode, fldCVRNum, fldPNum from tblCompanies where fldCompanyID in (");
+            String query = ("select tblCompanies.fldCompanyID, tblCompanies.fldCompanyName, tblCompanies.fldFieldOfExpertise, tblCompanies.fldCompanyZipcode, tblCompanies.fldCVRNum, tblCompanies.fldPNum, tblZipcode.fldCity from tblCompanies left join tblZipcode on tblCompanies.fldCompanyZipcode = tblZipcode.fldZipcode where fldCompanyID in (");
             for (int companyID : companyList) {
                 query += (companyID + ",");
             }
@@ -78,8 +78,9 @@ public class DBFacade {
                 String zipcode = (String) objects[3];
                 String cvr = (String) objects[4];
                 String pNum = (String) objects[5];
+                String city = (String) objects[6];
 
-                Companies companies = new Companies(companyID, name, fieldOfExpertise, zipcode, cvr, pNum, null);
+                Companies companies = new Companies(companyID, name, fieldOfExpertise, zipcode, cvr, pNum, city);
 
                 retrievedCompanies.add(companies);
             }
