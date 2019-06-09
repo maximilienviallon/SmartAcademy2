@@ -1,14 +1,18 @@
 package controller;
 
 public class KeeperOfKeys {
-    private final static KeeperOfKeys instance = new KeeperOfKeys();
+    private final static KeeperOfKeys userNameInstance = new KeeperOfKeys();
 
 
-    public static KeeperOfKeys getInstance() {
-        return instance;
+    public static KeeperOfKeys getUserNameInstance() {
+        return userNameInstance;
     }
 
+    public static KeeperOfKeys getCompanyIDInstance() {
+        return companyIDInstance;
+    }
 
+    private final static KeeperOfKeys companyIDInstance = new KeeperOfKeys();
 
     private LogInController logInCont = new LogInController();
 
@@ -16,4 +20,9 @@ public class KeeperOfKeys {
         return logInCont;
     }
 
+    private CompanyOverviewController compOverCont = new CompanyOverviewController();
+
+    public CompanyOverviewController currentCompanyID(){
+        return compOverCont;
+    }
 }

@@ -3,7 +3,7 @@ package Domain;
 public class Apprentices {
 private String CPR;
 private String name;
-private int companyID;
+private Integer companyID;
 private String email;
 private String phone;
 private int apprenticeID;
@@ -31,11 +31,11 @@ private int apprenticeID;
         this.name = name;
     }
 
-    public int getCompanyID() {
+    public Integer getCompanyID() {
         return companyID;
     }
 
-    public void setCompanyID(int companyID) {
+    public void setCompanyID(Integer companyID) {
         this.companyID = companyID;
     }
 

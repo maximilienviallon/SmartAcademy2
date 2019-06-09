@@ -1,7 +1,7 @@
 package Domain;
 
 public class Companies {
-private int CompanyID;
+private Integer CompanyID;
 private String name;
 private String fieldOfExpertise;
 private String zipcode;
@@ -9,7 +9,7 @@ private String cvr;
 private String pNum;
 private String city;
 
-    public Companies(int CompanyID, String name, String fieldOfExpertise, String zipcode, String cvr, String pNum, String city){
+    public Companies(Integer CompanyID, String name, String fieldOfExpertise, String zipcode, String cvr, String pNum, String city){
         this.CompanyID = CompanyID;
         this.name = name;
         this.fieldOfExpertise = fieldOfExpertise;
@@ -66,11 +66,11 @@ private String city;
         this.city = city;
     }
 
-    public int getCompanyID() {
+    public Integer getCompanyID() {
         return CompanyID;
     }
 
-    public void setCompanyID(int companyID) {
+    public void setCompanyID(Integer companyID) {
         CompanyID = companyID;
     }
 }

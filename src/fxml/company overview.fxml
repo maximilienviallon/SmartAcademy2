@@ -12,12 +12,12 @@
          <children>
             <TableView fx:id="ComOTableView" layoutX="23.0" layoutY="96.0" prefHeight="904.0" prefWidth="1659.0">
               <columns>
-                <TableColumn fx:id="colName" editable="false" prefWidth="75.0" sortable="false" text="Name" />
-                <TableColumn fx:id="colFieldOfExp" prefWidth="75.0" text="FieldOfExp" />
-                    <TableColumn fx:id="colZipcode" prefWidth="75.0" text="Zipcode" />
-                    <TableColumn fx:id="colCVR" prefWidth="75.0" text="Cvr" />
-                    <TableColumn fx:id="colPNumber" prefWidth="75.0" text="PNumber" />
-                    <TableColumn fx:id="colCity" prefWidth="75.0" text="City" />
+                  <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="colFieldOfExp" prefWidth="75.0" text="FieldOfExp" />
+                  <TableColumn fx:id="colZipcode" prefWidth="75.0" text="Zipcode" />
+                  <TableColumn fx:id="colCVR" prefWidth="75.0" text="Cvr" />
+                  <TableColumn fx:id="colPNumber" prefWidth="75.0" text="PNumber" />
+                  <TableColumn fx:id="colCity" prefWidth="75.0" text="City" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

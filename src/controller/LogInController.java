@@ -28,8 +28,7 @@ public class LogInController extends Controller {
 
 
     public void logInButtonHandle(ActionEvent actionEvent) throws IOException {
-        KeeperOfKeys.getInstance().currentUserName().setUserName(loginIDTextField.getText());
-
+        KeeperOfKeys.getUserNameInstance().currentUserName().setUserName(loginIDTextField.getText());
         if (DBFacade.checkLogin(true, loginIDTextField.getText(), logInPasswordID.getText())) {
             System.out.println("new window");
             String permissionValue = DBFacade.checkPermission(loginIDTextField.getText());

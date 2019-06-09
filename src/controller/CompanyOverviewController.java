@@ -2,6 +2,7 @@ package controller;
 
 import Domain.*;
 import Persistence.DBFacade;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 
 import java.io.IOException;
@@ -22,7 +24,9 @@ public class CompanyOverviewController extends Controller implements Initializab
     @FXML
     public LogInController logInCont;
     @FXML
-    TableView ComOTableView = new TableView();
+    TableView<Companies> ComOTableView = new TableView();
+
+    TableColumn<Companies,String> colCompanyID = new TableColumn<>();
     @FXML
     TableColumn<Companies, String> colName = new TableColumn<>();
     @FXML
@@ -39,6 +43,8 @@ public class CompanyOverviewController extends Controller implements Initializab
     FXMLLoader fxmlLoader;
     String title;
     String userName;
+    Integer companyID;
+
 
 
     public void ComOSetButHandle(ActionEvent actionEvent) throws IOException{
@@ -49,6 +55,8 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOAppOverButHandle(ActionEvent actionEvent)throws IOException {
+        Companies companies = ComOTableView.getSelectionModel().getSelectedItem();
+        KeeperOfKeys.getCompanyIDInstance().currentCompanyID().setCompanyID(companies.getCompanyID());
         title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice overview.fxml"));
         fxmlLoading(fxmlLoader,title);
@@ -87,6 +95,9 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOSelectButHandle(ActionEvent actionEvent) throws IOException{
+        Companies companies = ComOTableView.getSelectionModel().getSelectedItem();
+        KeeperOfKeys.getCompanyIDInstance().currentCompanyID().setCompanyID(companies.getCompanyID());
+
     }
 
     public void ComOConOButHandle(ActionEvent actionEvent) throws IOException{
@@ -99,12 +110,12 @@ public class CompanyOverviewController extends Controller implements Initializab
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        userName = KeeperOfKeys.getInstance().currentUserName().getUserName();
+        userName = KeeperOfKeys.getUserNameInstance().currentUserName().getUserName();
 
-        ObservableList companyList = FXCollections.observableArrayList(DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(userName)));
+        ObservableList<Companies> companyList = FXCollections.observableArrayList(DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(userName)));
 
         ComOTableView.setItems(companyList);
-
+        colCompanyID.setCellValueFactory(param -> new SimpleStringProperty((param.getValue().getCompanyID().toString())));
         colName.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
         colCity.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCity()));
         colCVR.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCvr()));
@@ -114,7 +125,13 @@ public class CompanyOverviewController extends Controller implements Initializab
         ComOTableView.getColumns().setAll(colName,colCity,colCVR,colFieldOfExp,colPNumber,colZipcode);
     }
 
+    public Integer getsCompanyID() {
+        return companyID;
+    }
 
+    public void setCompanyID(Integer companyID) {
+        this.companyID = companyID;
+    }
 
    
 }
