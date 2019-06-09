@@ -1,5 +1,6 @@
 package controller;
 
+import Persistence.DBFacade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,6 +15,7 @@ public class ApprenticeOverviewController  extends Controller implements Initial
 
     FXMLLoader fxmlLoader;
     String title;
+    String username;
 
     public void AOSetButHandle(ActionEvent actionEvent) throws IOException {
         title = "Logged User Detail Overview";
@@ -39,7 +41,6 @@ public class ApprenticeOverviewController  extends Controller implements Initial
     public void AOComOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Company Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
-        fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
@@ -59,7 +60,6 @@ public class ApprenticeOverviewController  extends Controller implements Initial
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getInstance().currentUserName().getUserName();
-        System.out.println(userName);
+        username = KeeperOfKeys.getInstance().currentUserName().getUserName();
     }
 }
