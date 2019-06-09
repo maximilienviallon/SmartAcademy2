@@ -2,6 +2,7 @@ package controller;
 
 import Domain.Apprentices;
 import Domain.Companies;
+import Domain.Contacts;
 import Persistence.DBFacade;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -78,11 +79,10 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOPrintButHandle(ActionEvent actionEvent) {
-        ArrayList<Companies> unobservable = DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(userName));
-        System.out.println(unobservable.get(0).getCvr());
-        System.out.println(unobservable.get(1).getName());
-        System.out.println(unobservable.get(1).getCvr());
-        System.out.println(unobservable.get(2).getFieldOfExpertise());
+        ArrayList<Contacts> unobservable = DBFacade.retrieveContacts(2);
+        for (Contacts object : unobservable) {
+            System.out.println(object.getName());
+        }
     }
 
     public void ComOCreaNewButHandle(ActionEvent actionEvent) throws IOException{
