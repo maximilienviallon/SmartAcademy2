@@ -1,9 +1,6 @@
 package Persistence;
 
-import Domain.Apprentices;
-import Domain.Companies;
-import Domain.Contacts;
-import Domain.Educations;
+import Domain.*;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -210,4 +207,59 @@ public class DBFacade {
         return retrievedEducations;
 
     }
+
+    public static ArrayList<Permissions> retrievePermissions() {
+        ArrayList<Permissions> retrievedPermissions = new ArrayList<>();
+
+        try {
+            String query = ("select * from tblPermissions");
+            ArrayList<Object[]> permissionsQuery = DB.select(query);
+
+            for (Object[] objects : permissionsQuery) {
+                String permission = (String) objects[0];
+                Integer permissionID = (Integer) objects[1];
+                Integer companyID = (Integer) objects[2];
+
+
+                Permissions permissions = new Permissions(permission,permissionID,companyID);
+
+                retrievedPermissions.add(permissions);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+
+        }
+        return retrievedPermissions;
+
+    }
+
+    public static ArrayList<Permissions> retrievePermissions(int selectedCompany) {
+        ArrayList<Permissions> retrievedPermissions = new ArrayList<>();
+
+        try {
+            String query = ("select * from tblPermissions where fldCompanyID = " + selectedCompany);
+            ArrayList<Object[]> permissionsQuery = DB.select(query);
+
+            for (Object[] objects : permissionsQuery) {
+                String permission = (String) objects[0];
+                Integer permissionID = (Integer) objects[1];
+                Integer companyID = (Integer) objects[2];
+
+
+                Permissions permissions = new Permissions(permission,permissionID,companyID);
+
+                retrievedPermissions.add(permissions);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+
+        }
+        return retrievedPermissions;
+
+    }
+
 }
