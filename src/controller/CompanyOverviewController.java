@@ -1,8 +1,6 @@
 package controller;
 
-import Domain.Apprentices;
-import Domain.Companies;
-import Domain.Contacts;
+import Domain.*;
 import Persistence.DBFacade;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -72,10 +70,10 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOExpCsvButHandle(ActionEvent actionEvent) {
-        ArrayList<Apprentices> unobservable2 = DBFacade.retrieveApprentices(6);
-        System.out.println(unobservable2.get(0).getName());
-        System.out.println(unobservable2.get(1).getName());
-        System.out.println(unobservable2.get(2).getName());
+        ArrayList<Permissions> unobservable2 = DBFacade.retrievePermissions();
+        System.out.println(unobservable2.get(0).getPermission());
+        System.out.println(unobservable2.get(1).getPermission());
+        System.out.println(unobservable2.get(2).getPermission());
     }
 
     public void ComOPrintButHandle(ActionEvent actionEvent) {

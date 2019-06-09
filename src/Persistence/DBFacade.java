@@ -1,9 +1,8 @@
 package Persistence;
 
-import Domain.Apprentices;
-import Domain.Companies;
-import Domain.Contacts;
+import Domain.*;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class DBFacade {
@@ -88,9 +87,37 @@ public class DBFacade {
         } catch (NullPointerException e) {
             e.printStackTrace();
 
-
         }
         return retrievedCompanies;
+
+    }
+
+    public static ArrayList<Apprentices> retrieveApprentices() {
+        ArrayList<Apprentices> retrievedApprentices = new ArrayList<>();
+
+        try {
+            String query = ("select fldApprenticeCPR, fldApprenticeName, fldCompanyID, fldApprenticeEmail, fldApprenticePhone, fldApprenticeID from tblApprentices");
+            ArrayList<Object[]> apprenticeQuery = DB.select(query);
+
+            for (Object[] objects : apprenticeQuery) {
+                String CPR = (String) objects[0];
+                String name = (String) objects[1];
+                int companyID = (int) objects[2];
+                String email = (String) objects[3];
+                String phone = (String) objects[4];
+                int apprenticeID = (int) objects[5];
+
+                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID);
+
+                retrievedApprentices.add(apprentices);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+
+        }
+        return retrievedApprentices;
 
     }
 
@@ -150,4 +177,89 @@ public class DBFacade {
         return retrievedContacts;
 
     }
+
+    public static ArrayList<Educations> retrieveEducations() {
+        ArrayList<Educations> retrievedEducations = new ArrayList<>();
+
+        try {
+            String query = ("select tblEducations.fldEduID, tblAMU.fldEduName, tblZipcode.fldCity,fldEduStart, tblEducations.fldEduEnd,tblEducations.fldAMU,tblEducations.fldEduZipcode from tblEducations left join tblAMU on tblEducations.fldAMU = tblAMU.fldAMU left join tblZipcode on tblEducations.fldEduZipcode = tblZipcode.fldZipcode");
+            ArrayList<Object[]> educationsQuery = DB.select(query);
+
+            for (Object[] objects : educationsQuery) {
+                Integer eduID = (Integer) objects[0];
+                String name = (String) objects[1];
+                String city = (String) objects[2];
+                Date eduStart = (Date) objects[3];
+                Date eduEnd = (Date) objects[4];
+                Integer AMU = (Integer) objects[5];
+                String zipcode = (String) objects[6];
+
+                Educations educations = new Educations(eduID,name,city,eduStart,eduEnd,AMU,zipcode);
+
+                retrievedEducations.add(educations);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+
+        }
+        return retrievedEducations;
+
+    }
+
+    public static ArrayList<Permissions> retrievePermissions() {
+        ArrayList<Permissions> retrievedPermissions = new ArrayList<>();
+
+        try {
+            String query = ("select * from tblPermissions");
+            ArrayList<Object[]> permissionsQuery = DB.select(query);
+
+            for (Object[] objects : permissionsQuery) {
+                String permission = (String) objects[0];
+                Integer permissionID = (Integer) objects[1];
+                Integer companyID = (Integer) objects[2];
+
+
+                Permissions permissions = new Permissions(permission,permissionID,companyID);
+
+                retrievedPermissions.add(permissions);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+
+        }
+        return retrievedPermissions;
+
+    }
+
+    public static ArrayList<Permissions> retrievePermissions(int selectedCompany) {
+        ArrayList<Permissions> retrievedPermissions = new ArrayList<>();
+
+        try {
+            String query = ("select * from tblPermissions where fldCompanyID = " + selectedCompany);
+            ArrayList<Object[]> permissionsQuery = DB.select(query);
+
+            for (Object[] objects : permissionsQuery) {
+                String permission = (String) objects[0];
+                Integer permissionID = (Integer) objects[1];
+                Integer companyID = (Integer) objects[2];
+
+
+                Permissions permissions = new Permissions(permission,permissionID,companyID);
+
+                retrievedPermissions.add(permissions);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+
+        }
+        return retrievedPermissions;
+
+    }
+
 }
