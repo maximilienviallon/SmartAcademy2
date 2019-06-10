@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 
 public class ApprenticeOverviewController  extends Controller implements Initializable {
     @FXML
-    TableView AOTableView = new TableView();
+    TableView<Apprentices> AOTableView = new TableView();
     @FXML
     TableColumn<Apprentices,String> colCPR = new TableColumn();
     @FXML
@@ -36,6 +36,7 @@ public class ApprenticeOverviewController  extends Controller implements Initial
     FXMLLoader fxmlLoader;
     String title;
     Integer CompanyID;
+    Integer ApprenticeID;
 
     public void AOSetButHandle(ActionEvent actionEvent) throws IOException {
         title = "Logged User Detail Overview";
@@ -78,14 +79,27 @@ public class ApprenticeOverviewController  extends Controller implements Initial
     }
 
     public void AOSelectButHandle(ActionEvent actionEvent) throws IOException{
+        Apprentices apprentices = AOTableView.getSelectionModel().getSelectedItem();
+        KeeperOfKeys.getLoggedUserNameInstance().currentApprenticeID().setsApprenticeID(apprentices.getApprenticeID());
+        title = "Employee Detail";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice detail.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void AODisMatButHandle(ActionEvent actionEvent) throws IOException{
     }
+    public Integer getsApprenticeID() {
+        return ApprenticeID;
+    }
+
+    public void setsApprenticeID(Integer apprenticeID) {
+        ApprenticeID = apprenticeID;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         CompanyID = KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
-        System.out.println(CompanyID);
         ObservableList companyList = FXCollections.observableArrayList(DBFacade.retrieveApprentices());
 
         AOTableView.setItems(companyList);

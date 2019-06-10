@@ -13,6 +13,7 @@ public class ContactOverviewController  extends Controller implements Initializa
 
     FXMLLoader fxmlLoader;
     String title;
+    String username;
 
     public void ConOSetButHandle(ActionEvent actionEvent) throws IOException {
         title = "Logged User Detail Overview";
@@ -62,7 +63,6 @@ public class ContactOverviewController  extends Controller implements Initializa
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentUserName().getUserName();
-        System.out.println(userName);
+        username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
     }
 }

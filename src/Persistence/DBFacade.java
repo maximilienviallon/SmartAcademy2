@@ -79,7 +79,7 @@ public class DBFacade {
                 String pNum = (String) objects[5];
                 String city = (String) objects[6];
 
-                Companies companies = new Companies(companyID, name, fieldOfExpertise, zipcode, cvr, pNum, city);
+                Companies companies = new Companies(companyID, name, fieldOfExpertise, zipcode, cvr, pNum, city,null,null,null);
 
                 retrievedCompanies.add(companies);
             }
@@ -107,7 +107,7 @@ public class DBFacade {
                 String phone = (String) objects[4];
                 int apprenticeID = (int) objects[5];
 
-                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID);
+                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID, null, null);
 
                 retrievedApprentices.add(apprentices);
             }
@@ -136,7 +136,7 @@ public class DBFacade {
                 String phone = (String) objects[4];
                 int apprenticeID = (int) objects[5];
 
-                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID);
+                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID,null, null);
 
                 retrievedApprentices.add(apprentices);
             }
@@ -286,6 +286,67 @@ public class DBFacade {
 
         }
         return retrievedUsers;
+
+    }
+    public static ArrayList<Companies> retrieveCompanyDetail(int requestedID) {
+        ArrayList<Companies> retrievedCompanies = new ArrayList<>();
+
+        try {
+            String query = ("select fldCompanyID, fldCompanyName, fldFieldOfExpertise, fldZipcode, fldCVRNum, fldPNum, fldCity, fldWebpage, fldStreet, fldCompanyInfo from tblCompanies left join tblZipcode on tblCompanies.fldCompanyZipcode = tblZipcode.fldZipcode where fldCompanyID = " + requestedID);
+            ArrayList<Object[]> companyQuery = DB.select(query);
+
+            for (Object[] objects : companyQuery) {
+                int companyID = (int) objects[0];
+                String name = (String) objects[1];
+                String fieldOfExpertise = (String) objects[2];
+                String zipcode = (String) objects[3];
+                String cvr = (String) objects[4];
+                String pNum = (String) objects[5];
+                String city = (String) objects[6];
+                String webpage = (String) objects[7];
+                String street = (String) objects[8];
+                String info = (String) objects[9];
+
+                Companies companies = new Companies(companyID, name, fieldOfExpertise, zipcode, cvr, pNum, city, webpage, street, info);
+
+                retrievedCompanies.add(companies);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+        }
+        return retrievedCompanies;
+
+    }
+    public static ArrayList<Apprentices> retrieveApprenticeDetail(int selectedApprentice) {
+        ArrayList<Apprentices> retrievedApprentices = new ArrayList<>();
+
+        try {
+            String query = ("select * from tblApprentices where fldApprenticeID = " + selectedApprentice);
+            ArrayList<Object[]> apprenticeQuery = DB.select(query);
+
+            for (Object[] objects : apprenticeQuery) {
+                String CPR = (String) objects[0];
+                String name = (String) objects[1];
+                int companyID = (int) objects[2];
+                String email = (String) objects[3];
+                String phone = (String) objects[4];
+                String workExpirience = (String) objects[5];
+                String generalExpertise = (String) objects[6];
+                int apprenticeID = (int) objects[7];
+
+                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID,workExpirience, generalExpertise);
+
+                retrievedApprentices.add(apprentices);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+
+        }
+        return retrievedApprentices;
 
     }
 }
