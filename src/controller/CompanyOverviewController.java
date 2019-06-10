@@ -102,6 +102,12 @@ public class CompanyOverviewController extends Controller implements Initializab
         KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().setsCompanyID(companies.getCompanyID());
         Integer ID  =  KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
         System.out.println(ID);
+        title = "Company Detail";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company detail.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+
+
     }
 
     public void ComOConOButHandle(ActionEvent actionEvent) throws IOException{
@@ -197,7 +203,7 @@ public class CompanyOverviewController extends Controller implements Initializab
         return companyID;
     }
 
-    public void setCompanyID(Integer companyID) {
+    public void setsCompanyID(Integer companyID) {
         this.companyID = companyID;
     }
 
