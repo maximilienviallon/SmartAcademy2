@@ -6,6 +6,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
@@ -39,6 +42,8 @@ public class CompanyOverviewController extends Controller implements Initializab
     TableColumn<Companies, String> colPNumber = new TableColumn<>();
     @FXML
     TableColumn<Companies, String> colCity = new TableColumn<>();
+    @FXML
+    private TextField ComOSeaText;
 
     FXMLLoader fxmlLoader;
     String title;
@@ -123,6 +128,55 @@ public class CompanyOverviewController extends Controller implements Initializab
         colPNumber.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getpNum()));
         colZipcode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getZipcode()));
         ComOTableView.getColumns().setAll(colName,colCity,colCVR,colFieldOfExp,colPNumber,colZipcode);
+
+        FilteredList<Companies> filteredData = new FilteredList<>(companyList, p -> true);
+
+        // 2. Set the filter Predicate whenever the filter changes.
+
+        ComOSeaText.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(companies -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    System.out.println("return");
+                    return true;
+                }
+
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (companies.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    System.out.println("Name");
+                    return true; // Filter matches first name.
+                } else if (companies.getCity().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    System.out.println("City");
+                    return true; // Filter matches last name.
+                } else if (companies.getCvr().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    System.out.println("Cvr");
+                    return true; // Filter matches last name.
+                } else if (companies.getFieldOfExpertise().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    System.out.println("Expertise");
+                    return true; // Filter matches last name.
+                } else if (companies.getpNum().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    System.out.println("pNum");
+                    return true; // Filter matches last name.
+                } else if (companies.getZipcode().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    System.out.println("Zip");
+                    return true; // Filter matches last name.
+                }
+                System.out.println("False");
+                return false; // Does not match.
+            });
+        });
+
+        // 3. Wrap the FilteredList in a SortedList.
+        SortedList<Companies> sortedData = new SortedList<>(filteredData);
+
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        // 	  Otherwise, sorting the TableView would have no effect.
+        sortedData.comparatorProperty().bind(ComOTableView.comparatorProperty());
+
+        // 5. Add sorted (and filtered) data to the table.
+        ComOTableView.setItems(sortedData);
     }
 
     public Integer getsCompanyID() {

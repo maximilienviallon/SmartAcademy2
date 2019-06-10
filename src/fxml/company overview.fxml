@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CompanyOverviewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CompanyOverviewController">
    <left>
       <AnchorPane prefHeight="361.0" prefWidth="865.0" BorderPane.alignment="CENTER">
          <children>
@@ -30,7 +31,7 @@
       </AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="1038.0" prefWidth="218.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="941.0" prefWidth="0.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="ComOAppOverBut" layoutX="30.0" layoutY="99.0" mnemonicParsing="false" onAction="#ComOAppOverButHandle" prefWidth="160.0" text="Apprentice Overview" />
             <Button fx:id="ComOUseOverBut" layoutX="30.0" layoutY="258.0" mnemonicParsing="false" onAction="#ComOUseOverButHandle" prefWidth="160.0" text="User Overview" />
