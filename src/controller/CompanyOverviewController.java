@@ -60,8 +60,6 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOAppOverButHandle(ActionEvent actionEvent)throws IOException {
-        Companies companies = ComOTableView.getSelectionModel().getSelectedItem();
-        KeeperOfKeys.getCompanyIDInstance().currentCompanyID().setCompanyID(companies.getCompanyID());
         title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice overview.fxml"));
         fxmlLoading(fxmlLoader,title);
@@ -119,23 +117,22 @@ public class CompanyOverviewController extends Controller implements Initializab
 
         ObservableList<Companies> companyList = FXCollections.observableArrayList(DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(username)));
 
-        //ComOTableView.setItems(companyList);
-        colCompanyID.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getCompanyID().toString())));
-        colName.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getName())));
-        colCity.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getCity())));
-        colCVR.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getCvr())));
-        colFieldOfExp.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getFieldOfExpertise())));
-        colPNumber.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getpNum())));
-        colZipcode.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getZipcode())));
-        //ComOTableView.getColumns().setAll(colName,colCity,colCVR,colFieldOfExp,colPNumber,colZipcode);
-
+        ComOTableView.setItems(companyList);
+        colCompanyID.setCellValueFactory(param -> new SimpleStringProperty((param.getValue().getCompanyID().toString())));
+        colName.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
+        colCity.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCity()));
+        colCVR.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCvr()));
+        colFieldOfExp.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getFieldOfExpertise()));
+        colPNumber.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getpNum()));
+        colZipcode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getZipcode()));
+        ComOTableView.getColumns().setAll(colName,colCity,colCVR,colFieldOfExp,colPNumber,colZipcode);
 
         FilteredList<Companies> filteredData = new FilteredList<>(companyList, p -> true);
 
-// 2. Set the filter Predicate whenever the filter changes.
+        // 2. Set the filter Predicate whenever the filter changes.
 
         ComOSeaText.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(Companies -> {
+            filteredData.setPredicate(companies -> {
                 // If filter text is empty, display all persons.
                 if (newValue == null || newValue.isEmpty()) {
                     System.out.println("return");
@@ -144,40 +141,27 @@ public class CompanyOverviewController extends Controller implements Initializab
 
                 // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
-                if(Companies.getpNum() != null)
-                {}
-                if (Companies.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    System.out.println(Companies.getName().toLowerCase().indexOf(lowerCaseFilter));
+
+                if (companies.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     System.out.println("Name");
                     return true; // Filter matches first name.
-                } else if (Companies.getCity().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    System.out.println(Companies.getCity().toLowerCase().indexOf(lowerCaseFilter));
+                } else if (companies.getCity().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     System.out.println("City");
                     return true; // Filter matches last name.
-                } else if (Companies.getCvr().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    System.out.println(Companies.getCvr().toLowerCase().indexOf(lowerCaseFilter));
+                } else if (companies.getCvr().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     System.out.println("Cvr");
                     return true; // Filter matches last name.
-                } else if (Companies.getFieldOfExpertise().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    System.out.println(Companies.getFieldOfExpertise().toLowerCase().indexOf(lowerCaseFilter));
+                } else if (companies.getFieldOfExpertise().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     System.out.println("Expertise");
                     return true; // Filter matches last name.
-                } else if (Companies.getpNum().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    System.out.println(Companies.getpNum().toLowerCase().indexOf(lowerCaseFilter));
+                } else if (companies.getpNum().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     System.out.println("pNum");
                     return true; // Filter matches last name.
-                } else if (Companies.getZipcode().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    System.out.println(Companies.getZipcode().toLowerCase().indexOf(lowerCaseFilter));
+                } else if (companies.getZipcode().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     System.out.println("Zip");
                     return true; // Filter matches last name.
                 }
                 System.out.println("False");
-                System.out.println(Companies.getName().toLowerCase().indexOf(lowerCaseFilter));
-                System.out.println(Companies.getCity().toLowerCase().indexOf(lowerCaseFilter));
-                System.out.println(Companies.getCvr().toLowerCase().indexOf(lowerCaseFilter));
-                System.out.println(Companies.getFieldOfExpertise().toLowerCase().indexOf(lowerCaseFilter));
-                System.out.println(Companies.getpNum().toLowerCase().indexOf(lowerCaseFilter));
-                System.out.println(Companies.getZipcode().toLowerCase().indexOf(lowerCaseFilter));
                 return false; // Does not match.
             });
         });
@@ -192,7 +176,6 @@ public class CompanyOverviewController extends Controller implements Initializab
         // 5. Add sorted (and filtered) data to the table.
         ComOTableView.setItems(sortedData);
     }
-
 
     public Integer getsCompanyID() {
         return companyID;

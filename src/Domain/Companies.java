@@ -8,7 +8,9 @@ private String zipcode;
 private String cvr;
 private String pNum;
 private String city;
+    public Companies(){
 
+    }
     public Companies(Integer CompanyID, String name, String fieldOfExpertise, String zipcode, String cvr, String pNum, String city){
         this.CompanyID = CompanyID;
         this.name = name;
