@@ -80,7 +80,7 @@ public class ApprenticeOverviewController  extends Controller implements Initial
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CompanyID = KeeperOfKeys.getCompanyIDInstance().currentCompanyID().getsCompanyID();
+        CompanyID = KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
         System.out.println(CompanyID);
         ObservableList companyList = FXCollections.observableArrayList(DBFacade.retrieveApprentices());
 

@@ -99,8 +99,9 @@ public class CompanyOverviewController extends Controller implements Initializab
 
     public void ComOSelectButHandle(ActionEvent actionEvent) throws IOException{
         Companies companies = ComOTableView.getSelectionModel().getSelectedItem();
-        KeeperOfKeys.getCompanyIDInstance().currentCompanyID().setCompanyID(companies.getCompanyID());
-
+        KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().setCompanyID(companies.getCompanyID());
+        Integer ID  =  KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
+        System.out.println(ID);
     }
 
     public void ComOConOButHandle(ActionEvent actionEvent) throws IOException{
@@ -144,8 +145,6 @@ public class CompanyOverviewController extends Controller implements Initializab
                 }
                 // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
-                if(Companies.getpNum() != null)
-                {}
                 if (Companies.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     System.out.println(Companies.getName().toLowerCase().indexOf(lowerCaseFilter));
                     System.out.println("Name");

@@ -2,29 +2,6 @@ package controller;
 
 public class KeeperOfKeys {
 
-    private final static KeeperOfKeys apprenticeIDInstance = new KeeperOfKeys();
-    public static KeeperOfKeys getApprenticeIDInstance(){
-        return apprenticeIDInstance;
-    }
-
-
-    private final static KeeperOfKeys companyIDInstance = new KeeperOfKeys();
-    public static KeeperOfKeys getCompanyIDInstance() {
-        return companyIDInstance;
-    }
-
-
-    private final static KeeperOfKeys contactIDInstance = new KeeperOfKeys();
-    public static KeeperOfKeys getContactIDInstance(){
-        return contactIDInstance;
-    }
-
-
-    private final static KeeperOfKeys educationIDInstance = new KeeperOfKeys();
-    public static KeeperOfKeys getEducationIDInstance(){
-        return educationIDInstance;
-    }
-
 
     private final static KeeperOfKeys LoggedUserNameInstance = new KeeperOfKeys();
     public static KeeperOfKeys getLoggedUserNameInstance() {
@@ -73,8 +50,5 @@ public class KeeperOfKeys {
     }
 
 
-    private PermissionOverviewController permOverCont = new PermissionOverviewController();
-    public PermissionOverviewController currentPermissionID(){
-        return permOverCont;
-    }
+
 }
