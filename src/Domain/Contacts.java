@@ -1,12 +1,12 @@
 package Domain;
 
 public class Contacts {
-    private int conID;
-    private int companyID;
+    private Integer conID;
+    private Integer companyID;
     private String name;
     private String email;
     private String phoneNo;
-    public Contacts(int conID, int companyID, String name, String email, String phoneNo){
+    public Contacts(Integer conID, Integer companyID, String name, String email, String phoneNo){
         this.conID = conID;
         this.companyID = companyID;
         this.name = name;
@@ -14,19 +14,19 @@ public class Contacts {
         this.phoneNo = phoneNo;
     }
 
-    public int getConID() {
+    public Integer getContactID() {
         return conID;
     }
 
-    public void setConID(int conID) {
+    public void setConID(Integer conID) {
         this.conID = conID;
     }
 
-    public int getCompanyID() {
+    public Integer getCompanyID() {
         return companyID;
     }
 
-    public void setCompanyID(int companyID) {
+    public void setCompanyID(Integer companyID) {
         this.companyID = companyID;
     }
 

@@ -33,7 +33,6 @@
                   <Button fx:id="POCreaNewBut" layoutX="66.0" layoutY="838.0" mnemonicParsing="false" onAction="#POCreaNewButHandle" text="Create New" />
                   <Button fx:id="POSelectBut" layoutX="86.0" layoutY="1004.0" mnemonicParsing="false" onAction="#POSelectButHandle" text="Select" />
                   <Button fx:id="POAppOverBut" layoutX="35.0" layoutY="465.0" mnemonicParsing="false" onAction="#POAppOverButHandle" text="Apprentice Overview" >
-
                   </Button>
                </children>
             </AnchorPane>

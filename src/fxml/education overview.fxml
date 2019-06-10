@@ -14,8 +14,12 @@
                <children>
                   <TableView fx:id="EOTableView" layoutX="23.0" layoutY="96.0" prefHeight="967.0" prefWidth="1659.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
+                       <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
+                       <TableColumn fx:id="colCity" prefWidth="75.0" text="City" />
+                       <TableColumn fx:id="colEduStart" prefWidth="75.0" text="Education start" />
+                       <TableColumn fx:id="colEduEnd" prefWidth="75.0" text="Education end" />
+                       <TableColumn fx:id="colAMU" prefWidth="75.0" text="AMU" />
+                       <TableColumn fx:id="colZipCode" prefWidth="75.0" text="Zipcode" />
                     </columns>
                   </TableView>
                   <Button fx:id="EOSetBut" layoutX="42.0" layoutY="37.0" mnemonicParsing="false" onAction="#EOSetButHandle" text="Settings" />
