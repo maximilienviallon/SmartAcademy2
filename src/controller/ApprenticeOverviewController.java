@@ -1,10 +1,18 @@
 package controller;
 
+import Domain.Apprentices;
+import Domain.Companies;
 import Persistence.DBFacade;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 import java.io.IOException;
 import java.net.URL;
@@ -12,10 +20,22 @@ import java.util.ResourceBundle;
 
 
 public class ApprenticeOverviewController  extends Controller implements Initializable {
+    @FXML
+    TableView AOTableView = new TableView();
+    @FXML
+    TableColumn<Apprentices,String> colCPR = new TableColumn();
+    @FXML
+    TableColumn<Apprentices,String> colName = new TableColumn();
+    @FXML
+    TableColumn<Apprentices,String> colEmail = new TableColumn();
+    @FXML
+    TableColumn<Apprentices,String> colPhone = new TableColumn();
+    @FXML
+    TableColumn <Apprentices,String> colCompID = new TableColumn();
 
     FXMLLoader fxmlLoader;
     String title;
-    String username;
+    Integer CompanyID;
 
     public void AOSetButHandle(ActionEvent actionEvent) throws IOException {
         title = "Logged User Detail Overview";
@@ -60,6 +80,18 @@ public class ApprenticeOverviewController  extends Controller implements Initial
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        username = KeeperOfKeys.getInstance().currentUserName().getUserName();
+        CompanyID = KeeperOfKeys.getCompanyIDInstance().currentCompanyID().getsCompanyID();
+        System.out.println(CompanyID);
+        ObservableList companyList = FXCollections.observableArrayList(DBFacade.retrieveApprentices());
+
+        AOTableView.setItems(companyList);
+
+        colCPR.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCPR()));
+        colName.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
+        colEmail.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getEmail()));
+        colPhone.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getPhone()));
+        colCompID.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCompanyID().toString()));
+
+        AOTableView.getColumns().setAll(colCPR,colName,colEmail,colPhone,colCompID);
     }
 }

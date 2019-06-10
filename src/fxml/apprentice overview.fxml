@@ -14,8 +14,11 @@
                <children>
                   <TableView fx:id="AOTableView" layoutX="23.0" layoutY="96.0" prefHeight="967.0" prefWidth="1659.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
+                      <TableColumn fx:id="colCPR" prefWidth="75.0" text="CPR" />
+                      <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
+                       <TableColumn fx:id="colEmail" prefWidth="75.0" text="Email" />
+                       <TableColumn fx:id="colPhone" prefWidth="75.0" text="Phone" />
+                       <TableColumn fx:id="colCompID" prefWidth="75.0" text="CompanyID" />
                     </columns>
                   </TableView>
                   <Button fx:id="AOSetBut" layoutX="42.0" layoutY="37.0" mnemonicParsing="false" onAction="#AOSetButHandle" text="Settings" />
