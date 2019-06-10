@@ -2,7 +2,6 @@ package controller;
 
 import Domain.*;
 import Persistence.DBFacade;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,7 +13,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
@@ -99,11 +97,14 @@ public class CompanyOverviewController extends Controller implements Initializab
 
     public void ComOSelectButHandle(ActionEvent actionEvent) throws IOException{
         Companies companies = ComOTableView.getSelectionModel().getSelectedItem();
-        KeeperOfKeys.getCompanyIDInstance().currentCompanyID().setCompanyID(companies.getCompanyID());
+        KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().setsCompanyID(companies.getCompanyID());
+        Integer ID  =  KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
+        System.out.println(ID);
         title = "Company Detail";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company detail.fxml"));
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+
 
     }
 
@@ -117,7 +118,7 @@ public class CompanyOverviewController extends Controller implements Initializab
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        username = KeeperOfKeys.getLoggedUserNameInstance().currentUserName().getUserName();
+        username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
 
         ObservableList<Companies> companyList = FXCollections.observableArrayList(DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(username)));
 
@@ -148,8 +149,6 @@ public class CompanyOverviewController extends Controller implements Initializab
                 }
                 // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
-                if(Companies.getpNum() != null)
-                {}
                 if (Companies.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     System.out.println(Companies.getName().toLowerCase().indexOf(lowerCaseFilter));
                     System.out.println("Name");
@@ -197,12 +196,11 @@ public class CompanyOverviewController extends Controller implements Initializab
         ComOTableView.setItems(sortedData);
     }
 
-
     public Integer getsCompanyID() {
         return companyID;
     }
 
-    public void setCompanyID(Integer companyID) {
+    public void setsCompanyID(Integer companyID) {
         this.companyID = companyID;
     }
 
@@ -210,3 +208,8 @@ public class CompanyOverviewController extends Controller implements Initializab
     public void ComOSeaButHandle(ActionEvent actionEvent) {
     }
 }
+
+
+
+
+

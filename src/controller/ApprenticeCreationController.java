@@ -30,6 +30,7 @@ public class ApprenticeCreationController  extends Controller implements Initial
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        username = KeeperOfKeys.getLoggedUserNameInstance().currentUserName().getUserName();
+        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
+        System.out.println(userName);
     }
 }

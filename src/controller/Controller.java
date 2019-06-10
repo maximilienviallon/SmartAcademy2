@@ -1,11 +1,15 @@
 package controller;
 
+import Domain.Companies;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,7 +24,4 @@ public class Controller {
         stage.setScene(new Scene(root,1900,1000));
         stage.show();
     }
-
-
-
 }

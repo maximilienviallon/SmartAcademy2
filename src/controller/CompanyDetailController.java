@@ -57,9 +57,10 @@ public class CompanyDetailController  extends Controller implements Initializabl
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        username = KeeperOfKeys.getLoggedUserNameInstance().currentUserName().getUserName();
-        companyID = KeeperOfKeys.getCompanyIDInstance().currentCompanyID().getsCompanyID();
+        username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
+        companyID = KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
         Companies detailView =  DBFacade.retrieveCompanyDetail(companyID).get(0);
         CompanyInfoArea.setText(detailView.getName() + "\n" + detailView.getFieldOfExpertise() + "\n" + detailView.getCity() + "\n" + detailView.getStreet() + "\n" + detailView.getZipcode() + "\n" + detailView.getWebpage() + "\n" + detailView.getCvr() + "\n" + detailView.getpNum() + "\n" + detailView.getInfo());
+
     }
 }

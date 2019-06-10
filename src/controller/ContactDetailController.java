@@ -42,7 +42,7 @@ public class ContactDetailController  extends Controller implements Initializabl
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        username = KeeperOfKeys.getLoggedUserNameInstance().currentUserName().getUserName();
-        System.out.println(username);
+        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
+        System.out.println(userName);
     }
 }
