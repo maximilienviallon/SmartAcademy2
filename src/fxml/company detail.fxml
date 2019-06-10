@@ -12,7 +12,7 @@
          <left>
             <AnchorPane prefHeight="1045.0" prefWidth="665.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextArea fx:id="CompanyinfoArea" prefHeight="372.0" prefWidth="665.0" />
+                  <TextArea fx:id="CompanyInfoArea" prefHeight="372.0" prefWidth="665.0" />
                </children>
             </AnchorPane>
          </left>

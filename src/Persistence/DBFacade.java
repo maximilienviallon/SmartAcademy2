@@ -107,7 +107,7 @@ public class DBFacade {
                 String phone = (String) objects[4];
                 int apprenticeID = (int) objects[5];
 
-                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID);
+                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID, null, null);
 
                 retrievedApprentices.add(apprentices);
             }
@@ -136,7 +136,7 @@ public class DBFacade {
                 String phone = (String) objects[4];
                 int apprenticeID = (int) objects[5];
 
-                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID);
+                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID,null, null);
 
                 retrievedApprentices.add(apprentices);
             }
@@ -317,6 +317,36 @@ public class DBFacade {
 
         }
         return retrievedCompanies;
+
+    }
+    public static ArrayList<Apprentices> retrieveApprenticeDetail(int selectedApprentice) {
+        ArrayList<Apprentices> retrievedApprentices = new ArrayList<>();
+
+        try {
+            String query = ("select * from tblApprentices where fldApprenticeID = " + selectedApprentice);
+            ArrayList<Object[]> apprenticeQuery = DB.select(query);
+
+            for (Object[] objects : apprenticeQuery) {
+                String CPR = (String) objects[0];
+                String name = (String) objects[1];
+                int companyID = (int) objects[2];
+                String email = (String) objects[3];
+                String phone = (String) objects[4];
+                String workExpirience = (String) objects[5];
+                String generalExpertise = (String) objects[6];
+                int apprenticeID = (int) objects[7];
+
+                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID,workExpirience, generalExpertise);
+
+                retrievedApprentices.add(apprentices);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+
+        }
+        return retrievedApprentices;
 
     }
 }
