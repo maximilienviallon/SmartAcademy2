@@ -1,8 +1,16 @@
 package controller;
 
+import Domain.Educations;
+import Persistence.DBFacade;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 import java.io.IOException;
 import java.net.URL;
@@ -56,7 +64,19 @@ public class PermissionOverviewController  extends Controller implements Initial
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getUserNameInstance().currentUserName().getUserName();
+        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentUserName().getUserName();
         System.out.println(userName);
-    }
+
+        /*ObservableList<Educations> educationList = FXCollections.observableArrayList(DBFacade.retrieveEducations());
+        EOTableView.setItems(educationList);
+
+        colEducationID.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getEduID().toString()));
+        colName.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
+        colCity.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCity()));
+        colEduStart.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getEduStart().toString()));
+        colEduEnd.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getEduEnd().toString()));
+        colAMU.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getAMU().toString()));
+        colZipCode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getZipcode()));
+        EOTableView.getColumns().setAll(colName,colCity,colEduStart,colEduEnd,colAMU,colZipCode);
+    */}
 }
