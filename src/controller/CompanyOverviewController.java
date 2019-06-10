@@ -110,7 +110,7 @@ public class CompanyOverviewController extends Controller implements Initializab
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        userName = KeeperOfKeys.getUserNameInstance().currentUserName().getUserName();
+        userName = KeeperOfKeys.getLoggedUserNameInstance().currentUserName().getUserName();
 
         ObservableList<Companies> companyList = FXCollections.observableArrayList(DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(userName)));
 
