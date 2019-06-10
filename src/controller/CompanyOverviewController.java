@@ -133,7 +133,9 @@ public class CompanyOverviewController extends Controller implements Initializab
         this.companyID = companyID;
     }
 
-   
+
+    public void ComOSeaButHandle(ActionEvent actionEvent) {
+    }
 }
 
 
