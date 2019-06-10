@@ -119,7 +119,6 @@ public class CompanyOverviewController extends Controller implements Initializab
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
-
         ObservableList<Companies> companyList = FXCollections.observableArrayList(DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(username)));
 
         ComOTableView.setItems(companyList);
@@ -144,9 +143,7 @@ public class CompanyOverviewController extends Controller implements Initializab
                     System.out.println("return");
                     return true;
                 }
-                if(Companies.getpNum() == null){
-                    Companies.setpNum(" ");
-                }
+
                 // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
                 if (Companies.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {

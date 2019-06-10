@@ -9,16 +9,6 @@ public class KeeperOfKeys {
     }
 
 
-    private final static KeeperOfKeys permissionIDInstance = new KeeperOfKeys();
-    public final KeeperOfKeys getPermissionIDInstance(){
-        return permissionIDInstance;
-    }
-
-    private final static KeeperOfKeys userIDInstance = new KeeperOfKeys();
-    public final KeeperOfKeys getUserIDInstance(){
-        return userIDInstance;
-    }
-
 
     private ApprenticeOverviewController apprOverCont = new ApprenticeOverviewController();
     public ApprenticeOverviewController currentApprenticeID(){
