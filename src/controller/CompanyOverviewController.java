@@ -100,6 +100,10 @@ public class CompanyOverviewController extends Controller implements Initializab
     public void ComOSelectButHandle(ActionEvent actionEvent) throws IOException{
         Companies companies = ComOTableView.getSelectionModel().getSelectedItem();
         KeeperOfKeys.getCompanyIDInstance().currentCompanyID().setCompanyID(companies.getCompanyID());
+        title = "Company Detail";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company detail.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
 
     }
 
