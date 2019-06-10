@@ -2,7 +2,6 @@ package controller;
 
 import Domain.*;
 import Persistence.DBFacade;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +11,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 
 import java.io.IOException;
@@ -42,7 +40,7 @@ public class CompanyOverviewController extends Controller implements Initializab
 
     FXMLLoader fxmlLoader;
     String title;
-    String userName;
+    String username;
     Integer companyID;
 
 
@@ -110,9 +108,9 @@ public class CompanyOverviewController extends Controller implements Initializab
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        userName = KeeperOfKeys.getUserNameInstance().currentUserName().getUserName();
+        username = KeeperOfKeys.getUserNameInstance().currentUserName().getUserName();
 
-        ObservableList<Companies> companyList = FXCollections.observableArrayList(DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(userName)));
+        ObservableList<Companies> companyList = FXCollections.observableArrayList(DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(username)));
 
         ComOTableView.setItems(companyList);
         colCompanyID.setCellValueFactory(param -> new SimpleStringProperty((param.getValue().getCompanyID().toString())));

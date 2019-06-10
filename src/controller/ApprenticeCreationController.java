@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ApprenticeCreationController  extends Controller implements Initializable {
+    String username;
     public void apprenticeCreationSaveHandle(ActionEvent actionEvent) {
     }
 
@@ -14,7 +15,6 @@ public class ApprenticeCreationController  extends Controller implements Initial
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getUserNameInstance().currentUserName().getUserName();
-        System.out.println(userName);
+        username = KeeperOfKeys.getUserNameInstance().currentUserName().getUserName();
     }
 }
