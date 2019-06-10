@@ -120,50 +120,66 @@ public class CompanyOverviewController extends Controller implements Initializab
         ObservableList<Companies> companyList = FXCollections.observableArrayList(DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(username)));
 
         ComOTableView.setItems(companyList);
-        colCompanyID.setCellValueFactory(param -> new SimpleStringProperty((param.getValue().getCompanyID().toString())));
-        colName.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
-        colCity.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCity()));
-        colCVR.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCvr()));
-        colFieldOfExp.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getFieldOfExpertise()));
-        colPNumber.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getpNum()));
-        colZipcode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getZipcode()));
-        ComOTableView.getColumns().setAll(colName,colCity,colCVR,colFieldOfExp,colPNumber,colZipcode);
+        colCompanyID.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getCompanyID().toString())));
+        colName.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getName())));
+        colCity.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getCity())));
+        colCVR.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getCvr())));
+        colFieldOfExp.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getFieldOfExpertise())));
+        colPNumber.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getpNum())));
+        colZipcode.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getZipcode())));
+        //ComOTableView.getColumns().setAll(colName,colCity,colCVR,colFieldOfExp,colPNumber,colZipcode);
+
 
         FilteredList<Companies> filteredData = new FilteredList<>(companyList, p -> true);
 
-        // 2. Set the filter Predicate whenever the filter changes.
+// 2. Set the filter Predicate whenever the filter changes.
 
         ComOSeaText.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(companies -> {
+            filteredData.setPredicate(Companies -> {
                 // If filter text is empty, display all persons.
                 if (newValue == null || newValue.isEmpty()) {
                     System.out.println("return");
                     return true;
                 }
-
+                if(Companies.getpNum() == null){
+                    Companies.setpNum(" ");
+                }
                 // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
-
-                if (companies.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                if(Companies.getpNum() != null)
+                {}
+                if (Companies.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    System.out.println(Companies.getName().toLowerCase().indexOf(lowerCaseFilter));
                     System.out.println("Name");
                     return true; // Filter matches first name.
-                } else if (companies.getCity().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                } else if (Companies.getCity().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    System.out.println(Companies.getCity().toLowerCase().indexOf(lowerCaseFilter));
                     System.out.println("City");
                     return true; // Filter matches last name.
-                } else if (companies.getCvr().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                } else if (Companies.getCvr().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    System.out.println(Companies.getCvr().toLowerCase().indexOf(lowerCaseFilter));
                     System.out.println("Cvr");
                     return true; // Filter matches last name.
-                } else if (companies.getFieldOfExpertise().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                } else if (Companies.getFieldOfExpertise().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    System.out.println(Companies.getFieldOfExpertise().toLowerCase().indexOf(lowerCaseFilter));
                     System.out.println("Expertise");
                     return true; // Filter matches last name.
-                } else if (companies.getpNum().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                } else if (Companies.getpNum().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    System.out.println(Companies.getpNum().toLowerCase().indexOf(lowerCaseFilter));
                     System.out.println("pNum");
                     return true; // Filter matches last name.
-                } else if (companies.getZipcode().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                } else if (Companies.getZipcode().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    System.out.println(Companies.getZipcode().toLowerCase().indexOf(lowerCaseFilter));
                     System.out.println("Zip");
                     return true; // Filter matches last name.
                 }
                 System.out.println("False");
+                System.out.println(Companies.getName().toLowerCase().indexOf(lowerCaseFilter));
+                System.out.println(Companies.getCity().toLowerCase().indexOf(lowerCaseFilter));
+                System.out.println(Companies.getCvr().toLowerCase().indexOf(lowerCaseFilter));
+                System.out.println(Companies.getFieldOfExpertise().toLowerCase().indexOf(lowerCaseFilter));
+                System.out.println(Companies.getpNum().toLowerCase().indexOf(lowerCaseFilter));
+                System.out.println(Companies.getZipcode().toLowerCase().indexOf(lowerCaseFilter));
                 return false; // Does not match.
             });
         });
@@ -179,6 +195,7 @@ public class CompanyOverviewController extends Controller implements Initializab
         ComOTableView.setItems(sortedData);
     }
 
+
     public Integer getsCompanyID() {
         return companyID;
     }
@@ -191,8 +208,3 @@ public class CompanyOverviewController extends Controller implements Initializab
     public void ComOSeaButHandle(ActionEvent actionEvent) {
     }
 }
-
-
-
-
-
