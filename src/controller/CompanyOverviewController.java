@@ -78,10 +78,10 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOExpCsvButHandle(ActionEvent actionEvent) {
-        ArrayList<Permissions> unobservable2 = DBFacade.retrievePermissions();
-        System.out.println(unobservable2.get(0).getPermission());
+        ArrayList<Users> unobservable2 = DBFacade.retrieveUsers();
         System.out.println(unobservable2.get(1).getPermission());
-        System.out.println(unobservable2.get(2).getPermission());
+        System.out.println(unobservable2.get(1).getUsername());
+        System.out.println(unobservable2.get(1).getConName());
     }
 
     public void ComOPrintButHandle(ActionEvent actionEvent) {

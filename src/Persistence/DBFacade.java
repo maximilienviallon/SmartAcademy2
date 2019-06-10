@@ -261,5 +261,31 @@ public class DBFacade {
         return retrievedPermissions;
 
     }
+    public static ArrayList<Users> retrieveUsers() {
+        ArrayList<Users> retrievedUsers = new ArrayList<>();
 
+        try {
+            String query = ("select distinct machine.fldPermission, tblUsers.fldUsername, tblApprentices.fldApprenticeName, tblContacts.fldConName from tblUsers left join tblUserBridge on tblUsers.fldUsername = tblUserBridge.fldUsername left join tblContacts on tblUserBridge.fldConID = tblContacts.fldConID left join tblApprentices on tblUserBridge.fldApprenticeID = tblApprentices.fldApprenticeID left join (select tblUserPermissionBridge.fldUsername, simplifier.fldPermissionID, simplifier.fldPermission from tblUserPermissionBridge left outer join tblPermissions as simplifier on(tblUserPermissionBridge.fldPermissionID = simplifier.fldPermissionID AND simplifier.fldPermissionID=(select top 1 complicator.fldPermissionID from tblPermissions as complicator where complicator.fldPermissionID = tblUserPermissionBridge.fldPermissionID order by complicator.fldPermissionID))) machine on tblUsers.fldUsername=machine.fldUsername order by tblUsers.fldUsername");
+            ArrayList<Object[]> usersQuery = DB.select(query);
+
+            for (Object[] objects : usersQuery) {
+                String permission = (String) objects[0];
+                String username = (String) objects[1];
+                String apprenticeName = (String) objects[2];
+                String conName = (String) objects[3];
+
+
+                Users users = new Users(permission,username,apprenticeName,conName);
+
+                retrievedUsers.add(users);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+
+        }
+        return retrievedUsers;
+
+    }
 }
