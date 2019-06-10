@@ -55,8 +55,6 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOAppOverButHandle(ActionEvent actionEvent)throws IOException {
-        Companies companies = ComOTableView.getSelectionModel().getSelectedItem();
-        KeeperOfKeys.getCompanyIDInstance().currentCompanyID().setCompanyID(companies.getCompanyID());
         title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice overview.fxml"));
         fxmlLoading(fxmlLoader,title);
