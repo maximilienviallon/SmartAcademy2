@@ -1,18 +1,41 @@
 package controller;
 
+import Domain.Educations;
+import Domain.Permissions;
+import Domain.Users;
+import Persistence.DBFacade;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class UserOverviewController  extends Controller implements Initializable {
+    @FXML
+    TableView<Users> UOTableView = new TableView<>();
+
+    @FXML
+    TableColumn<Users,String> colUserName = new TableColumn<>();
+    @FXML
+    TableColumn<Users,String> colPermission = new TableColumn<>();
+    @FXML
+    TableColumn<Users,String> colApprenticeName = new TableColumn<>();
+    @FXML
+    TableColumn<Users,String> colContactName = new TableColumn<>();
 
     FXMLLoader fxmlLoader;
     String title;
+
+    String UserName;
 
     public void UOSetButHandle(ActionEvent actionEvent) throws IOException {
         title = "Logged User Detail Overview";
@@ -58,10 +81,30 @@ public class UserOverviewController  extends Controller implements Initializable
     }
 
     public void UOPerOverButHandle(ActionEvent actionEvent) throws IOException{
+        Users user = UOTableView.getSelectionModel().getSelectedItem();
+        KeeperOfKeys.getLoggedUserNameInstance().currentUserName().setsUserName(user.getUsername());
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentUserName().getUserName();
+        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
         System.out.println(userName);
+
+        ObservableList<Users> userList = FXCollections.observableArrayList(DBFacade.retrieveUsers());
+        UOTableView.setItems(userList);
+
+        colUserName.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getUsername()));
+        colPermission.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getPermission()));
+        colApprenticeName.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getApprenticeName()));
+        colContactName.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getConName()));
+        UOTableView.getColumns().setAll(colUserName,colPermission,colApprenticeName,colContactName);
     }
+
+    public String getsUserName() {
+        return UserName;
+    }
+
+    public void setsUserName(String userName) {
+        UserName = userName;
+    }
+
 }

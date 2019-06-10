@@ -17,7 +17,7 @@ public class LoggedUserModificationController  extends Controller implements Ini
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentUserName().getUserName();
+        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
         System.out.println(userName);
     }
 }

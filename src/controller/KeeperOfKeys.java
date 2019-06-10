@@ -44,11 +44,20 @@ public class KeeperOfKeys {
     }
 
 
+    private PermissionOverviewController permContOver = new PermissionOverviewController();
+    public PermissionOverviewController currentPermissionID(){
+        return permContOver;
+    }
+
     private LogInController logInCont = new LogInController();
-    public LogInController currentUserName(){
+    public LogInController currentLoggedUserName(){
         return logInCont;
     }
 
+    private UserOverviewController userOverCont = new UserOverviewController();
+    public UserOverviewController currentUserName(){
+        return userOverCont;
+    }
 
 
 }

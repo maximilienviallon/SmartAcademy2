@@ -1,6 +1,8 @@
 package controller;
 
+import Domain.Companies;
 import Domain.Educations;
+import Domain.Permissions;
 import Persistence.DBFacade;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -17,9 +19,19 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class PermissionOverviewController  extends Controller implements Initializable {
+    @FXML
+    TableView<Permissions> POTableView = new TableView();
+
+    TableColumn<Permissions,String> colPermissionID = new TableColumn<>();
+
+    @FXML
+    TableColumn<Permissions,String> colPermissions = new TableColumn();
+    @FXML
+    TableColumn<Permissions,String> colCompanyID = new TableColumn<>();
 
     FXMLLoader fxmlLoader;
     String title;
+    Integer permissionID;
 
     public void POSetButHandle(ActionEvent actionEvent) throws IOException {
         title = "Logged User Detail Overview";
@@ -61,22 +73,30 @@ public class PermissionOverviewController  extends Controller implements Initial
     }
 
     public void POSelectButHandle(ActionEvent actionEvent) throws IOException{
+        Permissions permissions = POTableView.getSelectionModel().getSelectedItem();
+        KeeperOfKeys.getLoggedUserNameInstance().currentPermissionID().setsPermissionID(permissions.getPermissionID());
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentUserName().getUserName();
+        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
         System.out.println(userName);
 
-        /*ObservableList<Educations> educationList = FXCollections.observableArrayList(DBFacade.retrieveEducations());
-        EOTableView.setItems(educationList);
+        ObservableList<Permissions> permissionList = FXCollections.observableArrayList(DBFacade.retrievePermissions());
+        POTableView.setItems(permissionList);
 
-        colEducationID.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getEduID().toString()));
-        colName.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
-        colCity.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCity()));
-        colEduStart.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getEduStart().toString()));
-        colEduEnd.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getEduEnd().toString()));
-        colAMU.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getAMU().toString()));
-        colZipCode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getZipcode()));
-        EOTableView.getColumns().setAll(colName,colCity,colEduStart,colEduEnd,colAMU,colZipCode);
-    */}
+        colPermissionID.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getPermissionID().toString()));
+        colPermissions.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getPermission()));
+        colCompanyID.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCompanyID().toString()));
+
+        POTableView.getColumns().setAll(colPermissions,colCompanyID);
+    }
+
+    public Integer getsPermissionID() {
+        return permissionID;
+    }
+
+    public void setsPermissionID(Integer permissionID) {
+        this.permissionID = permissionID;
+    }
+
 }

@@ -99,7 +99,7 @@ public class CompanyOverviewController extends Controller implements Initializab
 
     public void ComOSelectButHandle(ActionEvent actionEvent) throws IOException{
         Companies companies = ComOTableView.getSelectionModel().getSelectedItem();
-        KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().setCompanyID(companies.getCompanyID());
+        KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().setsCompanyID(companies.getCompanyID());
         Integer ID  =  KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
         System.out.println(ID);
     }
@@ -114,7 +114,7 @@ public class CompanyOverviewController extends Controller implements Initializab
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        username = KeeperOfKeys.getLoggedUserNameInstance().currentUserName().getUserName();
+        username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
 
         ObservableList<Companies> companyList = FXCollections.observableArrayList(DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(username)));
 
