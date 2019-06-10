@@ -2,7 +2,6 @@ package controller;
 
 import Domain.*;
 import Persistence.DBFacade;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,7 +13,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
@@ -198,7 +196,6 @@ public class CompanyOverviewController extends Controller implements Initializab
         ComOTableView.setItems(sortedData);
     }
 
-
     public Integer getsCompanyID() {
         return companyID;
     }
@@ -211,3 +208,8 @@ public class CompanyOverviewController extends Controller implements Initializab
     public void ComOSeaButHandle(ActionEvent actionEvent) {
     }
 }
+
+
+
+
+
