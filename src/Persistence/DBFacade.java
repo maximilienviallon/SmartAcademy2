@@ -178,6 +178,34 @@ public class DBFacade {
 
     }
 
+    public static ArrayList<Contacts> retrieveContacts() {
+        ArrayList<Contacts> retrievedContacts = new ArrayList<>();
+
+        try {
+            String query = ("select fldConID, fldCompanyID, fldConName, fldConEmail, fldConPhoneNo from tblContacts");
+            ArrayList<Object[]> apprenticeQuery = DB.select(query);
+
+            for (Object[] objects : apprenticeQuery) {
+                int conID = (int) objects[0];
+                int companyID = (int) objects[1];
+                String name = (String) objects[2];
+                String email = (String) objects[3];
+                String phoneNo = (String) objects[4];
+
+                Contacts contacts = new Contacts(conID, companyID, name, email, phoneNo);
+
+                retrievedContacts.add(contacts);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+
+        }
+        return retrievedContacts;
+
+    }
+
     public static ArrayList<Educations> retrieveEducations() {
         ArrayList<Educations> retrievedEducations = new ArrayList<>();
 
