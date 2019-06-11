@@ -150,7 +150,7 @@ public class DBFacade {
 
     }
 
-    public static ArrayList<Contacts> retrieveContacts(int selectedCompany) {
+    public static ArrayList<Contacts> retrieveContacts(Integer selectedCompany) {
         ArrayList<Contacts> retrievedContacts = new ArrayList<>();
 
         try {
