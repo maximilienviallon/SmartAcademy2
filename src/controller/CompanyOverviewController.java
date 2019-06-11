@@ -19,6 +19,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -115,7 +116,9 @@ public class CompanyOverviewController extends Controller implements Initializab
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentUserName().getUserName();
 
+
         ObservableList<Companies> companyList = FXCollections.observableArrayList(DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(username)));
+
 
         ComOTableView.setItems(companyList);
         colCompanyID.setCellValueFactory(param -> new SimpleStringProperty((param.getValue().getCompanyID().toString())));
@@ -125,41 +128,59 @@ public class CompanyOverviewController extends Controller implements Initializab
         colFieldOfExp.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getFieldOfExpertise()));
         colPNumber.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getpNum()));
         colZipcode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getZipcode()));
-        ComOTableView.getColumns().setAll(colName,colCity,colCVR,colFieldOfExp,colPNumber,colZipcode);
+        //ComOTableView.getColumns().setAll(colName,colCity,colCVR,colFieldOfExp,colPNumber,colZipcode);
 
         FilteredList<Companies> filteredData = new FilteredList<>(companyList, p -> true);
 
         // 2. Set the filter Predicate whenever the filter changes.
 
         ComOSeaText.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(companies -> {
+            filteredData.setPredicate(Companies -> {
                 // If filter text is empty, display all persons.
                 if (newValue == null || newValue.isEmpty()) {
                     System.out.println("return");
                     return true;
                 }
 
-                // Compare first name and last name of every person with filter text.
+                if(Companies.getName() == null) {
+                    Companies.setName(" ");
+                }
+                if(Companies.getCity() == null) {
+                    Companies.setCity(" ");
+                }
+                if(Companies.getCvr() == null) {
+                    Companies.setCvr(" ");
+                }
+                if(Companies.getFieldOfExpertise() == null) {
+                    Companies.setFieldOfExpertise(" ");
+                }
+                if(Companies.getpNum() == null) {
+                    Companies.setpNum(" ");
+                }
+                if(Companies.getZipcode() == null) {
+                    Companies.setZipcode(" ");
+                }
+
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                if (companies.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                if (Companies.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     System.out.println("Name");
-                    return true; // Filter matches first name.
-                } else if (companies.getCity().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (Companies.getCity().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     System.out.println("City");
-                    return true; // Filter matches last name.
-                } else if (companies.getCvr().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (Companies.getCvr().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     System.out.println("Cvr");
-                    return true; // Filter matches last name.
-                } else if (companies.getFieldOfExpertise().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (Companies.getFieldOfExpertise().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     System.out.println("Expertise");
-                    return true; // Filter matches last name.
-                } else if (companies.getpNum().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (Companies.getpNum().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     System.out.println("pNum");
-                    return true; // Filter matches last name.
-                } else if (companies.getZipcode().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (Companies.getZipcode().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     System.out.println("Zip");
-                    return true; // Filter matches last name.
+                    return true;
                 }
                 System.out.println("False");
                 return false; // Does not match.
