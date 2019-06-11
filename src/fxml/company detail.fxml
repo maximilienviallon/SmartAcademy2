@@ -12,7 +12,7 @@
          <left>
             <AnchorPane prefHeight="1045.0" prefWidth="665.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextArea fx:id="CompanyinfoArea" prefHeight="372.0" prefWidth="665.0" />
+                  <TextArea fx:id="CompanyInfoArea" prefHeight="372.0" prefWidth="665.0" />
                </children>
             </AnchorPane>
          </left>
@@ -27,7 +27,7 @@
                   <Button fx:id="CompanyPrint" layoutX="30.0" layoutY="93.0" mnemonicParsing="false" onAction="#CompanyPrintHandle" prefWidth="140.0" text="Print" />
                   <Button fx:id="CompanyEdit" layoutX="30.0" layoutY="128.0" mnemonicParsing="false" onAction="#CompanyEditHandle" prefWidth="140.0" text="Edit" />
                   <Button fx:id="CompanyRemove" layoutX="30.0" layoutY="163.0" mnemonicParsing="false" onAction="#CompanyRemoveHandle" prefWidth="140.0" text="Remove" />
-                  <Button fx:id="ShowEmployee" layoutX="30.0" layoutY="202.0" mnemonicParsing="false" onAction="#ShowEmployeeHandle" prefHeight="25.0" prefWidth="140.0" text="Show employees" />
+                  <Button fx:id="ShowEmployees" layoutX="30.0" layoutY="202.0" mnemonicParsing="false" onAction="#ShowEmployeesHandle" prefHeight="25.0" prefWidth="140.0" text="Show employees" />
                </children>
             </AnchorPane>
          </center>

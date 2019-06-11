@@ -14,8 +14,8 @@
                <children>
                   <TableView fx:id="POTableView" layoutX="23.0" layoutY="96.0" prefHeight="967.0" prefWidth="1659.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
+                      <TableColumn fx:id="colPermissions" prefWidth="75.0" text="Permissions" />
+                      <TableColumn fx:id="colCompanyID" prefWidth="75.0" text="CompanyID" />
                     </columns>
                   </TableView>
                   <Button fx:id="POSetBut" layoutX="42.0" layoutY="37.0" mnemonicParsing="false" onAction="#POSetButHandle" text="Settings" />
@@ -33,7 +33,6 @@
                   <Button fx:id="POCreaNewBut" layoutX="66.0" layoutY="838.0" mnemonicParsing="false" onAction="#POCreaNewButHandle" text="Create New" />
                   <Button fx:id="POSelectBut" layoutX="86.0" layoutY="1004.0" mnemonicParsing="false" onAction="#POSelectButHandle" text="Select" />
                   <Button fx:id="POAppOverBut" layoutX="35.0" layoutY="465.0" mnemonicParsing="false" onAction="#POAppOverButHandle" text="Apprentice Overview" >
-
                   </Button>
                </children>
             </AnchorPane>

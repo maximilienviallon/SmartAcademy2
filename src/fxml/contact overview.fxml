@@ -14,8 +14,11 @@
                <children>
                   <TableView fx:id="ConOTableView" layoutX="23.0" layoutY="96.0" prefHeight="967.0" prefWidth="1659.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
+
+                      <TableColumn fx:id="colCompanyID" prefWidth="75.0" text="CompanyID" />
+                       <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
+                       <TableColumn fx:id="colEmail" prefWidth="75.0" text="Email" />
+                       <TableColumn fx:id="colPhoneNumber" prefWidth="75.0" text="Phone number" />
                     </columns>
                   </TableView>
                   <Button fx:id="ConOSetBut" layoutX="42.0" layoutY="37.0" mnemonicParsing="false" onAction="#ConOSetButHandle" text="Settings" />

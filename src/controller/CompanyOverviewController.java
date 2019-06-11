@@ -100,11 +100,20 @@ public class CompanyOverviewController extends Controller implements Initializab
 
     public void ComOSelectButHandle(ActionEvent actionEvent) throws IOException{
         Companies companies = ComOTableView.getSelectionModel().getSelectedItem();
-        KeeperOfKeys.getCompanyIDInstance().currentCompanyID().setCompanyID(companies.getCompanyID());
+        KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().setsCompanyID(companies.getCompanyID());
+        Integer ID  =  KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
+        System.out.println(ID);
+        title = "Company Detail";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company detail.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+
 
     }
 
     public void ComOConOButHandle(ActionEvent actionEvent) throws IOException{
+        Companies companies = ComOTableView.getSelectionModel().getSelectedItem();
+        KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().setsCompanyID(companies.getCompanyID());
         title = "Contact Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/contact overview.fxml"));
         fxmlLoading(fxmlLoader,title);
@@ -114,21 +123,19 @@ public class CompanyOverviewController extends Controller implements Initializab
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        username = KeeperOfKeys.getLoggedUserNameInstance().currentUserName().getUserName();
-
-
+        username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
         ObservableList<Companies> companyList = FXCollections.observableArrayList(DBFacade.retrieveCompanies(DBFacade.checkYourPrivilege(username)));
 
-
         ComOTableView.setItems(companyList);
-        colCompanyID.setCellValueFactory(param -> new SimpleStringProperty((param.getValue().getCompanyID().toString())));
-        colName.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
-        colCity.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCity()));
-        colCVR.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCvr()));
-        colFieldOfExp.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getFieldOfExpertise()));
-        colPNumber.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getpNum()));
-        colZipcode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getZipcode()));
+        colCompanyID.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getCompanyID().toString())));
+        colName.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getName())));
+        colCity.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getCity())));
+        colCVR.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getCvr())));
+        colFieldOfExp.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getFieldOfExpertise())));
+        colPNumber.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getpNum())));
+        colZipcode.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getZipcode())));
         //ComOTableView.getColumns().setAll(colName,colCity,colCVR,colFieldOfExp,colPNumber,colZipcode);
+
 
         FilteredList<Companies> filteredData = new FilteredList<>(companyList, p -> true);
 
@@ -198,11 +205,12 @@ public class CompanyOverviewController extends Controller implements Initializab
         ComOTableView.setItems(sortedData);
     }
 
+
     public Integer getsCompanyID() {
         return companyID;
     }
 
-    public void setCompanyID(Integer companyID) {
+    public void setsCompanyID(Integer companyID) {
         this.companyID = companyID;
     }
 

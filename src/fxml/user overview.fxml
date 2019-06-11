@@ -14,8 +14,10 @@
                <children>
                   <TableView fx:id="UOTableView" layoutX="23.0" layoutY="96.0" prefHeight="967.0" prefWidth="1659.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
+                      <TableColumn fx:id="colUserName" prefWidth="75.0" text="Username" />
+                      <TableColumn fx:id="colPermission" prefWidth="75.0" text="Permisssions" />
+                       <TableColumn fx:id="colApprenticeName" prefWidth="75.0" text="Apprentice name" />
+                       <TableColumn fx:id="colContactName" prefWidth="75.0" text="Contact name" />
                     </columns>
                   </TableView>
                   <Button fx:id="UOSetBut" layoutX="42.0" layoutY="37.0" mnemonicParsing="false" onAction="#UOSetButHandle" text="Settings" />
