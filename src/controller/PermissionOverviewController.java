@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -37,30 +38,35 @@ public class PermissionOverviewController  extends Controller implements Initial
         title = "Logged User Detail Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/logged user detail.fxml"));
         fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void POEduOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/education overview.fxml"));
         fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void POAppOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice overview.fxml"));
         fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void POUseOverButHandle(ActionEvent actionEvent)throws IOException{
         title = "User Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/user overview.fxml"));
         fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void POComOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Company Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
         fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void POExpCsvButHandle(ActionEvent actionEvent) {
@@ -69,12 +75,13 @@ public class PermissionOverviewController  extends Controller implements Initial
     public void POPrintButHandle(ActionEvent actionEvent) {
     }
 
-    public void POCreaNewButHandle(ActionEvent actionEvent) throws IOException{
-    }
-
     public void POSelectButHandle(ActionEvent actionEvent) throws IOException{
         Permissions permissions = POTableView.getSelectionModel().getSelectedItem();
         KeeperOfKeys.getLoggedUserNameInstance().currentPermissionID().setsPermissionID(permissions.getPermissionID());
+        title = "Permission Detail";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/permission detail.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

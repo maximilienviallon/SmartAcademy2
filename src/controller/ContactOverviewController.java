@@ -88,13 +88,19 @@ public class ContactOverviewController  extends Controller implements Initializa
     }
 
     public void ConOCreaNewButHandle(ActionEvent actionEvent) throws IOException{
+        title = "Contact Creation";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/contact creation.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void ConOSelectButHandle(ActionEvent actionEvent) throws IOException{
         Contacts contacts= ConOTableView.getSelectionModel().getSelectedItem();
         KeeperOfKeys.getLoggedUserNameInstance().currentContactID().setsContactID(contacts.getContactID());
-        System.out.println(contacts.getCompanyID());
-
+        title = "Contact Detail";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/contact detail.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

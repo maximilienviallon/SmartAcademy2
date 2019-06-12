@@ -14,10 +14,9 @@
                <right>
                   <AnchorPane prefHeight="412.0" prefWidth="184.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button fx:id="backToPermisionOverview" layoutX="34.0" layoutY="27.0" mnemonicParsing="false" onAction="#backToPermisionOverviewHandle" prefWidth="140.0" text="Back to overview" />
+                        <Button fx:id="backToPermisionOverview" layoutX="34.0" layoutY="27.0" mnemonicParsing="false" onAction="#backToPermissionOverviewHandle" prefWidth="140.0" text="Back to overview" />
                         <Button fx:id="PermisionExport" layoutX="34.0" layoutY="67.0" mnemonicParsing="false" onAction="#PermisionExportHandle" prefWidth="140.0" text="Export.cvs" />
                         <Button fx:id="PermisionPrint" layoutX="34.0" layoutY="105.0" mnemonicParsing="false" onAction="#PermisionPrintHandle" prefWidth="140.0" text="Print" />
-                        <Button fx:id="PermisionEdit" layoutX="34.0" layoutY="145.0" mnemonicParsing="false" onAction="#PermisionEditHandle" prefWidth="140.0" text="Edit" />
                         <Button fx:id="PermisionRemove" layoutX="34.0" layoutY="183.0" mnemonicParsing="false" onAction="#PermisionRemoveHandle" prefWidth="140.0" text="Remove" />
                      </children>
                   </AnchorPane>

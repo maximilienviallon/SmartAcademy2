@@ -72,9 +72,17 @@ public class UserOverviewController  extends Controller implements Initializable
     }
 
     public void UOCreaNewButHandle(ActionEvent actionEvent) throws IOException{
+        title = "User Creation";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/user creation.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void UOSelectButHandle(ActionEvent actionEvent) throws IOException{
+        title = "User Detail";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/user detail.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void UOViewLogButHandle(ActionEvent actionEvent) throws IOException{
