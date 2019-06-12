@@ -79,6 +79,8 @@ public class UserOverviewController  extends Controller implements Initializable
     }
 
     public void UOSelectButHandle(ActionEvent actionEvent) throws IOException{
+        Users user = UOTableView.getSelectionModel().getSelectedItem();
+        KeeperOfKeys.getLoggedUserNameInstance().currentUserName().setsUserName(user.getUsername());
         title = "User Detail";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/user detail.fxml"));
         fxmlLoading(fxmlLoader,title);
@@ -89,8 +91,10 @@ public class UserOverviewController  extends Controller implements Initializable
     }
 
     public void UOPerOverButHandle(ActionEvent actionEvent) throws IOException{
-        Users user = UOTableView.getSelectionModel().getSelectedItem();
-        KeeperOfKeys.getLoggedUserNameInstance().currentUserName().setsUserName(user.getUsername());
+        title = "Permission Overview";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/permission overview.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
