@@ -125,6 +125,8 @@ public class EducationOverviewController  extends Controller implements Initiali
                 String lowerCaseFilter = newValue.toLowerCase();
 
                 if (Educations.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                        return true;
+                } else if (Educations.getProvider().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true;
                 } else if (Educations.getCity().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true;
