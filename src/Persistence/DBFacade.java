@@ -164,7 +164,7 @@ public class DBFacade {
                 String email = (String) objects[3];
                 String phoneNo = (String) objects[4];
 
-                Contacts contacts = new Contacts(conID, companyID, name, email, phoneNo);
+                Contacts contacts = new Contacts(conID, companyID, name, email, phoneNo,null, null);
 
                 retrievedContacts.add(contacts);
             }
@@ -192,7 +192,7 @@ public class DBFacade {
                 String email = (String) objects[3];
                 String phoneNo = (String) objects[4];
 
-                Contacts contacts = new Contacts(conID, companyID, name, email, phoneNo);
+                Contacts contacts = new Contacts(conID, companyID, name, email, phoneNo,null, null);
 
                 retrievedContacts.add(contacts);
             }
@@ -222,7 +222,7 @@ public class DBFacade {
                 Integer AMU = (Integer) objects[5];
                 String zipcode = (String) objects[6];
 
-                Educations educations = new Educations(eduID,name,city,eduStart,eduEnd,AMU,zipcode);
+                Educations educations = new Educations(eduID,name,city,eduStart,eduEnd,AMU,zipcode, null);
 
                 retrievedEducations.add(educations);
             }
@@ -360,11 +360,11 @@ public class DBFacade {
                 int companyID = (int) objects[2];
                 String email = (String) objects[3];
                 String phone = (String) objects[4];
-                String workExpirience = (String) objects[5];
+                String workExperience = (String) objects[5];
                 String generalExpertise = (String) objects[6];
                 int apprenticeID = (int) objects[7];
 
-                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID,workExpirience, generalExpertise);
+                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID,workExperience, generalExpertise);
 
                 retrievedApprentices.add(apprentices);
             }
@@ -375,6 +375,92 @@ public class DBFacade {
 
         }
         return retrievedApprentices;
+
+    }
+    public static ArrayList<Contacts> retrieveContactDetail(Integer selectedContact) {
+        ArrayList<Contacts> retrievedContacts = new ArrayList<>();
+
+        try {
+            String query = ("select * from tblContacts where fldConID = " + selectedContact);
+            ArrayList<Object[]> apprenticeQuery = DB.select(query);
+
+            for (Object[] objects : apprenticeQuery) {
+                int conID = (int) objects[0];
+                int companyID = (int) objects[1];
+                String name = (String) objects[2];
+                String email = (String) objects[3];
+                String phoneNo = (String) objects[4];
+                String landline = (String) objects[5];
+                String info = (String) objects[6];
+
+                Contacts contacts = new Contacts(conID, companyID, name, email, phoneNo,landline, info);
+
+                retrievedContacts.add(contacts);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+
+        }
+        return retrievedContacts;
+
+    }
+    public static ArrayList<Educations> retrieveEducationDetail(Integer selectedEducation) {
+        ArrayList<Educations> retrievedEducations = new ArrayList<>();
+
+        try {
+            String query = ("select tblEducations.fldEduID, tblAMU.fldEduName, tblZipcode.fldCity,fldEduStart, tblEducations.fldEduEnd,tblEducations.fldAMU,tblEducations.fldEduZipcode, tblEducations.fldDesc from tblEducations left join tblAMU on tblEducations.fldAMU = tblAMU.fldAMU left join tblZipcode on tblEducations.fldEduZipcode = tblZipcode.fldZipcode where tblEducations.fldEduID = " + selectedEducation);
+            ArrayList<Object[]> educationsQuery = DB.select(query);
+
+            for (Object[] objects : educationsQuery) {
+                Integer eduID = (Integer) objects[0];
+                String name = (String) objects[1];
+                String city = (String) objects[2];
+                Date eduStart = (Date) objects[3];
+                Date eduEnd = (Date) objects[4];
+                Integer AMU = (Integer) objects[5];
+                String zipcode = (String) objects[6];
+                String description = (String) objects[7];
+
+                Educations educations = new Educations(eduID,name,city,eduStart,eduEnd,AMU,zipcode, description);
+
+                retrievedEducations.add(educations);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+
+        }
+        return retrievedEducations;
+
+    }
+    public static ArrayList<Users> retrieveUsersByPermissions(Integer selectedPermissions) {
+        ArrayList<Users> retrievedUsers = new ArrayList<>();
+
+        try {
+            String query = ("select distinct machine.fldPermission, tblUsers.fldUsername, tblApprentices.fldApprenticeName, tblContacts.fldConName from tblUsers left join tblUserBridge on tblUsers.fldUsername = tblUserBridge.fldUsername left join tblContacts on tblUserBridge.fldConID = tblContacts.fldConID left join tblApprentices on tblUserBridge.fldApprenticeID = tblApprentices.fldApprenticeID left join (select tblUserPermissionBridge.fldUsername, simplifier.fldPermissionID, simplifier.fldPermission from tblUserPermissionBridge left outer join tblPermissions as simplifier on(tblUserPermissionBridge.fldPermissionID = simplifier.fldPermissionID AND simplifier.fldPermissionID=(select top 1 complicator.fldPermissionID from tblPermissions as complicator where complicator.fldPermissionID = tblUserPermissionBridge.fldPermissionID order by complicator.fldPermissionID))) machine on tblUsers.fldUsername=machine.fldUsername where tblUsers.fldUsername in(select fldUsername from tblUserPermissionBridge where tblUserPermissionBridge.fldPermissionID = " + selectedPermissions + ") order by tblUsers.fldUsername");
+            ArrayList<Object[]> usersQuery = DB.select(query);
+
+            for (Object[] objects : usersQuery) {
+                String permission = (String) objects[0];
+                String username = (String) objects[1];
+                String apprenticeName = (String) objects[2];
+                String conName = (String) objects[3];
+
+
+                Users users = new Users(permission,username,apprenticeName,conName);
+
+                retrievedUsers.add(users);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+
+        }
+        return retrievedUsers;
 
     }
 }

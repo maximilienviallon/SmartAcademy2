@@ -10,8 +10,9 @@ public class Educations {
     private Date eduEnd;
     private Integer AMU;
     private String zipcode;
+    private String description;
 
-    public Educations(Integer eduID, String name, String city, Date eduStart, Date eduEnd, Integer AMU, String zipcode){
+    public Educations(Integer eduID, String name, String city, Date eduStart, Date eduEnd, Integer AMU, String zipcode, String description){
         this.eduID = eduID;
         this.name = name;
         this.city = city;
@@ -19,6 +20,7 @@ public class Educations {
         this.eduEnd = eduEnd;
         this.AMU = AMU;
         this.zipcode = zipcode;
+        this.description = description;
     }
 
     public Integer getEduID() {
@@ -75,6 +77,14 @@ public class Educations {
 
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
 //JESUS

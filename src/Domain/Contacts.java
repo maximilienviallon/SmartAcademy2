@@ -6,12 +6,16 @@ public class Contacts {
     private String name;
     private String email;
     private String phoneNo;
-    public Contacts(Integer conID, Integer companyID, String name, String email, String phoneNo){
+    private String landline;
+    private String info;
+    public Contacts(Integer conID, Integer companyID, String name, String email, String phoneNo, String landline, String info){
         this.conID = conID;
         this.companyID = companyID;
         this.name = name;
         this.email = email;
         this.phoneNo = phoneNo;
+        this.landline = landline;
+        this.info = info;
     }
 
     public Integer getContactID() {
@@ -52,5 +56,21 @@ public class Contacts {
 
     public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
+    }
+
+    public String getLandline() {
+        return landline;
+    }
+
+    public void setLandline(String landline) {
+        this.landline = landline;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
     }
 }
