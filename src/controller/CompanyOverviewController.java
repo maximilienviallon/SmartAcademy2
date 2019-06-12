@@ -99,8 +99,6 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOSelectButHandle(ActionEvent actionEvent) throws IOException{
-        Companies companies = ComOTableView.getSelectionModel().getSelectedItem();
-        KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().setsCompanyID(companies.getCompanyID());
         Integer ID  =  KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
         System.out.println(ID);
         title = "Company Detail";
