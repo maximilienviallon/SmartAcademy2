@@ -99,8 +99,8 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOSelectButHandle(ActionEvent actionEvent) throws IOException{
-        Integer ID  =  KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
-        System.out.println(ID);
+        Companies companies = ComOTableView.getSelectionModel().getSelectedItem();
+        KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().setsCompanyID(companies.getCompanyID());
         title = "Company Detail";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company detail.fxml"));
         fxmlLoading(fxmlLoader,title);
