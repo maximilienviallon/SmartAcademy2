@@ -12,8 +12,13 @@ import java.util.ResourceBundle;
 public class CompanyModificationController  extends Controller implements Initializable {
    String title;
    FXMLLoader fxmlLoader;
+   String username;
 
-    public void ComMSaveButHandle(ActionEvent actionEvent) {
+    public void ComMSaveButHandle(ActionEvent actionEvent) throws IOException{
+        title = "Company Detail";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company detail.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void ComMBackToOButHandle(ActionEvent actionEvent) throws IOException {
@@ -30,11 +35,15 @@ public class CompanyModificationController  extends Controller implements Initia
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }
 
-    public void ComMRemoveButHandle(ActionEvent actionEvent) {
+    public void ComMRemoveButHandle(ActionEvent actionEvent) throws IOException{
+        title = "Company Overview";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company Overview.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
-        System.out.println(userName);
+        username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
+        System.out.println(username);
     }
 }

@@ -30,8 +30,8 @@
                         <AnchorPane prefHeight="948.0" prefWidth="256.0" BorderPane.alignment="CENTER">
                            <children>
                               <Button fx:id="EMBacToOveBut" layoutX="56.0" layoutY="85.0" mnemonicParsing="false" onAction="#EMBacToOveButHandle" prefWidth="160.0" text="Back to Overview" />
-                              <Button fx:id="CMBackToDetBut" layoutX="56.0" layoutY="211.0" mnemonicParsing="false" onAction="#CMBackToDetButHandle" prefWidth="160.0" text="Back to Detail" />
-                              <Button fx:id="CMRemoveBut" layoutX="56.0" layoutY="321.0" mnemonicParsing="false" onAction="#CMRemoveButHandle" prefWidth="160.0" text="Remove" />
+                              <Button fx:id="EMBackToDetBut" layoutX="56.0" layoutY="211.0" mnemonicParsing="false" onAction="#CMBackToDetButHandle" prefWidth="160.0" text="Back to Detail" />
+                              <Button fx:id="EMRemoveBut" layoutX="56.0" layoutY="321.0" mnemonicParsing="false" onAction="#CMRemoveButHandle" prefWidth="160.0" text="Remove" />
                            </children>
                         </AnchorPane>
                      </right>
