@@ -15,6 +15,7 @@ public class PermissionDetailController  extends Controller implements Initializ
 
     FXMLLoader fxmlLoader;
     String title;
+    String username;
     Integer permissionID;
 
     public void backToPermisionOverviewHandle(ActionEvent actionEvent) throws IOException {
@@ -39,7 +40,7 @@ public class PermissionDetailController  extends Controller implements Initializ
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
+        username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
         permissionID = KeeperOfKeys.getLoggedUserNameInstance().currentPermissionID().getsPermissionID();
         Permissions view = DBFacade.retrievePermissions().get(0);
     }

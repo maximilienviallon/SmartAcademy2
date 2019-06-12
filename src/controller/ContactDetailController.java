@@ -1,5 +1,7 @@
 package controller;
 
+import Domain.Contacts;
+import Persistence.DBFacade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +19,7 @@ public class ContactDetailController  extends Controller implements Initializabl
     FXMLLoader fxmlLoader;
     String title;
     String username;
+    Integer contactID;
 
     public void backToContactOverviewHandle(ActionEvent actionEvent) throws IOException {
         title = "Contact Overview";
@@ -46,7 +49,9 @@ public class ContactDetailController  extends Controller implements Initializabl
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
-        System.out.println(userName);
+        username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
+        contactID = KeeperOfKeys.getLoggedUserNameInstance().currentContactID().getsContactID();
+        Contacts view = DBFacade.retrieveContactDetail(0).get(0);
+
     }
 }
