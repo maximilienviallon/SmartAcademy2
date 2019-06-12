@@ -35,7 +35,7 @@ public class PermissionDetailController  extends Controller implements Initializ
     String username;
     Integer permissionID;
 
-    public void backToPermisionOverviewHandle(ActionEvent actionEvent) throws IOException {
+    public void backToPermissionOverviewHandle(ActionEvent actionEvent) throws IOException {
         title = "Permission Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/permission Overview.fxml"));
         fxmlLoading(fxmlLoader, title);
