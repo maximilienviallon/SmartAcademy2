@@ -36,6 +36,7 @@ public class UserOverviewController  extends Controller implements Initializable
     String title;
 
     String UserName;
+    String username;
 
     public void UOSetButHandle(ActionEvent actionEvent) throws IOException {
         title = "Logged User Detail Overview";
@@ -98,8 +99,8 @@ public class UserOverviewController  extends Controller implements Initializable
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
-        System.out.println(userName);
+        username= KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
+        System.out.println(username);
 
         ObservableList<Users> userList = FXCollections.observableArrayList(DBFacade.retrieveUsers());
         UOTableView.setItems(userList);

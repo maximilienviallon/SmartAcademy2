@@ -13,6 +13,7 @@ public class ContactCreationController  extends Controller implements Initializa
 
     String title;
     FXMLLoader fxmlLoader;
+    String username;
     public void contactCreationSaveHandle(ActionEvent actionEvent) throws IOException {
         title = "Contact Detail";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/contact detail.fxml"));
@@ -28,7 +29,7 @@ public class ContactCreationController  extends Controller implements Initializa
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
-        System.out.println(userName);
+        String username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
+        System.out.println(username);
     }
 }

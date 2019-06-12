@@ -33,6 +33,7 @@ public class PermissionOverviewController  extends Controller implements Initial
     FXMLLoader fxmlLoader;
     String title;
     Integer permissionID;
+    String username;
 
     public void POSetButHandle(ActionEvent actionEvent) throws IOException {
         title = "Logged User Detail Overview";
@@ -85,8 +86,8 @@ public class PermissionOverviewController  extends Controller implements Initial
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
-        System.out.println(userName);
+        username= KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
+        System.out.println(username);
 
         ObservableList<Permissions> permissionList = FXCollections.observableArrayList(DBFacade.retrievePermissions());
         POTableView.setItems(permissionList);

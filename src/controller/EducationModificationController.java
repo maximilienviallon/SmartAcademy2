@@ -1,33 +1,50 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class
 EducationModificationController  extends Controller implements Initializable {
-    public void EMBacToDetBut(ActionEvent actionEvent) {
+    String title;
+    FXMLLoader fxmlLoader;
+    String username;
+    public void EMSaveButHandle(ActionEvent actionEvent)  throws IOException{
+        title = "Education Detail";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/education detail.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+    }
+    public void CMRemoveButHandle(ActionEvent actionEvent)  throws IOException{
+        title = "Education Overview";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/education Overview.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
-    public void EMRemBut(ActionEvent actionEvent) {
+    public void EMBacToOveButHandle(ActionEvent actionEvent)  throws IOException{
+        title = "Education Overview";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/education Overview.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
-    public void EMSaveButHandle(ActionEvent actionEvent) {
+    public void CMBackToDetButHandle(ActionEvent actionEvent)  throws IOException {
+        title = "Education Detail";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/education detail.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
-    public void EMBacToOveButHandle(ActionEvent actionEvent) {
-    }
-
-    public void CMBackToDetButHandle(ActionEvent actionEvent) {
-    }
-
-    public void CMRemoveButHandle(ActionEvent actionEvent) {
-    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
-        System.out.println(userName);
+        username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
+        System.out.println(username);
     }
+
 }

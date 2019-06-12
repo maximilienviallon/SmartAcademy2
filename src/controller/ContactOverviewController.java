@@ -104,9 +104,9 @@ public class ContactOverviewController  extends Controller implements Initializa
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
+        username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
         CompanyID = KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
-        System.out.println(userName);
+        System.out.println(username);
         ObservableList<Contacts> contactList = FXCollections.observableArrayList(DBFacade.retrieveContacts());
 
         ConOTableView.setItems(contactList);
