@@ -55,6 +55,5 @@ public class EducationDetailController  extends Controller implements Initializa
         educationID = KeeperOfKeys.getLoggedUserNameInstance().currentEducationID().getsEducationID();
         Educations view = DBFacade.retrieveEducationDetail(educationID).get(0);
         educationInfoArea.setText(view.getName() + "\n" + view.getProvider() + "\n" + view.getCity() + "\n" + view.getEduStart() + "\n" + view.getEduEnd() + "\n" + view.getZipcode() + "\n" + view.getAMU() + "\n" + view.getDescription() + "\n");
-
     }
 }

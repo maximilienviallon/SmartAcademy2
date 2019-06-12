@@ -424,7 +424,6 @@ public class DBFacade {
                 Integer AMU = (Integer) objects[6];
                 String zipcode = (String) objects[7];
                 String description = (String) objects[8];
-                System.out.println(description);
 
                 Educations educations = new Educations(eduID,name,provider,city,eduStart,eduEnd,AMU,zipcode, description);
 
