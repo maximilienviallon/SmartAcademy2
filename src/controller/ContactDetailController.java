@@ -49,9 +49,10 @@ public class ContactDetailController  extends Controller implements Initializabl
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
+            String username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
         contactID = KeeperOfKeys.getLoggedUserNameInstance().currentContactID().getsContactID();
-        Contacts view = DBFacade.retrieveContactDetail(0).get(0);
+        Contacts view = DBFacade.retrieveContacts().get(0);
+        //ContactPersInfoArea.setText(view.getName() + "\n" + view.getEmail() + "\n" + view.getPhoneNo() + "\n" + view.getCompanyID());
 
     }
 }
