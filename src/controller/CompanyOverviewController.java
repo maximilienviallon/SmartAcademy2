@@ -135,13 +135,9 @@ public class CompanyOverviewController extends Controller implements Initializab
         //ComOTableView.getColumns().setAll(colName,colCity,colCVR,colFieldOfExp,colPNumber,colZipcode);
 
 
-        FilteredList<Companies> filteredData = new FilteredList<>(companyList, p -> true);
-
-        // 2. Set the filter Predicate whenever the filter changes.
-
+        FilteredList<Companies> filteredData = new FilteredList<>(companyList, p -> true); // Set the filter Predicate whenever the filter changes.
         ComOSeaText.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(Companies -> {
-                // If filter text is empty, display all persons.
+            filteredData.setPredicate(Companies -> { // If filter text is empty, display all.
                 if (newValue == null || newValue.isEmpty()) {
                     System.out.println("return");
                     return true;
@@ -190,16 +186,9 @@ public class CompanyOverviewController extends Controller implements Initializab
                 System.out.println("False");
                 return false; // Does not match.
             });
-        });
-
-        // 3. Wrap the FilteredList in a SortedList.
-        SortedList<Companies> sortedData = new SortedList<>(filteredData);
-
-        // 4. Bind the SortedList comparator to the TableView comparator.
-        // 	  Otherwise, sorting the TableView would have no effect.
-        sortedData.comparatorProperty().bind(ComOTableView.comparatorProperty());
-
-        // 5. Add sorted (and filtered) data to the table.
+        });//Wrap the FilteredList in a SortedList.
+        SortedList<Companies> sortedData = new SortedList<>(filteredData); //Bind the SortedList comparator to the TableView comparator. Otherwise, sorting the TableView would have no effect.
+        sortedData.comparatorProperty().bind(ComOTableView.comparatorProperty()); //Add sorted (and filtered) data to the table.
         ComOTableView.setItems(sortedData);
     }
 

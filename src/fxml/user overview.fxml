@@ -16,11 +16,12 @@
                     <columns>
                       <TableColumn fx:id="colUserName" prefWidth="75.0" text="Username" />
                       <TableColumn fx:id="colPermission" prefWidth="75.0" text="Permisssions" />
-                       <TableColumn fx:id="colApprenticeName" prefWidth="75.0" text="Apprentice name" />
+                       <TableColumn fx:id="colApprenticeName" prefWidth="75.0" text="Employee name" />
                        <TableColumn fx:id="colContactName" prefWidth="75.0" text="Contact name" />
                     </columns>
                   </TableView>
                   <Button fx:id="UOSetBut" layoutX="42.0" layoutY="37.0" mnemonicParsing="false" onAction="#UOSetButHandle" text="Settings" />
+                  <TextField fx:id="UOSeaText" layoutX="748.0" layoutY="53.0" promptText="Filter" />
                </children>
             </AnchorPane>
          </left>
@@ -28,12 +29,12 @@
             <AnchorPane prefHeight="400.0" prefWidth="228.0" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="UOEduOverBut" layoutX="30.0" layoutY="106.0" mnemonicParsing="false" onAction="#UOEduOverButHandle" prefHeight="31.0" prefWidth="160.0" text="Education Overview" />
-                  <Button fx:id="UOAppOverBut" layoutX="30.0" layoutY="254.0" mnemonicParsing="false" onAction="#UOAppOverButHandle" prefHeight="31.0" prefWidth="160.0" text="Apprentice Overview" />
+                  <Button fx:id="UOAppOverBut" layoutX="30.0" layoutY="254.0" mnemonicParsing="false" onAction="#UOAppOverButHandle" prefHeight="31.0" prefWidth="160.0" text="Employee Overview" />
                   <Button fx:id="UOComOverBut" layoutX="30.0" layoutY="390.0" mnemonicParsing="false" onAction="#UOComOverButHandle" prefWidth="160.0" text="Company Overview" />
                   <Button fx:id="UOExpCsvBut" layoutX="30.0" layoutY="509.0" mnemonicParsing="false" onAction="#UOExpCsvButHandle" prefWidth="160.0" text="Export .csv" />
                   <Button fx:id="UOPrintBut" layoutX="30.0" layoutY="617.0" mnemonicParsing="false" onAction="#UOPrintButHandle" prefWidth="160.0" text="Print" />
                   <Button fx:id="UOCreaNewBut" layoutX="30.0" layoutY="794.0" mnemonicParsing="false" onAction="#UOCreaNewButHandle" prefWidth="160.0" text="Create New" />
-                  <Button fx:id="UOSelectBut" layoutX="86.0" layoutY="1004.0" mnemonicParsing="false" onAction="#UOSelectButHandle" text="Select" />
+                  <Button fx:id="UOSelectBut" layoutX="30.0" layoutY="1004.0" mnemonicParsing="false" onAction="#UOSelectButHandle" prefWidth="160.0" text="Show Detail" />
                   <Button fx:id="UOViewLogBut" layoutX="30.0" layoutY="709.0" mnemonicParsing="false" onAction="#UOViewLogButHandle" prefWidth="160.0" text="View Log" />
                   <Button fx:id="UOPerOverBut" layoutX="30.0" layoutY="894.0" mnemonicParsing="false" onAction="#UOPerOverButHandle" prefWidth="160.0" text="Permissions overview" />
                </children>

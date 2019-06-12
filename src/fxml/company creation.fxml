@@ -30,7 +30,7 @@
                   <TextField fx:id="companyCreationStreet" layoutX="11.0" layoutY="257.0" promptText="Street" />
                   <TextField fx:id="creationPNumber" layoutX="11.0" layoutY="180.0" promptText="P number" />
                   <TextField fx:id="creationWebPage" layoutX="11.0" layoutY="218.0" promptText="Webpage" />
-                  <TextField fx:id="companyCreationCity" layoutX="11.0" layoutY="293.0" promptText="company city" />
+                  <TextField fx:id="companyCreationCity" layoutX="11.0" layoutY="293.0" promptText="Company city" />
                </children>
             </AnchorPane>
          </left>

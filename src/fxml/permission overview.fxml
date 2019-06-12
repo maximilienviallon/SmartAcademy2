@@ -19,20 +19,21 @@
                     </columns>
                   </TableView>
                   <Button fx:id="POSetBut" layoutX="42.0" layoutY="37.0" mnemonicParsing="false" onAction="#POSetButHandle" text="Settings" />
+                  <TextField fx:id="POSeaText" layoutX="759.0" layoutY="37.0" promptText="Filter" />
                </children>
             </AnchorPane>
          </left>
          <right>
             <AnchorPane prefHeight="400.0" prefWidth="228.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="POEduOverBut" layoutX="45.0" layoutY="99.0" mnemonicParsing="false" onAction="#POEduOverButHandle" text="Education Overview" />
-                  <Button fx:id="POUseOverBut" layoutX="63.0" layoutY="228.0" mnemonicParsing="false" onAction="#POUseOverButHandle" text="User Overview" />
-                  <Button fx:id="POComOverBut" layoutX="42.0" layoutY="343.0" mnemonicParsing="false" onAction="#POComOverButHandle" text="Company Overview" />
-                  <Button fx:id="POExpCsvBut" layoutX="71.0" layoutY="579.0" mnemonicParsing="false" onAction="#POExpCsvButHandle" text="Export .csv" />
-                  <Button fx:id="POPrintBut" layoutX="89.0" layoutY="697.0" mnemonicParsing="false" onAction="#POPrintButHandle" text="Print" />
-                  <Button fx:id="POCreaNewBut" layoutX="66.0" layoutY="838.0" mnemonicParsing="false" onAction="#POCreaNewButHandle" text="Create New" />
-                  <Button fx:id="POSelectBut" layoutX="86.0" layoutY="1004.0" mnemonicParsing="false" onAction="#POSelectButHandle" text="Select" />
-                  <Button fx:id="POAppOverBut" layoutX="35.0" layoutY="465.0" mnemonicParsing="false" onAction="#POAppOverButHandle" text="Apprentice Overview" >
+                  <Button fx:id="POEduOverBut" layoutX="45.0" layoutY="99.0" mnemonicParsing="false" onAction="#POEduOverButHandle" prefWidth="160.0" text="Education Overview" />
+                  <Button fx:id="POUseOverBut" layoutX="45.0" layoutY="228.0" mnemonicParsing="false" onAction="#POUseOverButHandle" prefWidth="160.0" text="User Overview" />
+                  <Button fx:id="POComOverBut" layoutX="45.0" layoutY="343.0" mnemonicParsing="false" onAction="#POComOverButHandle" prefWidth="160.0" text="Company Overview" />
+                  <Button fx:id="POExpCsvBut" layoutX="45.0" layoutY="579.0" mnemonicParsing="false" onAction="#POExpCsvButHandle" prefWidth="160.0" text="Export .csv" />
+                  <Button fx:id="POPrintBut" layoutX="45.0" layoutY="697.0" mnemonicParsing="false" onAction="#POPrintButHandle" prefWidth="160.0" text="Print" />
+                  <Button fx:id="POCreaNewBut" layoutX="45.0" layoutY="838.0" mnemonicParsing="false" onAction="#POCreaNewButHandle" prefWidth="160.0" text="Create New" />
+                  <Button fx:id="POSelectBut" layoutX="45.0" layoutY="1004.0" mnemonicParsing="false" onAction="#POSelectButHandle" prefWidth="160.0" text="Show Details" />
+                  <Button fx:id="POAppOverBut" layoutX="45.0" layoutY="465.0" mnemonicParsing="false" onAction="#POAppOverButHandle" prefWidth="160.0" text="Apprentice Overview">
                   </Button>
                </children>
             </AnchorPane>

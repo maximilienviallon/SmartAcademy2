@@ -25,7 +25,7 @@
                <children>
                   <TextField fx:id="UserCreationName" layoutX="38.0" layoutY="22.0" promptText="User name" />
                   <TextField fx:id="userCreationPassword" layoutX="38.0" layoutY="55.0" promptText="password" />
-                  <Button fx:id="userCreationPickApprentice" layoutX="75.0" layoutY="91.0" mnemonicParsing="false" onAction="#userCreationPickApprenticeHandle" prefHeight="25.0" prefWidth="130.0" text="Apprentice" />
+                  <Button fx:id="userCreationPickApprentice" layoutX="75.0" layoutY="91.0" mnemonicParsing="false" onAction="#userCreationPickApprenticeHandle" prefHeight="25.0" prefWidth="130.0" text="Employee" />
                   <Button fx:id="userCreationPickContact" layoutX="75.0" layoutY="128.0" mnemonicParsing="false" onAction="#userCreationPickContactHandle" prefHeight="25.0" prefWidth="130.0" text="Contact" />
                </children>
             </AnchorPane>
