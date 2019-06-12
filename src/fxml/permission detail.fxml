@@ -35,7 +35,7 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
-                        <TextArea layoutY="213.0" prefHeight="205.0" prefWidth="503.0" />
+                        <TextArea fx:id="CompanyPermTextArea" layoutY="213.0" prefHeight="205.0" prefWidth="503.0" />
                      </children>
                   </AnchorPane>
                </left>

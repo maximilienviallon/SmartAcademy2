@@ -15,6 +15,7 @@ public class LoggedUserDetailController  extends Controller implements Initializ
     String loggedUserID;
     FXMLLoader fxmlLoader;
     String title;
+    String username;
     public void backToApprenticeOverviewHandle(ActionEvent actionEvent)throws IOException {
         title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice overview.fxml"));
@@ -33,8 +34,8 @@ public class LoggedUserDetailController  extends Controller implements Initializ
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
-        System.out.println(userName);
+        username= KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
+        System.out.println(username);
         loggedUserID = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
         Users view = DBFacade.retrieveUsers().get(0);
     }

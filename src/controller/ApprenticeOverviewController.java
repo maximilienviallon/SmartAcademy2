@@ -41,6 +41,7 @@ public class ApprenticeOverviewController  extends Controller implements Initial
     String title;
     Integer CompanyID;
     Integer ApprenticeID;
+    String username;
 
     public void AOSetButHandle(ActionEvent actionEvent) throws IOException {
         title = "Logged User Detail Overview";
@@ -104,6 +105,7 @@ public class ApprenticeOverviewController  extends Controller implements Initial
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
         CompanyID = KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
         ObservableList<Apprentices> apprenticeList = FXCollections.observableArrayList(DBFacade.retrieveApprentices());
 

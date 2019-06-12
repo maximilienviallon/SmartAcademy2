@@ -47,6 +47,7 @@ public class EducationOverviewController  extends Controller implements Initiali
     FXMLLoader fxmlLoader;
     String title;
     Integer EducationID;
+    String username;
 
     public void EOSetButHandle(ActionEvent actionEvent) throws IOException {
         title = "Logged User Detail Overview";
@@ -99,8 +100,8 @@ public class EducationOverviewController  extends Controller implements Initiali
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
-        System.out.println(userName);
+        username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
+        System.out.println(username);
         ObservableList<Educations> educationList = FXCollections.observableArrayList(DBFacade.retrieveEducations());
         EOTableView.setItems(educationList);
 
