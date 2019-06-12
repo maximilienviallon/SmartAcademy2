@@ -109,8 +109,6 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOConOButHandle(ActionEvent actionEvent) throws IOException{
-        Companies companies = ComOTableView.getSelectionModel().getSelectedItem();
-        KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().setsCompanyID(companies.getCompanyID());
         title = "Contact Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/contact overview.fxml"));
         fxmlLoading(fxmlLoader,title);

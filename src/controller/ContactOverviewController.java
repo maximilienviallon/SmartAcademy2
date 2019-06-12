@@ -97,7 +97,7 @@ public class ContactOverviewController  extends Controller implements Initializa
         String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
         CompanyID = KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
         System.out.println(userName);
-        ObservableList<Contacts> contactList = FXCollections.observableArrayList(DBFacade.retrieveContacts(CompanyID));
+        ObservableList<Contacts> contactList = FXCollections.observableArrayList(DBFacade.retrieveContacts());
 
         ConOTableView.setItems(contactList);
 
