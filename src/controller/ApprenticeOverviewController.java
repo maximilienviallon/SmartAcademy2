@@ -6,6 +6,8 @@ import Persistence.DBFacade;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,6 +35,8 @@ public class ApprenticeOverviewController  extends Controller implements Initial
     TableColumn<Apprentices,String> colPhone = new TableColumn();
     @FXML
     TableColumn <Apprentices,String> colCompID = new TableColumn();
+    @FXML
+    private TextField AOSeaText;
 
     FXMLLoader fxmlLoader;
     String title;
@@ -100,9 +105,9 @@ public class ApprenticeOverviewController  extends Controller implements Initial
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         CompanyID = KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
-        ObservableList companyList = FXCollections.observableArrayList(DBFacade.retrieveApprentices());
+        ObservableList<Apprentices> apprenticeList = FXCollections.observableArrayList(DBFacade.retrieveApprentices());
 
-        AOTableView.setItems(companyList);
+        AOTableView.setItems(apprenticeList);
 
         colCPR.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCPR()));
         colName.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
@@ -111,5 +116,44 @@ public class ApprenticeOverviewController  extends Controller implements Initial
         colCompID.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCompanyID().toString()));
 
         AOTableView.getColumns().setAll(colCPR,colName,colEmail,colPhone,colCompID);
+
+        FilteredList<Apprentices> filteredData = new FilteredList<>(apprenticeList, p -> true); // Set the filter Predicate whenever the filter changes.
+        AOSeaText.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(Apprentices -> { // If filter text is empty, display all.
+                if (newValue == null || newValue.isEmpty()) {
+                    System.out.println("return");
+                    return true;
+                }
+
+                if(Apprentices.getCPR() == null) {
+                    Apprentices.setCPR(" ");
+                }
+                if(Apprentices.getName() == null) {
+                    Apprentices.setName(" ");
+                }
+                if(Apprentices.getEmail() == null) {
+                    Apprentices.setEmail(" ");
+                }
+                if(Apprentices.getPhone() == null) {
+                    Apprentices.setPhone(" ");
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (Apprentices.getCPR().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (Apprentices.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (Apprentices.getEmail().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (Apprentices.getPhone().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                }
+                return false; // Does not match.
+            });
+        });//Wrap the FilteredList in a SortedList.
+        SortedList<Apprentices> sortedData = new SortedList<>(filteredData); //Bind the SortedList comparator to the TableView comparator. Otherwise, sorting the TableView would have no effect.
+        sortedData.comparatorProperty().bind(AOTableView.comparatorProperty()); //Add sorted (and filtered) data to the table.
+        AOTableView.setItems(sortedData);
     }
 }

@@ -24,7 +24,7 @@ public class ApprenticeDetailController extends Controller implements Initializa
     Integer apprenticeID;
 
     public void backToApprenticeOverviewHandle(ActionEvent actionEvent) throws IOException {
-        title = "Employee Overview";
+        title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice Overview.fxml"));
         fxmlLoading(fxmlLoader, title);
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
@@ -37,14 +37,14 @@ public class ApprenticeDetailController extends Controller implements Initializa
     }
 
     public void ApprenticeEditHandle(ActionEvent actionEvent) throws IOException {
-        title = "Employee Modification";
+        title = "Apprentice Modification";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice modification.fxml"));
         fxmlLoading(fxmlLoader, title);
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void ApprenticeRemoveHandle(ActionEvent actionEvent) throws IOException {
-        title = "Employee Overview";
+        title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice Overview.fxml"));
         fxmlLoading(fxmlLoader, title);
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();

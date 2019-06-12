@@ -23,19 +23,20 @@
                     </columns>
                   </TableView>
                   <Button fx:id="EOSetBut" layoutX="42.0" layoutY="37.0" mnemonicParsing="false" onAction="#EOSetButHandle" text="Settings" />
+                  <TextField fx:id="EduOSeaText" layoutX="748.0" layoutY="37.0" promptText="Filter" />
                </children>
             </AnchorPane>
          </left>
          <right>
             <AnchorPane prefHeight="400.0" prefWidth="228.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="EOAppOverBut" layoutX="30.0" layoutY="99.0" mnemonicParsing="false" onAction="#EOAppOverButHandle" prefWidth="160.0" text="Apprentice Overview" />
+                  <Button fx:id="EOAppOverBut" layoutX="30.0" layoutY="99.0" mnemonicParsing="false" onAction="#EOAppOverButHandle" prefWidth="160.0" text="Employee Overview" />
                   <Button fx:id="EOUseOverBut" layoutX="30.0" layoutY="258.0" mnemonicParsing="false" onAction="#EOUseOverButHandle" prefWidth="160.0" text="User Overview" />
                   <Button fx:id="EOComOBut" layoutX="30.0" layoutY="390.0" mnemonicParsing="false" onAction="#EOComOButHandle" prefWidth="160.0" text="Company Overview" />
                   <Button fx:id="EOExpCsvBut" layoutX="30.0" layoutY="523.0" mnemonicParsing="false" onAction="#EOExpCsvButHandle" prefWidth="160.0" text="Export .csv" />
                   <Button fx:id="EOPrintBut" layoutX="30.0" layoutY="650.0" mnemonicParsing="false" onAction="#EOPrintButHandle" prefWidth="160.0" text="Print" />
                   <Button fx:id="EOCreaNewBut" layoutX="30.0" layoutY="791.0" mnemonicParsing="false" onAction="#EOCreaNewButHandle" prefWidth="160.0" text="Create New" />
-                  <Button fx:id="EOSelectBut" layoutX="30.0" layoutY="1004.0" mnemonicParsing="false" onAction="#EOSelectButHandle" prefWidth="160.0" text="Select" />
+                  <Button fx:id="EOSelectBut" layoutX="30.0" layoutY="1004.0" mnemonicParsing="false" onAction="#EOSelectButHandle" prefWidth="160.0" text="Show Details" />
                </children>
             </AnchorPane>
          </right>

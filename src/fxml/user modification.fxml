@@ -20,7 +20,7 @@
                         <TextField fx:id="UMUserText" layoutX="43.0" layoutY="163.0" prefHeight="31.0" prefWidth="275.0" promptText="Username" />
                         <TextField fx:id="UMPasText" layoutX="43.0" layoutY="203.0" prefHeight="31.0" prefWidth="275.0" promptText="Password" />
                         <TextField fx:id="UMConText" layoutX="43.0" layoutY="242.0" prefHeight="31.0" prefWidth="275.0" promptText="Contacts" />
-                        <TextField fx:id="UMAppText" layoutX="43.0" layoutY="281.0" prefHeight="31.0" prefWidth="275.0" promptText="Apprentice" />
+                        <TextField fx:id="UMAppText" layoutX="43.0" layoutY="281.0" prefHeight="31.0" prefWidth="275.0" promptText="Employee" />
                         <Button fx:id="UMSavBut" layoutX="958.0" layoutY="896.0" mnemonicParsing="false" onAction="#UMSavButHandle" text="Save" />
                         <TextField fx:id="UMSeaAddText" layoutX="1369.0" layoutY="296.0" prefHeight="31.0" prefWidth="200.0" promptText="Search" />
                         <TextField fx:id="UMSeaRemText" layoutX="725.0" layoutY="296.0" prefHeight="31.0" prefWidth="200.0" promptText="Search" />

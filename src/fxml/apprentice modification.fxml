@@ -17,12 +17,12 @@
                <left>
                   <AnchorPane prefHeight="760.0" prefWidth="1235.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField fx:id="AMAppCprText" layoutX="906.0" layoutY="67.0" prefHeight="31.0" prefWidth="275.0" promptText="Apprentice Cpr" />
-                        <TextField fx:id="AMAppNameText" layoutX="906.0" layoutY="107.0" prefHeight="31.0" prefWidth="275.0" promptText="Apprentice Name" />
+                        <TextField fx:id="AMAppCprText" layoutX="906.0" layoutY="67.0" prefHeight="31.0" prefWidth="275.0" promptText="Employee Cpr" />
+                        <TextField fx:id="AMAppNameText" layoutX="906.0" layoutY="107.0" prefHeight="31.0" prefWidth="275.0" promptText="Employee Name" />
                         <TextField fx:id="AMComIDText" layoutX="906.0" layoutY="146.0" prefHeight="31.0" prefWidth="275.0" promptText="Company ID" />
-                        <TextField fx:id="AMAppMailText" layoutX="906.0" layoutY="185.0" prefHeight="31.0" prefWidth="275.0" promptText="Apprentice  E-Mail" />
+                        <TextField fx:id="AMAppMailText" layoutX="906.0" layoutY="185.0" prefHeight="31.0" prefWidth="275.0" promptText="Employee E-Mail" />
                         <Button fx:id="AMSaveBut" layoutX="1146.0" layoutY="929.0" mnemonicParsing="false" onAction="#AMSaveButHandle" text="Save" />
-                        <TextField fx:id="AMAppPhoText" layoutX="906.0" layoutY="224.0" prefHeight="31.0" prefWidth="275.0" promptText="Apprentice  Phone" />
+                        <TextField fx:id="AMAppPhoText" layoutX="906.0" layoutY="224.0" prefHeight="31.0" prefWidth="275.0" promptText="Employee Phone" />
                         <TextField fx:id="AMGenExpText" layoutX="835.0" layoutY="605.0" prefHeight="317.0" prefWidth="398.0" promptText="General Expertise" />
                         <TextField fx:id="AMWorExpText" layoutX="835.0" layoutY="276.0" prefHeight="317.0" prefWidth="398.0" promptText="Work Experience" />
                      </children>
