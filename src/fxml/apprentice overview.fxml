@@ -38,7 +38,7 @@
                   <Button fx:id="AOExpCsvBut" layoutX="17.0" layoutY="523.0" minHeight="0.0" mnemonicParsing="false" onAction="#AOExpCsvButHandle" prefHeight="30.0" prefWidth="200.0" text="Export .csv" />
                   <Button fx:id="AOPrintBut" layoutX="17.0" layoutY="650.0" mnemonicParsing="false" onAction="#AOPrintButHandle" prefHeight="30.0" prefWidth="200.0" text="Print" />
                   <Button fx:id="AOCreaNewBut" layoutX="17.0" layoutY="791.0" mnemonicParsing="false" onAction="#AOCreaNewButHandle" prefHeight="30.0" prefWidth="200.0" text="Create New" />
-                  <Button fx:id="AOSelectBut" layoutX="17.0" layoutY="1004.0" mnemonicParsing="false" onAction="#AOSelectButHandle" prefHeight="30.0" prefWidth="200.0" text="Show Details" />
+                  <Button fx:id="AOSelectBut" layoutX="14.0" layoutY="965.0" mnemonicParsing="false" onAction="#AOSelectButHandle" prefHeight="30.0" prefWidth="200.0" text="Show Details" />
                   <Button fx:id="AODisMatBut" layoutX="17.0" layoutY="892.0" mnemonicParsing="false" onAction="#AODisMatButHandle" prefHeight="30.0" prefWidth="200.0" text="Display Matrix" />
                </children>
             </AnchorPane>
