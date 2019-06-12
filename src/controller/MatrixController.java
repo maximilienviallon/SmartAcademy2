@@ -1,14 +1,32 @@
 package controller;
 
+import Domain.Matrix;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 public class MatrixController  extends Controller implements Initializable {
-    public void matrixBackToOverviewHandle(ActionEvent actionEvent) {
-        //need to see which overview it takes you back to
+    FXMLLoader fxmlLoader;
+    String title;
+    Integer CompanyID;
+    String username;
+    @FXML
+    TableView<Matrix> matrixTableView = new TableView();
+
+
+    public void matrixBackToOverviewHandle(ActionEvent actionEvent) throws IOException {
+        title = "Company Overview";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void matrixExportHandle(ActionEvent actionEvent) {
@@ -18,7 +36,8 @@ public class MatrixController  extends Controller implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
-        System.out.println(userName);
+        username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
+        CompanyID = KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
+
     }
 }
