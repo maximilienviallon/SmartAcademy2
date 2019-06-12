@@ -99,8 +99,6 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOSelectButHandle(ActionEvent actionEvent) throws IOException{
-        Companies companies = ComOTableView.getSelectionModel().getSelectedItem();
-        KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().setsCompanyID(companies.getCompanyID());
         Integer ID  =  KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
         System.out.println(ID);
         title = "Company Detail";
@@ -165,22 +163,22 @@ public class CompanyOverviewController extends Controller implements Initializab
                 String lowerCaseFilter = newValue.toLowerCase();
 
                 if (Companies.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    System.out.println("Name");
+                    //System.out.println("Name");
                     return true;
                 } else if (Companies.getCity().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    System.out.println("City");
+                    //System.out.println("City");
                     return true;
                 } else if (Companies.getCvr().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    System.out.println("Cvr");
+                    //System.out.println("Cvr");
                     return true;
                 } else if (Companies.getFieldOfExpertise().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    System.out.println("Expertise");
+                    //System.out.println("Expertise");
                     return true;
                 } else if (Companies.getpNum().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    System.out.println("pNum");
+                    //System.out.println("pNum");
                     return true;
                 } else if (Companies.getZipcode().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    System.out.println("Zip");
+                    //System.out.println("Zip");
                     return true;
                 }
                 System.out.println("False");
