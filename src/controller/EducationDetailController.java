@@ -46,7 +46,7 @@ public class EducationDetailController  extends Controller implements Initializa
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String userName = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
+        username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
         Educations view = DBFacade.retrieveEducations().get(0);
     }
 }
