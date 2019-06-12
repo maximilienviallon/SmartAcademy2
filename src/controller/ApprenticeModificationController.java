@@ -15,28 +15,28 @@ public class ApprenticeModificationController  extends Controller implements Ini
     String username;
     Integer apprenticeID;
     public void AMSaveButHandle(ActionEvent actionEvent) throws IOException {
-        title = "Employee Detail";
+        title = "Apprentice Detail";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice detail.fxml"));
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void AMBacToOveButHandle(ActionEvent actionEvent) throws IOException {
-        title = "Employee Overview";
+        title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice Overview.fxml"));
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void AMBacToDetButHandle(ActionEvent actionEvent) throws IOException {
-        title = "Employee Detail";
+        title = "Apprentice Detail";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice detail.fxml"));
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void AMRemButHandle(ActionEvent actionEvent) throws IOException {
-        title = "Employee Overview";
+        title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice Overview.fxml"));
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();

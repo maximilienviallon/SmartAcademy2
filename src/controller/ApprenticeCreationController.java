@@ -16,14 +16,14 @@ public class ApprenticeCreationController  extends Controller implements Initial
     String username;
     Integer apprenticeID;
     public void apprenticeCreationSaveHandle(ActionEvent actionEvent) throws IOException {
-        title = "Employee Detail";
+        title = "Apprentice Detail";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice detail.fxml"));
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void apprenticeCreationCancelHandle(ActionEvent actionEvent) throws IOException {
-        title = "Employee Overview";
+        title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice overview.fxml"));
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();

@@ -15,15 +15,15 @@ public class EducationCreationController  extends Controller implements Initiali
     String username;
 
     public void educationCreationSaveHandle(ActionEvent actionEvent) throws IOException {
-        title = "Employee Detail";
-        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice detail.fxml"));
+        title = "Education Detail";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/education detail.fxml"));
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void educationCreationCancelHandle(ActionEvent actionEvent) throws IOException{
-        title = "Employee Overview";
-        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice overview.fxml"));
+        title = "Education Overview";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/education overview.fxml"));
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }

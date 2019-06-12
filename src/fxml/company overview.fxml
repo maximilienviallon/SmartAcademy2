@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CompanyOverviewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CompanyOverviewController">
    <left>
       <AnchorPane prefHeight="361.0" prefWidth="865.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="ComOTableView" layoutX="23.0" layoutY="96.0" prefHeight="904.0" prefWidth="1659.0">
+            <TableView fx:id="ComOTableView" layoutX="23.0" layoutY="96.0" prefHeight="904.0" prefWidth="1672.0">
               <columns>
                   <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
                   <TableColumn fx:id="colFieldOfExp" prefWidth="75.0" text="FieldOfExp" />

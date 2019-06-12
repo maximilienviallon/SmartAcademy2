@@ -96,6 +96,10 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOCreaNewButHandle(ActionEvent actionEvent) throws IOException{
+        title = "Company creation";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company creation.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void ComOSelectButHandle(ActionEvent actionEvent) throws IOException{
@@ -130,7 +134,10 @@ public class CompanyOverviewController extends Controller implements Initializab
         colFieldOfExp.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getFieldOfExpertise())));
         colPNumber.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getpNum())));
         colZipcode.setCellValueFactory(cellData -> new SimpleStringProperty((cellData.getValue().getZipcode())));
+
         //ComOTableView.getColumns().setAll(colName,colCity,colCVR,colFieldOfExp,colPNumber,colZipcode);
+
+
 
 
         FilteredList<Companies> filteredData = new FilteredList<>(companyList, p -> true); // Set the filter Predicate whenever the filter changes.

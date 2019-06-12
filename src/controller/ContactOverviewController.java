@@ -41,7 +41,7 @@ public class ContactOverviewController  extends Controller implements Initializa
     FXMLLoader fxmlLoader;
     String title;
     String username;
-
+    Contacts contacts;
 
     Integer contactID;
     private Integer CompanyID;
@@ -95,7 +95,7 @@ public class ContactOverviewController  extends Controller implements Initializa
     }
 
     public void ConOSelectButHandle(ActionEvent actionEvent) throws IOException{
-        Contacts contacts= ConOTableView.getSelectionModel().getSelectedItem();
+        contacts= ConOTableView.getSelectionModel().getSelectedItem();
         KeeperOfKeys.getLoggedUserNameInstance().currentContactID().setsContactID(contacts.getContactID());
         title = "Contact Detail";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/contact detail.fxml"));

@@ -22,7 +22,7 @@ public class ApprenticeDetailController extends Controller implements Initializa
     @FXML
     TextArea ApprenticePendingInfo;
     Integer apprenticeID;
-
+    Apprentices view;
     public void backToApprenticeOverviewHandle(ActionEvent actionEvent) throws IOException {
         title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice Overview.fxml"));
@@ -54,7 +54,7 @@ public class ApprenticeDetailController extends Controller implements Initializa
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
         apprenticeID = KeeperOfKeys.getLoggedUserNameInstance().currentApprenticeID().getsApprenticeID();
-        Apprentices view = DBFacade.retrieveApprenticeDetail(apprenticeID).get(0);
+        view = DBFacade.retrieveApprenticeDetail(apprenticeID).get(0);
         apprenticePersInfoArea.setText(view.getName() + "\n" + view.getEmail() + "\n" + view.getCPR() + "\n" + view.getPhone() + "\n" + view.getGeneralExpertise() + "\n" + view.getWorkExperience() + "\n");
 
     }
