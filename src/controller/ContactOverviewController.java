@@ -6,6 +6,8 @@ import Persistence.DBFacade;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,7 +35,8 @@ public class ContactOverviewController  extends Controller implements Initializa
     TableColumn<Contacts,String> colEmail = new TableColumn<>();
     @FXML
     TableColumn<Contacts,String> colPhoneNumber = new TableColumn();
-
+    @FXML
+    private TextField ConOSeaText;
 
     FXMLLoader fxmlLoader;
     String title;
@@ -107,6 +111,36 @@ public class ContactOverviewController  extends Controller implements Initializa
         colEmail.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getEmail()));
         colPhoneNumber.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getPhoneNo()));
         ConOTableView.getColumns().setAll(colCompanyID,colName,colEmail,colPhoneNumber);
+
+        FilteredList<Contacts> filteredData = new FilteredList<>(contactList, p -> true); // Set the filter Predicate whenever the filter changes.
+        ConOSeaText.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(Contacts -> { // If filter text is empty, display all.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                if(Contacts.getEmail() == null) {
+                    Contacts.setEmail("");
+                }
+                if(Contacts.getPhoneNo() == null) {
+                    Contacts.setPhoneNo("");
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (Contacts.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (Contacts.getEmail().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (Contacts.getPhoneNo().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                }
+                return false; // Does not match.
+            });
+        });//Wrap the FilteredList in a SortedList.
+        SortedList<Contacts> sortedData = new SortedList<>(filteredData); //Bind the SortedList comparator to the TableView comparator. Otherwise, sorting the TableView would have no effect.
+        sortedData.comparatorProperty().bind(ConOTableView.comparatorProperty()); //Add sorted (and filtered) data to the table.
+        ConOTableView.setItems(sortedData);
     }
 
 

@@ -141,23 +141,11 @@ public class CompanyOverviewController extends Controller implements Initializab
                     return true;
                 }
 
-                if(Companies.getName() == null) {
-                    Companies.setName(" ");
-                }
-                if(Companies.getCity() == null) {
-                    Companies.setCity(" ");
-                }
-                if(Companies.getCvr() == null) {
-                    Companies.setCvr(" ");
-                }
                 if(Companies.getFieldOfExpertise() == null) {
-                    Companies.setFieldOfExpertise(" ");
+                    Companies.setFieldOfExpertise("");
                 }
                 if(Companies.getpNum() == null) {
-                    Companies.setpNum(" ");
-                }
-                if(Companies.getZipcode() == null) {
-                    Companies.setZipcode(" ");
+                    Companies.setpNum("");
                 }
 
                 String lowerCaseFilter = newValue.toLowerCase();

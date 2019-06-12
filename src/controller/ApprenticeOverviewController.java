@@ -1,7 +1,6 @@
 package controller;
 
 import Domain.Apprentices;
-import Domain.Companies;
 import Persistence.DBFacade;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -121,18 +120,14 @@ public class ApprenticeOverviewController  extends Controller implements Initial
         AOSeaText.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(Apprentices -> { // If filter text is empty, display all.
                 if (newValue == null || newValue.isEmpty()) {
-                    System.out.println("return");
                     return true;
                 }
 
                 if(Apprentices.getCPR() == null) {
-                    Apprentices.setCPR(" ");
-                }
-                if(Apprentices.getName() == null) {
-                    Apprentices.setName(" ");
+                    Apprentices.setCPR("");
                 }
                 if(Apprentices.getEmail() == null) {
-                    Apprentices.setEmail(" ");
+                    Apprentices.setEmail("");
                 }
                 if(Apprentices.getPhone() == null) {
                     Apprentices.setPhone(" ");
