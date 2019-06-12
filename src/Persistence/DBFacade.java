@@ -210,19 +210,20 @@ public class DBFacade {
         ArrayList<Educations> retrievedEducations = new ArrayList<>();
 
         try {
-            String query = ("select tblEducations.fldEduID, tblAMU.fldEduName, tblZipcode.fldCity,fldEduStart, tblEducations.fldEduEnd,tblEducations.fldAMU,tblEducations.fldEduZipcode from tblEducations left join tblAMU on tblEducations.fldAMU = tblAMU.fldAMU left join tblZipcode on tblEducations.fldEduZipcode = tblZipcode.fldZipcode");
+            String query = ("select tblEducations.fldEduID, tblAMU.fldEduName, tblEducations.fldEduProvider, tblZipcode.fldCity,fldEduStart, tblEducations.fldEduEnd,tblEducations.fldAMU,tblEducations.fldEduZipcode from tblEducations left join tblAMU on tblEducations.fldAMU = tblAMU.fldAMU left join tblZipcode on tblEducations.fldEduZipcode = tblZipcode.fldZipcode");
             ArrayList<Object[]> educationsQuery = DB.select(query);
 
             for (Object[] objects : educationsQuery) {
                 Integer eduID = (Integer) objects[0];
                 String name = (String) objects[1];
-                String city = (String) objects[2];
-                Date eduStart = (Date) objects[3];
-                Date eduEnd = (Date) objects[4];
-                Integer AMU = (Integer) objects[5];
-                String zipcode = (String) objects[6];
+                String provider = (String) objects[2];
+                String city = (String) objects[3];
+                Date eduStart = (Date) objects[4];
+                Date eduEnd = (Date) objects[5];
+                Integer AMU = (Integer) objects[6];
+                String zipcode = (String) objects[7];
 
-                Educations educations = new Educations(eduID,name,city,eduStart,eduEnd,AMU,zipcode, null);
+                Educations educations = new Educations(eduID,name,provider,city,eduStart,eduEnd,AMU,zipcode, null);
 
                 retrievedEducations.add(educations);
             }
@@ -410,20 +411,22 @@ public class DBFacade {
         ArrayList<Educations> retrievedEducations = new ArrayList<>();
 
         try {
-            String query = ("select tblEducations.fldEduID, tblAMU.fldEduName, tblZipcode.fldCity,fldEduStart, tblEducations.fldEduEnd,tblEducations.fldAMU,tblEducations.fldEduZipcode, tblEducations.fldDesc from tblEducations left join tblAMU on tblEducations.fldAMU = tblAMU.fldAMU left join tblZipcode on tblEducations.fldEduZipcode = tblZipcode.fldZipcode where tblEducations.fldEduID = " + selectedEducation);
+            String query = ("select tblEducations.fldEduID, tblAMU.fldEduName, tblEducations.fldEduProvider, tblZipcode.fldCity,fldEduStart, tblEducations.fldEduEnd,tblEducations.fldAMU,tblEducations.fldEduZipcode, tblEducations.fldEduDesc from tblEducations left join tblAMU on tblEducations.fldAMU = tblAMU.fldAMU left join tblZipcode on tblEducations.fldEduZipcode = tblZipcode.fldZipcode where tblEducations.fldEduID = " + selectedEducation);
             ArrayList<Object[]> educationsQuery = DB.select(query);
 
             for (Object[] objects : educationsQuery) {
                 Integer eduID = (Integer) objects[0];
                 String name = (String) objects[1];
-                String city = (String) objects[2];
-                Date eduStart = (Date) objects[3];
-                Date eduEnd = (Date) objects[4];
-                Integer AMU = (Integer) objects[5];
-                String zipcode = (String) objects[6];
-                String description = (String) objects[7];
+                String provider = (String) objects[2];
+                String city = (String) objects[3];
+                Date eduStart = (Date) objects[4];
+                Date eduEnd = (Date) objects[5];
+                Integer AMU = (Integer) objects[6];
+                String zipcode = (String) objects[7];
+                String description = (String) objects[8];
+                System.out.println(description);
 
-                Educations educations = new Educations(eduID,name,city,eduStart,eduEnd,AMU,zipcode, description);
+                Educations educations = new Educations(eduID,name,provider,city,eduStart,eduEnd,AMU,zipcode, description);
 
                 retrievedEducations.add(educations);
             }

@@ -27,6 +27,8 @@ public class EducationOverviewController  extends Controller implements Initiali
     @FXML
     TableColumn<Educations,String> colName = new TableColumn<>();
     @FXML
+    TableColumn<Educations,String> colProvider = new TableColumn<>();
+    @FXML
     TableColumn<Educations,String> colCity = new TableColumn<>();
     @FXML
     TableColumn<Educations,String> colEduStart = new TableColumn<>();
@@ -76,11 +78,19 @@ public class EducationOverviewController  extends Controller implements Initiali
     }
 
     public void EOCreaNewButHandle(ActionEvent actionEvent) throws IOException{
+        title = "Education creation";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/education creation.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void EOSelectButHandle(ActionEvent actionEvent) throws IOException{
         Educations educations = EOTableView.getSelectionModel().getSelectedItem();
         KeeperOfKeys.getLoggedUserNameInstance().currentEducationID().setsEducationID(educations.getEduID());
+        title = "Education Detail";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/education detail.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -91,12 +101,13 @@ public class EducationOverviewController  extends Controller implements Initiali
 
         colEducationID.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getEduID().toString()));
         colName.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
+        colProvider.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getProvider()));
         colCity.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCity()));
         colEduStart.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getEduStart().toString()));
         colEduEnd.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getEduEnd().toString()));
         colAMU.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getAMU().toString()));
         colZipCode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getZipcode()));
-        EOTableView.getColumns().setAll(colName,colCity,colEduStart,colEduEnd,colAMU,colZipCode);
+        EOTableView.getColumns().setAll(colName,colProvider,colCity,colEduStart,colEduEnd,colAMU,colZipCode);
     }
     public Integer getsEducationID() {
         return EducationID;

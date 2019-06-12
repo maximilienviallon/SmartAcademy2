@@ -5,6 +5,7 @@ import java.sql.Date;
 public class Educations {
     private Integer eduID;
     private String name;
+    private String provider;
     private String city;
     private Date eduStart;
     private Date eduEnd;
@@ -12,9 +13,10 @@ public class Educations {
     private String zipcode;
     private String description;
 
-    public Educations(Integer eduID, String name, String city, Date eduStart, Date eduEnd, Integer AMU, String zipcode, String description){
+    public Educations(Integer eduID, String name, String provider,String city, Date eduStart, Date eduEnd, Integer AMU, String zipcode, String description){
         this.eduID = eduID;
         this.name = name;
+        this.provider = provider;
         this.city = city;
         this.eduStart = eduStart;
         this.eduEnd = eduEnd;
@@ -85,6 +87,14 @@ public class Educations {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
     }
 }
 //JESUS
