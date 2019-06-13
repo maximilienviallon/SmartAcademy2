@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CompanyOverviewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CompanyOverviewController">
    <left>
       <AnchorPane prefHeight="361.0" prefWidth="865.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="ComOTableView" layoutX="23.0" layoutY="96.0" prefHeight="904.0" prefWidth="1659.0">
+            <TableView fx:id="ComOTableView" layoutX="23.0" layoutY="96.0" prefHeight="904.0" prefWidth="1672.0">
               <columns>
                   <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
                   <TableColumn fx:id="colFieldOfExp" prefWidth="75.0" text="FieldOfExp" />
@@ -41,7 +41,7 @@
             <Button fx:id="ComOExpCsvBut" layoutX="-18.0" layoutY="469.0" mnemonicParsing="false" onAction="#ComOExpCsvButHandle" prefWidth="160.0" text="Export .csv" />
             <Button fx:id="ComOPrintBut" layoutX="-18.0" layoutY="601.0" mnemonicParsing="false" onAction="#ComOPrintButHandle" prefWidth="160.0" text="Print" />
             <Button fx:id="ComOCreaNewBut" layoutX="-18.0" layoutY="715.0" mnemonicParsing="false" onAction="#ComOCreaNewButHandle" prefWidth="160.0" text="Create New" />
-            <Button fx:id="ComOSelectBut" layoutX="-18.0" layoutY="955.0" mnemonicParsing="false" onAction="#ComOSelectButHandle" prefWidth="160.0" text="Show Details" />
+            <Button fx:id="ComOSelectBut" layoutX="-18.0" layoutY="926.0" mnemonicParsing="false" onAction="#ComOSelectButHandle" prefWidth="160.0" text="Show Details" />
             <Button fx:id="ComOConOBut" layoutX="-18.0" layoutY="824.0" mnemonicParsing="false" onAction="#ComOConOButHandle" prefWidth="160.0" text="Contact Overview" />
          </children>
       </AnchorPane>

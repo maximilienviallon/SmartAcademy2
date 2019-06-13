@@ -78,7 +78,7 @@ public class ApprenticeOverviewController  extends Controller implements Initial
     }
 
     public void AOCreaNewButHandle(ActionEvent actionEvent) throws IOException{
-        title = "Employee Creation";
+        title = "Apprentice Creation";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice creation.fxml"));
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
@@ -87,7 +87,7 @@ public class ApprenticeOverviewController  extends Controller implements Initial
     public void AOSelectButHandle(ActionEvent actionEvent) throws IOException{
         Apprentices apprentices = AOTableView.getSelectionModel().getSelectedItem();
         KeeperOfKeys.getLoggedUserNameInstance().currentApprenticeID().setsApprenticeID(apprentices.getApprenticeID());
-        title = "Employee Detail";
+        title = "Apprentice Detail";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice detail.fxml"));
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();

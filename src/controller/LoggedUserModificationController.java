@@ -17,7 +17,7 @@ public class LoggedUserModificationController  extends Controller implements Ini
 
     public void loggedUserModBackToOverviewHandle(ActionEvent actionEvent) throws IOException{
         title = "Logged User Overview";
-        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/logged browser.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/log browser.fxml"));
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
 
@@ -25,7 +25,7 @@ public class LoggedUserModificationController  extends Controller implements Ini
 
     public void LoggedUserModSaveHandle(ActionEvent actionEvent) throws IOException{
         title = "Logged User Overview";
-        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/logged browser.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/log browser.fxml"));
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
