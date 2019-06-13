@@ -463,6 +463,43 @@ public class DBFacade {
 
         }
         return retrievedUsers;
-//123
+    }
+    public static ArrayList<Matrix> retrieveMatrix(Integer selectedCompany) {
+        ArrayList<Matrix> retrievedMatrix = new ArrayList<>();
+        ArrayList<String> names = new ArrayList<>();
+        ArrayList<String> priorities = new ArrayList<>();
+        try {
+            String prequery = ("select tblEducations.fldAMU, tblAMU.fldEduName, tblEducations.fldEduProvider, tblZipcode.fldCity,");
+            String query = (" from tblEducations ");
+            String query2 = ("select tblApprentices.fldApprenticeID, tblApprentices.fldApprenticeName from tblApprentices where tblApprentices.fldCompanyID = " + selectedCompany);
+            ArrayList<Object[]> usersQuery2 = DB.select(query2);
+            for (Object[] object:usersQuery2) {
+                prequery += (" matrix" + object[0] + ".fldPriority,");
+query += (" left join (select * from tblMatrix where tblMatrix.fldApprenticeID = " + object[0] + ") matrix" + object[0] + " on tblEducations.fldEduID = matrix" + object[0] + ".fldEduID ");
+                names.add((String) object[1]);
+            }
+
+query += (" left join tblAMU on tblEducations.fldAMU = tblAMU.fldAMU left join tblZipcode on tblEducations.fldEduZipcode = tblZipcode.fldZipcode where tblEducations.fldEduID in (select tblMatrix.fldEduID from tblMatrix where tblMatrix.fldApprenticeID in (select tblApprentices.fldApprenticeID from tblApprentices where tblApprentices.fldCompanyID = " + selectedCompany + "))");
+            query = prequery.substring(0,prequery.length()-1)+query;
+            ArrayList<Object[]> usersQuery = DB.select(query);
+
+            for (Object[] objects : usersQuery) {
+                Integer AMU = (Integer) objects[0];
+                String name = (String) objects[1];
+                String provider = (String) objects[2];
+                String city = (String) objects[3];
+                priorities.add((String) objects[4]);
+
+                Matrix matrix = new Matrix(AMU,name,provider,city,names,priorities);
+
+                retrievedMatrix.add(matrix);
+            }
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+
+        }
+        return retrievedMatrix;
     }
 }
