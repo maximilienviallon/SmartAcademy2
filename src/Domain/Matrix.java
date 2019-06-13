@@ -9,11 +9,8 @@ private Integer AMU;
 private String name;
 private String provider;
 private String city;
-private static ArrayList<String> names;
-private static ArrayList<String> priorities;
-private static SimpleStringProperty Priority;
-private static int Index;
-
+private  ArrayList<String> names;
+private ArrayList<String> priorities;
 
 
     public Matrix(Integer AMU, String name, String provider, String city, ArrayList<String> names, ArrayList<String> priorities){
@@ -57,7 +54,7 @@ private static int Index;
         this.city = city;
     }
 
-    public static ArrayList<String> getNames() {
+    public ArrayList<String> getNames() {
         return names;
     }
 
@@ -65,7 +62,7 @@ private static int Index;
         this.names = names;
     }
 
-    public static ArrayList<String> getPriorities() {
+    public ArrayList<String> getPriorities() {
         return priorities;
     }
 

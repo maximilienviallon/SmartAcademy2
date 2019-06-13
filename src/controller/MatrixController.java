@@ -54,9 +54,9 @@ public class MatrixController  extends Controller implements Initializable {
         ArrayList<Matrix> matrix = new ArrayList<>();
         initializeMatrix(matrixList,matrix);
     }
-    public TableView<Matrix> initializeMatrix(ObservableList<Matrix> matrixList,ArrayList<Matrix> matrix){
+    public TableView<Matrix> initializeMatrix(ObservableList<Matrix> matrixList,ArrayList<Matrix> matrix) {
 
-        ArrayList<TableColumn<Matrix,String>> nameColumn = new ArrayList<>();
+        ArrayList<TableColumn<Matrix, String>> nameColumn = new ArrayList<>();
         matrixTableView.setItems(matrixList);
         nameColumn.add(colAMU);
         colAMU.setText("AMU");
@@ -67,50 +67,37 @@ public class MatrixController  extends Controller implements Initializable {
         nameColumn.add(colProvider);
         colProvider.setText("Provider");
 
-        int i = 2;
-        int j = 0;
-        final ArrayList<String> getProperties = Matrix.getPriorities();
 
         for (Matrix object : matrixList) {
-            i++;
-            nameColumn.add(new TableColumn<>());
-            nameColumn.get(i).setText(object.getNames().get(j));
             colAMU.setCellValueFactory(param -> new SimpleStringProperty((param.getValue().getAMU().toString())));
             colEduTitle.setCellValueFactory(param -> new SimpleStringProperty((param.getValue().getName())));
             colProvider.setCellValueFactory(param -> new SimpleStringProperty((param.getValue().getProvider())));
-            System.out.println(object.getNames().get(j));
-            if(j>= object.getNames().size()-1)
-            {
-                break;
+        }
+        for (int i = 0; i <= matrixList.get(0).getNames().size()-1; i++) {
+            nameColumn.add(new TableColumn<>());
+            nameColumn.get(i+3).setText(matrixList.get(0).getNames().get(i));
+            System.out.println(matrixList.get(0).getNames().get(i));
+        }
+
+
+
+
+            for (Matrix object : matrixList) {
+                for (int m = 3; m <= nameColumn.size()-1; m++) {
+                for (int k = 0; k <= object.getPriorities().size() - 1; k++) {
+                    final String get = object.getPriorities().get(k);
+                    nameColumn.get(m).setCellValueFactory(param -> new SimpleStringProperty(get));
+                    System.out.println(get);
+
+                }
+
             }
-
-            j++;
-
         }
 
 
-
-        int l = 3;
-        int k =0;
-        for (Matrix object : matrixList)
-        {
-            if(l>=nameColumn.size()){
-            break;
+            matrixTableView.getColumns().addAll(nameColumn);
+            return matrixTableView;
         }
-            //for ( k = 0; k<=Matrix.getPriorities().size()-1; k++) {
-               // final int  kk = k;
-                nameColumn.get(l).setCellValueFactory(param -> new SimpleStringProperty(object.getPriorities().get(k)));
-                System.out.println(object.getPriorities().get(k));
-
-            //}
-
-            l++;
-        }
-
-
-        matrixTableView.getColumns().addAll(nameColumn);
-        return matrixTableView;
-    }
 
 
    /* public String getGetProperties() {
@@ -124,8 +111,5 @@ public class MatrixController  extends Controller implements Initializable {
     public void setGetProperties(String getProperties) {
         this.getProperties.set(getProperties);
     }*/
-
-
-
 
 }

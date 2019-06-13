@@ -89,7 +89,7 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOPrintButHandle(ActionEvent actionEvent) {
-        ArrayList<Matrix> unobservable = DBFacade.retrieveMatrix(6);
+        ArrayList<Matrix> unobservable = DBFacade.retrieveMatrix(4);
         for (Matrix object : unobservable) {
             System.out.print(object.getAMU() + "\t");
             System.out.print(object.getName() + "\t");

@@ -502,4 +502,9 @@ query += (" left join tblAMU on tblEducations.fldAMU = tblAMU.fldAMU left join t
         }
         return retrievedMatrix;
     }
+
+    public static Integer insertCompany(){
+        Integer returnedID = 1;
+        return returnedID;
+    }
 }
