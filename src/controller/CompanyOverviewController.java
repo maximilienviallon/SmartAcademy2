@@ -89,16 +89,19 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOPrintButHandle(ActionEvent actionEvent) {
-        ArrayList<Matrix> unobservable = DBFacade.retrieveMatrix(3);
+        ArrayList<Matrix> unobservable = DBFacade.retrieveMatrix(6);
         for (Matrix object : unobservable) {
             System.out.print(object.getAMU() + "\t");
             System.out.print(object.getName() + "\t");
             System.out.print(object.getProvider() + "\t");
+            System.out.println(object.getNames());
             for (String prio:object.getPriorities()) {
                 System.out.print(prio + "\t");
             }
+            System.out.println("\n" + object.getNames().size());
             System.out.println();
         }
+
     }
 
     public void ComOCreaNewButHandle(ActionEvent actionEvent) throws IOException{
@@ -110,7 +113,11 @@ public class CompanyOverviewController extends Controller implements Initializab
 
     public void ComOSelectButHandle(ActionEvent actionEvent) throws IOException{
         Companies companies = ComOTableView.getSelectionModel().getSelectedItem();
-        KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().setsCompanyID(companies.getCompanyID());
+        try {
+            KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().setsCompanyID(companies.getCompanyID());
+        }catch(NullPointerException e){
+            System.err.println("you need to select a company");
+        }
         title = "Company Detail";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company detail.fxml"));
         fxmlLoading(fxmlLoader,title);

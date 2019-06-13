@@ -55,6 +55,14 @@ public class CompanyDetailController  extends Controller implements Initializabl
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
+
+
+    public void goToMatrixHandle(ActionEvent actionEvent) throws IOException{
+        title = "Education Matrix";
+        fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/matrix.fxml"));
+        fxmlLoading(fxmlLoader,title);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
@@ -63,4 +71,5 @@ public class CompanyDetailController  extends Controller implements Initializabl
         CompanyInfoArea.setText(detailView.getName() + "\n" + detailView.getFieldOfExpertise() + "\n" + detailView.getCity() + "\n" + detailView.getStreet() + "\n" + detailView.getZipcode() + "\n" + detailView.getWebpage() + "\n" + detailView.getCvr() + "\n" + detailView.getpNum() + "\n" + detailView.getInfo());
 
     }
+
 }

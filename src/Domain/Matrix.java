@@ -1,5 +1,7 @@
 package Domain;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.util.ArrayList;
 
 public class Matrix {
@@ -7,8 +9,12 @@ private Integer AMU;
 private String name;
 private String provider;
 private String city;
-private ArrayList<String> names;
-private ArrayList<String> priorities;
+private static ArrayList<String> names;
+private static ArrayList<String> priorities;
+private static SimpleStringProperty Priority;
+private static int Index;
+
+
 
     public Matrix(Integer AMU, String name, String provider, String city, ArrayList<String> names, ArrayList<String> priorities){
         this.AMU = AMU;
@@ -51,7 +57,7 @@ private ArrayList<String> priorities;
         this.city = city;
     }
 
-    public ArrayList<String> getNames() {
+    public static ArrayList<String> getNames() {
         return names;
     }
 
@@ -59,11 +65,13 @@ private ArrayList<String> priorities;
         this.names = names;
     }
 
-    public ArrayList<String> getPriorities() {
+    public static ArrayList<String> getPriorities() {
         return priorities;
     }
 
     public void setPriorities(ArrayList<String> priorities) {
         this.priorities = priorities;
     }
+
+
 }
