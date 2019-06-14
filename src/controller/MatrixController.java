@@ -13,7 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,6 +27,7 @@ public class MatrixController  extends Controller implements Initializable {
     String title;
     Integer CompanyID;
     String username;
+    ArrayList<Matrix> store;
     @FXML
     TableView<Matrix> matrixTableView = new TableView();
     TableColumn<Matrix,String> colAMU = new TableColumn<>();
@@ -42,7 +43,38 @@ public class MatrixController  extends Controller implements Initializable {
     }
 
     public void matrixExportHandle(ActionEvent actionEvent) {
-        saveCSV();
+        try {
+            writeExcel();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Something went wrong");
+        }
+    }
+    public void writeExcel() throws Exception {
+        Writer writer = null;
+        try {
+            File file = new File("./matrix.csv");
+            //C:\Users\InLeo\IdeaProjects\SmartAcademy2\matrix.csv
+            writer = new BufferedWriter(new FileWriter(file));
+            for (Matrix matrix : store) {
+
+                String text = matrix.getAMU() + "," + matrix.getName() + "," + matrix.getProvider() + "," + matrix.getCity() + ",";
+
+                for (int i = 0; i < matrix.getNames().size(); i++) {
+                    text+=matrix.getPriorities().get(i) + ",";
+                }
+                text = text.substring(0,text.length()-1) + "\n";
+                writer.write(text);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        finally {
+
+            writer.flush();
+            writer.close();
+        }
     }
 
     public void matrixPrintHandle(ActionEvent actionEvent) {
@@ -52,6 +84,7 @@ public class MatrixController  extends Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
         CompanyID = KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
+        store = (DBFacade.retrieveMatrix(CompanyID));
         ObservableList<Matrix> matrixList = FXCollections.observableList(DBFacade.retrieveMatrix(CompanyID));
         ArrayList<Matrix> matrix = new ArrayList<>();
         initializeMatrix(matrixList,matrix);
@@ -77,7 +110,6 @@ public class MatrixController  extends Controller implements Initializable {
         for (int i = 0; i <= matrixList.get(0).getNames().size()-1; i++) {
             nameColumn.add(new TableColumn<>());
             nameColumn.get(i+3).setText(matrixList.get(0).getNames().get(i));
-            System.out.println(matrixList.get(0).getNames().get(i));
         }
 
 
@@ -90,8 +122,6 @@ public class MatrixController  extends Controller implements Initializable {
                     final String get = object.getPriorities().get(k);
 
                     nameColumn.get(m).setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getPriorities().get(KK)));
-
-                    System.out.println(get);
                 }
             }
         }
