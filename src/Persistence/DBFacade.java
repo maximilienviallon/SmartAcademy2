@@ -7,6 +7,13 @@ import java.util.ArrayList;
 
 public class DBFacade {
 
+    /**
+     * Method that takes username and password and runs them through database to see if they match the records
+     * @param doneLogin
+     * @param loginIDTextField
+     * @param logInPasswordID
+     * @return
+     */
     public static boolean checkLogin(boolean doneLogin, String loginIDTextField, String logInPasswordID) {
 
         try {
@@ -34,6 +41,11 @@ public class DBFacade {
         return false;
     }
 
+    /**
+     * Method that retrieves lest of permissions from DB for given user
+     * @param userName
+     * @return
+     */
     public static String checkPermission(String userName) {
         DB.selectSQL("select fldPermission from tblPermissions where fldPermissionID in (select fldPermissionID from tblUserPermissionBridge where fldUsername = '" + userName + "')");
         String permissionTier = DB.getData();
@@ -41,7 +53,12 @@ public class DBFacade {
         return permissionTier;
     }
 
-    public static Integer[] checkYourPrivilege(String userName) {
+    /**
+     * Method that retrieves IDs of companies that given user has access to from the DB
+     * @param userName
+     * @return
+     */
+    public static Integer[] checkCompanyPermissions(String userName) {
         String query = ("select fldCompanyID from tblPermissions where fldPermissionID in (select fldPermissionID from tblUserPermissionBridge where fldUsername = '" + userName + "')");
         ArrayList<Object[]> privilegeQuery = DB.select(query);
         Integer[] companyPrivileges = new Integer[privilegeQuery.size()];
@@ -53,6 +70,11 @@ public class DBFacade {
         return companyPrivileges;
     }
 
+    /**
+     * Method that retrieves attributes of companies from given list for display in the overview from the DB
+     * @param companyList
+     * @return
+     */
     public static ArrayList<Companies> retrieveCompanies(Integer[] companyList) {
         ArrayList<Companies> retrievedCompanies = new ArrayList<>();
 
@@ -87,6 +109,10 @@ public class DBFacade {
 
     }
 
+    /**
+     * Method that retrieves attributes of apprentices for display in the overview from the DB
+     * @return
+     */
     public static ArrayList<Apprentices> retrieveApprentices() {
         ArrayList<Apprentices> retrievedApprentices = new ArrayList<>();
 
@@ -116,6 +142,11 @@ public class DBFacade {
 
     }
 
+    /**
+     * Method that retrieves attributes of apprentices based on company for display in the overview from the DB
+     * @param selectedCompany
+     * @return
+     */
     public static ArrayList<Apprentices> retrieveApprentices(int selectedCompany) {
         ArrayList<Apprentices> retrievedApprentices = new ArrayList<>();
 
@@ -145,6 +176,11 @@ public class DBFacade {
 
     }
 
+    /**
+     * Method that retrieves attributes of contacts from given company for display in the overview from the DB
+     * @param selectedCompany
+     * @return
+     */
     public static ArrayList<Contacts> retrieveContacts(Integer selectedCompany) {
         ArrayList<Contacts> retrievedContacts = new ArrayList<>();
 
@@ -173,6 +209,10 @@ public class DBFacade {
 
     }
 
+    /**
+     * Method that retrieves attributes of contacts for display in the overview from the DB
+     * @return
+     */
     public static ArrayList<Contacts> retrieveContacts() {
         ArrayList<Contacts> retrievedContacts = new ArrayList<>();
 
@@ -201,6 +241,10 @@ public class DBFacade {
 
     }
 
+    /**
+     * Method that retrieves attributes of educations for display in the overview from the DB
+     * @return
+     */
     public static ArrayList<Educations> retrieveEducations() {
         ArrayList<Educations> retrievedEducations = new ArrayList<>();
 
@@ -232,6 +276,10 @@ public class DBFacade {
 
     }
 
+    /**
+     * Method that retrieves attributes of permissions for display in the overview from the DB
+     * @return
+     */
     public static ArrayList<Permissions> retrievePermissions() {
         ArrayList<Permissions> retrievedPermissions = new ArrayList<>();
 
@@ -259,33 +307,10 @@ public class DBFacade {
 
     }
 
-    public static ArrayList<Permissions> retrievePermissions(int selectedCompany) {
-        ArrayList<Permissions> retrievedPermissions = new ArrayList<>();
-
-        try {
-            String query = ("select * from tblPermissions where fldCompanyID = " + selectedCompany);
-            ArrayList<Object[]> permissionsQuery = DB.select(query);
-
-            for (Object[] objects : permissionsQuery) {
-                String permission = (String) objects[0];
-                Integer permissionID = (Integer) objects[1];
-                Integer companyID = (Integer) objects[2];
-
-
-                Permissions permissions = new Permissions(permission, permissionID, companyID);
-
-                retrievedPermissions.add(permissions);
-            }
-
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-
-
-        }
-        return retrievedPermissions;
-
-    }
-
+    /**
+     * Method that retrieves attributes of users for display in the overview from the DB
+     * @return
+     */
     public static ArrayList<Users> retrieveUsers() {
         ArrayList<Users> retrievedUsers = new ArrayList<>();
 
@@ -314,6 +339,11 @@ public class DBFacade {
 
     }
 
+    /**
+     * Method that retrieves comprehensive information about selected company for the detail screen from the DB
+     * @param requestedID
+     * @return
+     */
     public static ArrayList<Companies> retrieveCompanyDetail(int requestedID) {
         ArrayList<Companies> retrievedCompanies = new ArrayList<>();
 
@@ -346,6 +376,11 @@ public class DBFacade {
 
     }
 
+    /**
+     * Method that retrieves comprehensive information about selected apprentice for the detail screen from the DB
+     * @param selectedApprentice
+     * @return
+     */
     public static ArrayList<Apprentices> retrieveApprenticeDetail(int selectedApprentice) {
         ArrayList<Apprentices> retrievedApprentices = new ArrayList<>();
 
@@ -377,6 +412,11 @@ public class DBFacade {
 
     }
 
+    /**
+     * Method that retrieves comprehensive information about selected contact for the detail screen from the DB
+     * @param selectedContact
+     * @return
+     */
     public static ArrayList<Contacts> retrieveContactDetail(Integer selectedContact) {
         ArrayList<Contacts> retrievedContacts = new ArrayList<>();
 
@@ -407,6 +447,11 @@ public class DBFacade {
 
     }
 
+    /**
+     * Method that retrieves comprehensive information about selected education for the detail screen from the DB
+     * @param selectedEducation
+     * @return
+     */
     public static ArrayList<Educations> retrieveEducationDetail(Integer selectedEducation) {
         ArrayList<Educations> retrievedEducations = new ArrayList<>();
 
@@ -439,6 +484,11 @@ public class DBFacade {
 
     }
 
+    /**
+     * Method that retrieves comprehensive information about a selected user for the detail screen from the DB
+     * @param selectedPermissions
+     * @return
+     */
     public static ArrayList<Users> retrieveUsersByPermissions(Integer selectedPermissions) {
         ArrayList<Users> retrievedUsers = new ArrayList<>();
 
@@ -466,6 +516,11 @@ public class DBFacade {
         return retrievedUsers;
     }
 
+    /**
+     * Method that retrieves combined values together showing list of all educations which are placed upon employees of given company and their priorities
+     * @param selectedCompany
+     * @return
+     */
     public static ArrayList<Matrix> retrieveMatrix(Integer selectedCompany) {
         ArrayList<Matrix> retrievedMatrix = new ArrayList<>();
         ArrayList<String> names = new ArrayList<>();
@@ -505,6 +560,19 @@ public class DBFacade {
         return retrievedMatrix;
     }
 
+    /**
+     * Adds new company to the DB with given parameters and also creates connected permissions and possibly the zipcode-city record if needed
+     * @param name
+     * @param fieldOfExpertise
+     * @param zipcode
+     * @param cvr
+     * @param pNum
+     * @param city
+     * @param webpage
+     * @param street
+     * @param info
+     * @return
+     */
     public static Integer insertCompany(String name, String fieldOfExpertise, String zipcode, String cvr, String pNum, String city, String webpage, String street, String info) {
         Integer returnedID = 1;
         String query = ("insert into tblCompanies values ('" + name + "','" + fieldOfExpertise + "', '" + zipcode + "', '" + cvr + "', '" + pNum + "', '" + webpage + "', '" + street + "', '" + info + "');");

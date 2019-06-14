@@ -35,6 +35,11 @@ public class PermissionDetailController  extends Controller implements Initializ
     String username;
     Integer permissionID;
 
+    /**
+     *Method that transports user to the Permission Overview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void backToPermissionOverviewHandle(ActionEvent actionEvent) throws IOException {
         title = "Permission Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/permission Overview.fxml"));
@@ -42,14 +47,27 @@ public class PermissionDetailController  extends Controller implements Initializ
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     *Method was supposed to transport data formatted in the text area into the new .csv file
+     * @param actionEvent
+     */
     public void PermisionExportHandle(ActionEvent actionEvent) {
         saveCSV();
     }
 
+    /**
+     *Method that was supposed to print the graphic content of the window to the newly created .png file
+     * @param actionEvent
+     */
     public void PermisionPrintHandle(ActionEvent actionEvent) {
         printScreen();
     }
 
+    /**
+     *Method that transports user to the
+     * @param actionEvent
+     * @throws IOException
+     */
     public void PermisionRemoveHandle(ActionEvent actionEvent)throws IOException {
         title = "permission Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/permission Overview.fxml"));
@@ -57,6 +75,11 @@ public class PermissionDetailController  extends Controller implements Initializ
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     *Initialize loads the shared parameters that are relevant to the current screen and populates the text areawith data from DB
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
