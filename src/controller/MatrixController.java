@@ -102,16 +102,4 @@ public class MatrixController  extends Controller implements Initializable {
         }
 
 
-   /* public String getGetProperties() {
-        return getProperties.get();
-    }
-
-    public SimpleStringProperty getPropertiesProperty() {
-        return getProperties;
-    }
-
-    public void setGetProperties(String getProperties) {
-        this.getProperties.set(getProperties);
-    }*/
-
 }
