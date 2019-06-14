@@ -16,6 +16,11 @@ public class UserCreationController  extends Controller implements Initializable
     FXMLLoader fxmlLoader;
     String username;
 
+    /**
+     * Method that transports user to the detail of the newly created user
+     * @param actionEvent
+     * @throws IOException
+     */
     public void userCreationSaveHandle(ActionEvent actionEvent) throws IOException {
         title = "User Detail";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/user detail.fxml"));
@@ -23,21 +28,33 @@ public class UserCreationController  extends Controller implements Initializable
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * Method that transports user to the overview, not saving any changes
+     * @param actionEvent
+     * @throws IOException
+     */
     public void userCreationCancelHandle(ActionEvent actionEvent) throws IOException{
-        title = "Employee Overview";
+        title = "User Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/user overview.fxml"));
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * method for allowing user to pick which apprentice is any is the user supposed to be linked to
+     * @param actionEvent
+     */
     public void userCreationPickApprenticeHandle(ActionEvent actionEvent) {
     }
 
+    /**
+     * method for allowing user to pick which contact is any is the user supposed to be linked to
+     * @param actionEvent
+     */
     public void userCreationPickContactHandle(ActionEvent actionEvent) {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
          username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
-        System.out.println(username);
     }
 }

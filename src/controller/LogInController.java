@@ -23,39 +23,35 @@ public class LogInController extends Controller {
     String title;
 
 
-
-
-
-
+    /**
+     * Method that takes the username and password entered into text fields and sends them to the DB for checking then sends you to your permissions appropriate starting screen
+     * sadly there was no time left to make the buttons user should not have permission to press invisible and disabled
+     * @param actionEvent
+     * @throws IOException
+     */
     public void logInButtonHandle(ActionEvent actionEvent) throws IOException {
         KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().setUserName(loginIDTextField.getText());
         if (DBFacade.checkLogin(true, loginIDTextField.getText(), logInPasswordID.getText())) {
-            System.out.println("new window");
             String permissionValue = DBFacade.checkPermission(loginIDTextField.getText());
             FXMLLoader fxmlLoader;
             switch(permissionValue) {
                 case "SmartAdmin":
-                    System.out.println("permission identified... \nSmartAdmin, directing you to company overview");
                     title = "Company Overview";
                     fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
                     break;
                 case "Administrator":
-                    System.out.println("permission identified... \nAdmin, directing you to company overview");
                     title = "Company Overview";
                     fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
                     break;
                 case "HR":
-                    System.out.println("permission identified... \nHuman resources directing you to apprentice overview");
                     title = "Apprentice Overview";
                     fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice overview.fxml"));
                     break;
                 case "Interviewer":
-                    System.out.println("permission identified... \nInterviewer directing you to company overview");
                     title = "Company Overview";
                     fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
                     break;
                 default:
-                    System.out.println("permission identified... \nGuest, directing you to logged user detail");
                     title = "Logged User Detail Overview";
                     fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/logged user detail.fxml"));
                     break;
@@ -63,7 +59,6 @@ public class LogInController extends Controller {
             fxmlLoading(fxmlLoader,title);
             ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         }
-        else System.out.println("no window");
 
 }
 

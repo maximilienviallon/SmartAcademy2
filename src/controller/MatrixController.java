@@ -33,6 +33,11 @@ public class MatrixController  extends Controller implements Initializable {
     TableColumn<Matrix, String> colEduTitle = new TableColumn<>();
     TableColumn<Matrix, String> colProvider = new TableColumn<>();
 
+    /**
+     * Method that transports user to the Company Overview
+     * @param actionEvent
+     * @throws IOException
+     */
     //SimpleStringProperty getProperties;
     public void matrixBackToOverviewHandle(ActionEvent actionEvent) throws IOException {
         title = "Company Overview";
@@ -41,14 +46,21 @@ public class MatrixController  extends Controller implements Initializable {
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     *Method was supposed to transport data formatted in the text area into the new .csv file
+     * @param actionEvent
+     */
     public void matrixExportHandle(ActionEvent actionEvent) {
         try {
             writeExcel();
         } catch (Exception e) {
-            System.out.println("Something went wrong");
         }
     }
 
+    /**
+     *Method that if given perfect circumstance will actually save the values inside of a .csv file, although it wont create the file and will mess up th eexport if the exported text includes commas
+     * @throws Exception
+     */
     public void writeExcel() throws Exception {
         Writer writer = null;
         try {
@@ -74,10 +86,19 @@ public class MatrixController  extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Method that was supposed to print the graphic content of the window to the newly created .png file
+     * @param actionEvent
+     */
     public void matrixPrintHandle(ActionEvent actionEvent) {
         printScreen();
     }
 
+    /**
+     * Initialize loads the shared parameters that are relevant to the current screen and populates the tableview with data from DB
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
@@ -88,6 +109,12 @@ public class MatrixController  extends Controller implements Initializable {
         initializeMatrix(matrixList, matrix);
     }
 
+    /**
+     * extension of initialize
+     * @param matrixList
+     * @param matrix
+     * @return
+     */
     public TableView<Matrix> initializeMatrix(ObservableList<Matrix> matrixList, ArrayList<Matrix> matrix) {
 
         ArrayList<TableColumn<Matrix, String>> nameColumn = new ArrayList<>();
