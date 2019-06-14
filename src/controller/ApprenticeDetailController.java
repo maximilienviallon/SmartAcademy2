@@ -28,7 +28,7 @@ public class ApprenticeDetailController extends Controller implements Initializa
     Apprentices view;
 
     /**
-     * this button simply takes you back to the apprentice overview handle
+     * this method simply takes you back to the apprentice overview handle
      * @param actionEvent
      * @throws IOException
      */
@@ -40,7 +40,7 @@ public class ApprenticeDetailController extends Controller implements Initializa
     }
 
     /**
-     * this button allows you to export the apprentice details into a .csv file
+     * this method allows you to export the apprentice details into a .csv file
      * @param actionEvent
      */
     public void ApprenticeExportHandle(ActionEvent actionEvent) {
@@ -48,7 +48,7 @@ public class ApprenticeDetailController extends Controller implements Initializa
     }
 
     /**
-     * this button allows you to print the apprentice detail screen
+     * this method allows you to print the apprentice detail screen
      * @param actionEvent
      */
     public void ApprenticePrintHandle(ActionEvent actionEvent) {
@@ -56,7 +56,7 @@ public class ApprenticeDetailController extends Controller implements Initializa
     }
 
     /**
-     * this button takes you to the apprentice modification screen
+     * this method takes you to the apprentice modification screen
      * @param actionEvent
      * @throws IOException
      */
@@ -68,7 +68,7 @@ public class ApprenticeDetailController extends Controller implements Initializa
     }
 
     /**
-     * this button allows you to remove an apprentice and then takes you back to the apprentice overview
+     * this method allows you to remove an apprentice and then takes you back to the apprentice overview
      * @param actionEvent
      * @throws IOException
      */
@@ -78,7 +78,12 @@ public class ApprenticeDetailController extends Controller implements Initializa
         fxmlLoading(fxmlLoader, title);
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }
-
+    /**
+     * this method initialiizes the FXML and get's a username which is useful for a lot of the
+     * db related functions as an identification
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();

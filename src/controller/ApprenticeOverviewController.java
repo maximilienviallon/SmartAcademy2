@@ -20,7 +20,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
+/**
+ * this gives an overview of all the apprentices depending on the company ID that you get
+ */
 public class ApprenticeOverviewController  extends Controller implements Initializable {
     @FXML
     TableView<Apprentices> AOTableView = new TableView();
@@ -43,6 +45,11 @@ public class ApprenticeOverviewController  extends Controller implements Initial
     Integer ApprenticeID;
     String username;
 
+    /**
+     * this method loads the logged user detail
+     * @param actionEvent
+     * @throws IOException
+     */
     public void AOSetButHandle(ActionEvent actionEvent) throws IOException {
         title = "Logged User Detail Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/logged user detail.fxml"));
@@ -50,6 +57,11 @@ public class ApprenticeOverviewController  extends Controller implements Initial
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method sends you to education overview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void AOEduOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Education Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/education overview.fxml"));
@@ -57,6 +69,11 @@ public class ApprenticeOverviewController  extends Controller implements Initial
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method sends you to user overview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void AOUseOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "User Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/user overview.fxml"));
@@ -64,6 +81,11 @@ public class ApprenticeOverviewController  extends Controller implements Initial
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method sends you to company overview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void AOComOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Company Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
@@ -71,14 +93,26 @@ public class ApprenticeOverviewController  extends Controller implements Initial
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method allows you to export in csv and inherits the super Controller method to export
+     * @param actionEvent
+     */
     public void AOExpCsvButHandle(ActionEvent actionEvent) {
         saveCSV();
     }
-
+    /**
+     * this method allows you to print and inherits the super Controller method to print
+     * @param actionEvent
+     */
     public void AOPrintButHandle(ActionEvent actionEvent) {
         printScreen();
     }
 
+    /**
+     * this method will send you to apprentice creation granted that you have the right permissions
+     * @param actionEvent
+     * @throws IOException
+     */
     public void AOCreaNewButHandle(ActionEvent actionEvent) throws IOException{
         title = "Apprentice Creation";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice creation.fxml"));
@@ -86,6 +120,11 @@ public class ApprenticeOverviewController  extends Controller implements Initial
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method sends you to apprenitce detail
+     * @param actionEvent
+     * @throws IOException
+     */
     public void AOSelectButHandle(ActionEvent actionEvent) throws IOException{
         Apprentices apprentices = AOTableView.getSelectionModel().getSelectedItem();
         KeeperOfKeys.getLoggedUserNameInstance().currentApprenticeID().setsApprenticeID(apprentices.getApprenticeID());
@@ -104,7 +143,15 @@ public class ApprenticeOverviewController  extends Controller implements Initial
     public void setsApprenticeID(Integer apprenticeID) {
         ApprenticeID = apprenticeID;
     }
-
+    /**
+     * this method initialiizes the FXML and get's a username which is useful for a lot of the
+     * db related functions as an identification
+     *
+     * it also initializes the table view as well as an implementation for the search function of the table view
+     * utilising fileteredList as well as lambda expressions
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();

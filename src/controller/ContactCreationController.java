@@ -9,11 +9,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * this class allows you to create contacts for the company you come from
+ */
 public class ContactCreationController  extends Controller implements Initializable {
 
     String title;
     FXMLLoader fxmlLoader;
     String username;
+
+
     public void contactCreationSaveHandle(ActionEvent actionEvent) throws IOException {
         title = "Contact Detail";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/contact detail.fxml"));
