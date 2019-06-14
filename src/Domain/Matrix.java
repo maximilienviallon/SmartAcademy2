@@ -10,7 +10,17 @@ private String name;
 private String provider;
 private String city;
 private  ArrayList<String> names;
-private ArrayList<String> priorities;
+private static ArrayList<String> priorities;
+
+    public String getPrioritiesTest() {
+        return prioritiesTest;
+    }
+
+    public void setPrioritiesTest(String prioritiesTest) {
+        this.prioritiesTest = prioritiesTest;
+    }
+
+    private String prioritiesTest;
 
 
     public Matrix(Integer AMU, String name, String provider, String city, ArrayList<String> names, ArrayList<String> priorities){
@@ -62,7 +72,7 @@ private ArrayList<String> priorities;
         this.names = names;
     }
 
-    public ArrayList<String> getPriorities() {
+    public  static ArrayList<String> getPriorities() {
         return priorities;
     }
 

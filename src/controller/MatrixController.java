@@ -15,9 +15,8 @@ import javafx.scene.Node;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.ResourceBundle;
+import java.util.*;
+
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -52,9 +51,9 @@ public class MatrixController  extends Controller implements Initializable {
         CompanyID = KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
         ObservableList<Matrix> matrixList = FXCollections.observableList(DBFacade.retrieveMatrix(CompanyID));
         ArrayList<Matrix> matrix = new ArrayList<>();
-        initializeMatrix(matrixList,matrix);
+        initializeMatrix(matrixList);
     }
-    public TableView<Matrix> initializeMatrix(ObservableList<Matrix> matrixList,ArrayList<Matrix> matrix) {
+    public TableView<Matrix> initializeMatrix(ObservableList<Matrix> matrixList) {
 
         ArrayList<TableColumn<Matrix, String>> nameColumn = new ArrayList<>();
         matrixTableView.setItems(matrixList);
@@ -77,23 +76,39 @@ public class MatrixController  extends Controller implements Initializable {
             nameColumn.add(new TableColumn<>());
             nameColumn.get(i+3).setText(matrixList.get(0).getNames().get(i));
             System.out.println(matrixList.get(0).getNames().get(i));
+            System.out.println("this: " + (matrixList.get(0).getNames().size()-1));
+            System.out.println("Somerhing: " + matrixList.get(0).getNames().get(i));
+        }
+        ArrayList<String> list=new ArrayList<String>();
+        for (int i = 0; i < Matrix.getPriorities().size(); i++) {
+
         }
 
-
-
-
+int potato = 3;
+        for (int i = 0; i < nameColumn.size()-3; i++) {
+            final int I = i;
+            //matrixList.get(0).getNames().get(i).nameColumn.get(potato++);
+            Set<String> set = new LinkedHashSet<>(matrixList.get(0).getNames());
+            //set.addAll(nameColumn.get(potato++));
+           nameColumn.get(potato++).setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getPriorities().get(I)));
+            System.out.println(Matrix.getPriorities().get(I));
+        }
+/*
             for (Matrix object : matrixList) {
                 for (int m = 3; m <= nameColumn.size()-1; m++) {
                 for (int k = 0; k <= object.getPriorities().size() - 1; k++) {
+                    final int KK = k;
                     final String get = object.getPriorities().get(k);
-                    nameColumn.get(m).setCellValueFactory(param -> new SimpleStringProperty(get));
-                    System.out.println(get);
+                    object.setPrioritiesTest(object.getPriorities().get(KK));
+                    nameColumn.get(m).setCellValueFactory(param -> new SimpleStringProperty(object.getPrioritiesTest()));
+                    System.out.println(object.getPrioritiesTest());
+                    System.out.println(object.getPriorities().get(KK));
 
                 }
 
             }
         }
-
+*/
 
             matrixTableView.getColumns().addAll(nameColumn);
             return matrixTableView;
