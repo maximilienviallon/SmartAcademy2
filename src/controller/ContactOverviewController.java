@@ -22,6 +22,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Contact overview controller class, used for checking table view of contacts amongst others.
+ */
 public class ContactOverviewController  extends Controller implements Initializable {
 
     @FXML
@@ -46,6 +49,11 @@ public class ContactOverviewController  extends Controller implements Initializa
     Integer contactID;
     private Integer CompanyID;
 
+    /**
+     * this method is handling the "Settings" button handler, leads to settings.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ConOSetButHandle(ActionEvent actionEvent) throws IOException {
         title = "Logged User Detail Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/logged user detail.fxml"));
@@ -53,6 +61,11 @@ public class ContactOverviewController  extends Controller implements Initializa
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method is handling the "Application overview"  button. leads back to before mentioned.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ConOAppOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice overview.fxml"));
@@ -60,6 +73,11 @@ public class ContactOverviewController  extends Controller implements Initializa
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method is handling the "User overview" button. leads to user overview.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ConOUseOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "User Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/user overview.fxml"));
@@ -67,6 +85,11 @@ public class ContactOverviewController  extends Controller implements Initializa
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method is handling the "Company Overview" button, leads to company overview.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ConOComOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Company Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
@@ -74,6 +97,11 @@ public class ContactOverviewController  extends Controller implements Initializa
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method is handling the "Education overview" button, leads to last mentioned.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ConOEduOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Education Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/education overview.fxml"));
@@ -81,14 +109,27 @@ public class ContactOverviewController  extends Controller implements Initializa
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method is handling the "Export csv." button.
+     * @param actionEvent
+     */
     public void ConOExpCsvButHandle(ActionEvent actionEvent) {
         saveCSV();
     }
 
+    /**
+     * this method is handling the "print" button.
+     * @param actionEvent
+     */
     public void ConOPrintButHandle(ActionEvent actionEvent) {
         printScreen();
     }
 
+    /**
+     * this method is handling the "Create new" button. To create new Contact.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ConOCreaNewButHandle(ActionEvent actionEvent) throws IOException{
         title = "Contact Creation";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/contact creation.fxml"));
@@ -96,6 +137,11 @@ public class ContactOverviewController  extends Controller implements Initializa
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method is handling the "Select" button. leads to Contact detail of selected contact, if selected
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ConOSelectButHandle(ActionEvent actionEvent) throws IOException{
         contacts= ConOTableView.getSelectionModel().getSelectedItem();
         KeeperOfKeys.getLoggedUserNameInstance().currentContactID().setsContactID(contacts.getContactID());
@@ -104,11 +150,16 @@ public class ContactOverviewController  extends Controller implements Initializa
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
+
+    /**
+     * this inisializes columns, and also sets up a filter search for values.
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
         CompanyID = KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
-        System.out.println(username);
         ObservableList<Contacts> contactList = FXCollections.observableArrayList(DBFacade.retrieveContacts());
 
         ConOTableView.setItems(contactList);

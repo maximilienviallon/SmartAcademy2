@@ -44,6 +44,11 @@ public class UserOverviewController  extends Controller implements Initializable
     String UserName;
     String username;
 
+    /**
+     * Method that transports user to the Logged User Detail Overview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void UOSetButHandle(ActionEvent actionEvent) throws IOException {
         title = "Logged User Detail Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/logged user detail.fxml"));
@@ -51,6 +56,11 @@ public class UserOverviewController  extends Controller implements Initializable
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * Method that transports user to the Education Overview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void UOEduOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Education Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/education overview.fxml"));
@@ -58,6 +68,11 @@ public class UserOverviewController  extends Controller implements Initializable
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * Method that transports user to the Apprentice Overview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void UOAppOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice overview.fxml"));
@@ -65,6 +80,11 @@ public class UserOverviewController  extends Controller implements Initializable
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     *Method that transports user to the Company Overview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void UOComOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Company Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
@@ -72,14 +92,27 @@ public class UserOverviewController  extends Controller implements Initializable
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     *
+     * @param actionEvent
+     */
     public void UOExpCsvButHandle(ActionEvent actionEvent) {
         saveCSV();
     }
 
+    /**
+     *
+     * @param actionEvent
+     */
     public void UOPrintButHandle(ActionEvent actionEvent) {
         printScreen();
     }
 
+    /**
+     * Method that transports user to the User Creation
+     * @param actionEvent
+     * @throws IOException
+     */
     public void UOCreaNewButHandle(ActionEvent actionEvent) throws IOException{
         title = "User Creation";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/user creation.fxml"));
@@ -87,6 +120,11 @@ public class UserOverviewController  extends Controller implements Initializable
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * Method that takes the ID of selected row and displays its detail
+     * @param actionEvent
+     * @throws IOException
+     */
     public void UOSelectButHandle(ActionEvent actionEvent) throws IOException{
         Users user = UOTableView.getSelectionModel().getSelectedItem();
         KeeperOfKeys.getLoggedUserNameInstance().currentUserName().setsUserName(user.getUsername());
@@ -96,19 +134,34 @@ public class UserOverviewController  extends Controller implements Initializable
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * Planned but not deployed feature, should have logged actions undertaken by userID, this method was transport to the screen to view the log in app
+     * @param actionEvent
+     * @throws IOException
+     */
     public void UOViewLogButHandle(ActionEvent actionEvent) throws IOException{
     }
 
+    /**
+     * Method that transports user to the Permission Overview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void UOPerOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Permission Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/permission overview.fxml"));
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
+
+    /**
+     *Initialize loads the shared parameters that are relevant to the current screen and populates the tableview with data from DB
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username= KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
-        System.out.println(username);
 
         ObservableList<Users> userList = FXCollections.observableArrayList(DBFacade.retrieveUsers());
         UOTableView.setItems(userList);

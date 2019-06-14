@@ -40,6 +40,11 @@ public class PermissionOverviewController  extends Controller implements Initial
     Integer permissionID;
     String username;
 
+    /**
+     *Method that transports user to the Logged User Detail Overview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void POSetButHandle(ActionEvent actionEvent) throws IOException {
         title = "Logged User Detail Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/logged user detail.fxml"));
@@ -47,6 +52,11 @@ public class PermissionOverviewController  extends Controller implements Initial
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     *Method that transports user to the Apprentice Overview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void POEduOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/education overview.fxml"));
@@ -54,6 +64,11 @@ public class PermissionOverviewController  extends Controller implements Initial
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     *Method that transports user to the Apprentice Overview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void POAppOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice overview.fxml"));
@@ -61,6 +76,11 @@ public class PermissionOverviewController  extends Controller implements Initial
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     *Method that transports user to the User Overview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void POUseOverButHandle(ActionEvent actionEvent)throws IOException{
         title = "User Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/user overview.fxml"));
@@ -68,6 +88,11 @@ public class PermissionOverviewController  extends Controller implements Initial
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     *Method that transports user to the Company Overview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void POComOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Company Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
@@ -75,14 +100,27 @@ public class PermissionOverviewController  extends Controller implements Initial
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     *Method was supposed to transport data formatted in the text area into the new .csv file
+     * @param actionEvent
+     */
     public void POExpCsvButHandle(ActionEvent actionEvent) {
         saveCSV();
     }
 
+    /**
+     *Method that was supposed to print the graphic content of the window to the newly created .png file
+     * @param actionEvent
+     */
     public void POPrintButHandle(ActionEvent actionEvent) {
         printScreen();
     }
 
+    /**
+     *Method that transports user to the Permission Detail
+     * @param actionEvent
+     * @throws IOException
+     */
     public void POSelectButHandle(ActionEvent actionEvent) throws IOException{
         Permissions permissions = POTableView.getSelectionModel().getSelectedItem();
         KeeperOfKeys.getLoggedUserNameInstance().currentPermissionID().setsPermissionID(permissions.getPermissionID());
@@ -91,10 +129,15 @@ public class PermissionOverviewController  extends Controller implements Initial
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
+
+    /**
+     *Initialize loads the shared parameters that are relevant to the current screen and populates the tableview with data from DB, also initializes the search function
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username= KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
-        System.out.println(username);
 
         ObservableList<Permissions> permissionList = FXCollections.observableArrayList(DBFacade.retrievePermissions());
         POTableView.setItems(permissionList);

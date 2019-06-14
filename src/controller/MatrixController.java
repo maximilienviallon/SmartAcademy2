@@ -13,11 +13,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.ResourceBundle;
+import java.util.*;
+
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -27,36 +26,96 @@ public class MatrixController  extends Controller implements Initializable {
     String title;
     Integer CompanyID;
     String username;
+    ArrayList<Matrix> store;
     @FXML
     TableView<Matrix> matrixTableView = new TableView();
-    TableColumn<Matrix,String> colAMU = new TableColumn<>();
-    TableColumn<Matrix,String> colEduTitle = new TableColumn<>();
-    TableColumn<Matrix,String> colProvider = new TableColumn<>();
+    TableColumn<Matrix, String> colAMU = new TableColumn<>();
+    TableColumn<Matrix, String> colEduTitle = new TableColumn<>();
+    TableColumn<Matrix, String> colProvider = new TableColumn<>();
 
-   //SimpleStringProperty getProperties;
+    /**
+     * Method that transports user to the Company Overview
+     * @param actionEvent
+     * @throws IOException
+     */
+    //SimpleStringProperty getProperties;
     public void matrixBackToOverviewHandle(ActionEvent actionEvent) throws IOException {
         title = "Company Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
-        fxmlLoading(fxmlLoader,title);
-        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        fxmlLoading(fxmlLoader, title);
+        ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     *Method was supposed to transport data formatted in the text area into the new .csv file
+     * @param actionEvent
+     */
     public void matrixExportHandle(ActionEvent actionEvent) {
-        saveCSV();
+        try {
+            writeExcel();
+        } catch (Exception e) {
+        }
     }
 
+    /**
+     *Method that if given perfect circumstance will actually save the values inside of a .csv file, although it wont create the file and will mess up th eexport if the exported text includes commas
+     * @throws Exception
+     */
+    public void writeExcel() throws Exception {
+        Writer writer = null;
+        try {
+            File file = new File("./matrix.csv");
+            //C:\Users\InLeo\IdeaProjects\SmartAcademy2\matrix.csv
+            writer = new BufferedWriter(new FileWriter(file));
+            for (Matrix matrix : store) {
+
+                String text = matrix.getAMU() + "," + matrix.getName() + "," + matrix.getProvider() + "," + matrix.getCity() + ",";
+
+                for (int i = 0; i < matrix.getNames().size(); i++) {
+                    text += matrix.getPriorities().get(i) + ",";
+                }
+                text = text.substring(0, text.length() - 1) + "\n";
+                writer.write(text);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+
+            writer.flush();
+            writer.close();
+        }
+    }
+
+    /**
+     * Method that was supposed to print the graphic content of the window to the newly created .png file
+     * @param actionEvent
+     */
     public void matrixPrintHandle(ActionEvent actionEvent) {
         printScreen();
     }
+
+    /**
+     * Initialize loads the shared parameters that are relevant to the current screen and populates the tableview with data from DB
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
         CompanyID = KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().getsCompanyID();
+        store = (DBFacade.retrieveMatrix(CompanyID));
         ObservableList<Matrix> matrixList = FXCollections.observableList(DBFacade.retrieveMatrix(CompanyID));
         ArrayList<Matrix> matrix = new ArrayList<>();
-        initializeMatrix(matrixList,matrix);
+        initializeMatrix(matrixList, matrix);
     }
-    public TableView<Matrix> initializeMatrix(ObservableList<Matrix> matrixList,ArrayList<Matrix> matrix) {
+
+    /**
+     * extension of initialize
+     * @param matrixList
+     * @param matrix
+     * @return
+     */
+    public TableView<Matrix> initializeMatrix(ObservableList<Matrix> matrixList, ArrayList<Matrix> matrix) {
 
         ArrayList<TableColumn<Matrix, String>> nameColumn = new ArrayList<>();
         matrixTableView.setItems(matrixList);
@@ -69,19 +128,16 @@ public class MatrixController  extends Controller implements Initializable {
         nameColumn.add(colProvider);
         colProvider.setText("Provider");
 
+
         for (Matrix object : matrixList) {
             colAMU.setCellValueFactory(param -> new SimpleStringProperty((param.getValue().getAMU().toString())));
             colEduTitle.setCellValueFactory(param -> new SimpleStringProperty((param.getValue().getName())));
             colProvider.setCellValueFactory(param -> new SimpleStringProperty((param.getValue().getProvider())));
         }
-        for (int i = 0; i <= matrixList.get(0).getNames().size()-1; i++) {
+        for (int i = 0; i <= matrixList.get(0).getNames().size() - 1; i++) {
             nameColumn.add(new TableColumn<>());
-            nameColumn.get(i+3).setText(matrixList.get(0).getNames().get(i));
-            System.out.println(matrixList.get(0).getNames().get(i));
+            nameColumn.get(i + 3).setText(matrixList.get(0).getNames().get(i));
         }
-
-
-
 
         for (Matrix object : matrixList) {
             for (int m = 3; m <= nameColumn.size() - 1; m++) {
@@ -90,16 +146,10 @@ public class MatrixController  extends Controller implements Initializable {
                     final String get = object.getPriorities().get(k);
 
                     nameColumn.get(m).setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getPriorities().get(KK)));
-
-                    System.out.println(get);
                 }
             }
         }
-
-
-            matrixTableView.getColumns().addAll(nameColumn);
-            return matrixTableView;
-        }
-
-
+        matrixTableView.getColumns().addAll(nameColumn);
+        return matrixTableView;
+    }
 }

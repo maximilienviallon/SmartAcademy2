@@ -72,6 +72,5 @@ public class ApprenticeModificationController  extends Controller implements Ini
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
-        System.out.println(username);
     }
 }
