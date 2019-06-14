@@ -29,9 +29,11 @@ public class ContactDetailController  extends Controller implements Initializabl
     }
 
     public void ContactExportHandle(ActionEvent actionEvent) {
+        saveCSV();
     }
 
     public void ContactPrintHandle(ActionEvent actionEvent) {
+        printScreen();
     }
 
     public void ContactEditHandle(ActionEvent actionEvent) throws IOException{

@@ -22,9 +22,11 @@ public class LogBrowserController  extends Controller implements Initializable {
     }
 
     public void logExportHandle(ActionEvent actionEvent) {
+        saveCSV();
     }
 
     public void logPrintHandle(ActionEvent actionEvent) {
+        printScreen();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

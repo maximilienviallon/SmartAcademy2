@@ -73,9 +73,11 @@ public class UserOverviewController  extends Controller implements Initializable
     }
 
     public void UOExpCsvButHandle(ActionEvent actionEvent) {
+        saveCSV();
     }
 
     public void UOPrintButHandle(ActionEvent actionEvent) {
+        printScreen();
     }
 
     public void UOCreaNewButHandle(ActionEvent actionEvent) throws IOException{

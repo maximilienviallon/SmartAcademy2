@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * this controller extends the Controller class it shows the details of a selected apprentice
+ */
 public class ApprenticeDetailController extends Controller implements Initializable {
     FXMLLoader fxmlLoader;
     String title;
@@ -23,6 +26,12 @@ public class ApprenticeDetailController extends Controller implements Initializa
     TextArea ApprenticePendingInfo;
     Integer apprenticeID;
     Apprentices view;
+
+    /**
+     * this method simply takes you back to the apprentice overview handle
+     * @param actionEvent
+     * @throws IOException
+     */
     public void backToApprenticeOverviewHandle(ActionEvent actionEvent) throws IOException {
         title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice Overview.fxml"));
@@ -30,12 +39,27 @@ public class ApprenticeDetailController extends Controller implements Initializa
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method allows you to export the apprentice details into a .csv file
+     * @param actionEvent
+     */
     public void ApprenticeExportHandle(ActionEvent actionEvent) {
+        saveCSV();
     }
 
+    /**
+     * this method allows you to print the apprentice detail screen
+     * @param actionEvent
+     */
     public void ApprenticePrintHandle(ActionEvent actionEvent) {
+        printScreen();
     }
 
+    /**
+     * this method takes you to the apprentice modification screen
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ApprenticeEditHandle(ActionEvent actionEvent) throws IOException {
         title = "Apprentice Modification";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice modification.fxml"));
@@ -43,13 +67,23 @@ public class ApprenticeDetailController extends Controller implements Initializa
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method allows you to remove an apprentice and then takes you back to the apprentice overview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ApprenticeRemoveHandle(ActionEvent actionEvent) throws IOException {
         title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice Overview.fxml"));
         fxmlLoading(fxmlLoader, title);
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }
-
+    /**
+     * this method initialiizes the FXML and get's a username which is useful for a lot of the
+     * db related functions as an identification
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();

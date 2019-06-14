@@ -43,9 +43,11 @@ public class PermissionDetailController  extends Controller implements Initializ
     }
 
     public void PermisionExportHandle(ActionEvent actionEvent) {
+        saveCSV();
     }
 
     public void PermisionPrintHandle(ActionEvent actionEvent) {
+        printScreen();
     }
 
     public void PermisionRemoveHandle(ActionEvent actionEvent)throws IOException {

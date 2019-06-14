@@ -31,9 +31,11 @@ public class EducationDetailController  extends Controller implements Initializa
     }
 
     public void EducationExportHandle(ActionEvent actionEvent) {
+        saveCSV();
     }
 
     public void EducationPrintHandle(ActionEvent actionEvent) {
+        printScreen();
     }
 
     public void EducationEditHandle(ActionEvent actionEvent) throws IOException{

@@ -42,6 +42,7 @@ public class CompanyDetailController  extends Controller implements Initializabl
      * @param actionEvent
      */
     public void CompanyExportHandle(ActionEvent actionEvent) {
+        saveCSV();
     }
 
     /**
@@ -49,6 +50,7 @@ public class CompanyDetailController  extends Controller implements Initializabl
      * @param actionEvent
      */
     public void CompanyPrintHandle(ActionEvent actionEvent) {
+        printScreen();
     }
 
     /**

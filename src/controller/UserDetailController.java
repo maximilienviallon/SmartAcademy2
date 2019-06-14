@@ -27,9 +27,11 @@ public class UserDetailController  extends Controller implements Initializable {
     }
 
     public void UserExportHandle(ActionEvent actionEvent) {
+        saveCSV();
     }
 
     public void UserPrintHandle(ActionEvent actionEvent) {
+        printScreen();
     }
 
     public void UserEditHandle(ActionEvent actionEvent) throws IOException {

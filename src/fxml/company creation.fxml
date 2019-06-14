@@ -13,7 +13,7 @@
             <AnchorPane prefHeight="27.0" prefWidth="637.0" BorderPane.alignment="CENTER" />
          </top>
          <bottom>
-            <AnchorPane fx:id="companyCreationSave" prefHeight="49.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="anchorPane" prefHeight="49.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="companyCreationSave" layoutX="551.0" layoutY="12.0" mnemonicParsing="false" onAction="#companyCreationSaveHandle" text="Save" />
                   <Button fx:id="companyCreationCancel" layoutX="468.0" layoutY="12.0" mnemonicParsing="false" onAction="#companyCreationCancelHandle" text="Cancel" />

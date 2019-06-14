@@ -24,6 +24,7 @@ public class LoggedUserDetailController  extends Controller implements Initializ
     }
 
     public void loggedUserDetailPrintHandle(ActionEvent actionEvent) {
+        printScreen();
     }
 
     public void LoggedUserDetailEditHandle(ActionEvent actionEvent) throws IOException{
