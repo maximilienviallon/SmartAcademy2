@@ -76,9 +76,11 @@ public class PermissionOverviewController  extends Controller implements Initial
     }
 
     public void POExpCsvButHandle(ActionEvent actionEvent) {
+        saveCSV();
     }
 
     public void POPrintButHandle(ActionEvent actionEvent) {
+        printScreen();
     }
 
     public void POSelectButHandle(ActionEvent actionEvent) throws IOException{

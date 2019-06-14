@@ -82,9 +82,11 @@ public class ContactOverviewController  extends Controller implements Initializa
     }
 
     public void ConOExpCsvButHandle(ActionEvent actionEvent) {
+        saveCSV();
     }
 
     public void ConOPrintButHandle(ActionEvent actionEvent) {
+        printScreen();
     }
 
     public void ConOCreaNewButHandle(ActionEvent actionEvent) throws IOException{

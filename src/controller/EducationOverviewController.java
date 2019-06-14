@@ -78,9 +78,11 @@ public class EducationOverviewController  extends Controller implements Initiali
     }
 
     public void EOExpCsvButHandle(ActionEvent actionEvent) {
+        saveCSV();
     }
 
     public void EOPrintButHandle(ActionEvent actionEvent) {
+        printScreen();
     }
 
     public void EOCreaNewButHandle(ActionEvent actionEvent) throws IOException{

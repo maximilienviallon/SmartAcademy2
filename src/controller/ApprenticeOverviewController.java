@@ -72,9 +72,11 @@ public class ApprenticeOverviewController  extends Controller implements Initial
     }
 
     public void AOExpCsvButHandle(ActionEvent actionEvent) {
+        saveCSV();
     }
 
     public void AOPrintButHandle(ActionEvent actionEvent) {
+        printScreen();
     }
 
     public void AOCreaNewButHandle(ActionEvent actionEvent) throws IOException{

@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Controller {
 
@@ -15,5 +16,14 @@ public class Controller {
         stage.setTitle(title);
         stage.setScene(new Scene(root,1900,1000));
         stage.show();
+    }
+
+    public void printScreen(){
+
+    }
+
+    public void saveCSV()
+    {
+
     }
 }

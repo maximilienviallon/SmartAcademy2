@@ -82,26 +82,11 @@ public class CompanyOverviewController extends Controller implements Initializab
     }
 
     public void ComOExpCsvButHandle(ActionEvent actionEvent) {
-        ArrayList<Users> unobservable2 = DBFacade.retrieveUsers();
-        System.out.println(unobservable2.get(1).getPermission());
-        System.out.println(unobservable2.get(1).getUsername());
-        System.out.println(unobservable2.get(1).getConName());
+        saveCSV();
     }
 
     public void ComOPrintButHandle(ActionEvent actionEvent) {
-        ArrayList<Matrix> unobservable = DBFacade.retrieveMatrix(4);
-        for (Matrix object : unobservable) {
-            System.out.print(object.getAMU() + "\t");
-            System.out.print(object.getName() + "\t");
-            System.out.print(object.getProvider() + "\t");
-            System.out.println(object.getNames());
-            for (String prio:object.getPriorities()) {
-                System.out.print(prio + "\t");
-            }
-            System.out.println("\n" + object.getNames().size());
-            System.out.println();
-        }
-
+printScreen();
     }
 
     public void ComOCreaNewButHandle(ActionEvent actionEvent) throws IOException{

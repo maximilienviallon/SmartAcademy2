@@ -30,9 +30,11 @@ public class CompanyDetailController  extends Controller implements Initializabl
     }
 
     public void CompanyExportHandle(ActionEvent actionEvent) {
+        saveCSV();
     }
 
     public void CompanyPrintHandle(ActionEvent actionEvent) {
+        printScreen();
     }
 
     public void CompanyEditHandle(ActionEvent actionEvent) throws IOException {

@@ -31,9 +31,11 @@ public class ApprenticeDetailController extends Controller implements Initializa
     }
 
     public void ApprenticeExportHandle(ActionEvent actionEvent) {
+        saveCSV();
     }
 
     public void ApprenticePrintHandle(ActionEvent actionEvent) {
+        printScreen();
     }
 
     public void ApprenticeEditHandle(ActionEvent actionEvent) throws IOException {

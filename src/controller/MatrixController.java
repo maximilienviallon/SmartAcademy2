@@ -42,9 +42,11 @@ public class MatrixController  extends Controller implements Initializable {
     }
 
     public void matrixExportHandle(ActionEvent actionEvent) {
+        saveCSV();
     }
 
     public void matrixPrintHandle(ActionEvent actionEvent) {
+        printScreen();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
