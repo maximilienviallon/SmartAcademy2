@@ -22,6 +22,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * this class will allow you to view the different educations based on your permissions
+ */
 public class EducationOverviewController  extends Controller implements Initializable {
     @FXML
     TableView<Educations> EOTableView = new TableView<>();
@@ -49,6 +52,11 @@ public class EducationOverviewController  extends Controller implements Initiali
     Integer EducationID;
     String username;
 
+    /**
+     * this method will bring you to the Logged user detail screen where you can view information about yourself
+     * @param actionEvent
+     * @throws IOException
+     */
     public void EOSetButHandle(ActionEvent actionEvent) throws IOException {
         title = "Logged User Detail Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/logged user detail.fxml"));
@@ -56,6 +64,11 @@ public class EducationOverviewController  extends Controller implements Initiali
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method will take you to the apprentice overview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void EOAppOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice overview.fxml"));
@@ -63,6 +76,11 @@ public class EducationOverviewController  extends Controller implements Initiali
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method will take you to the userOverview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void EOUseOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "User Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/user overview.fxml"));
@@ -70,6 +88,11 @@ public class EducationOverviewController  extends Controller implements Initiali
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method will take you to the comapny overview
+     * @param actionEvent
+     * @throws IOException
+     */
     public void EOComOButHandle(ActionEvent actionEvent)throws IOException {
         title = "Company Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company overview.fxml"));
@@ -77,14 +100,27 @@ public class EducationOverviewController  extends Controller implements Initiali
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method will allow you to export the education overview screen as a cvs
+     * @param actionEvent
+     */
     public void EOExpCsvButHandle(ActionEvent actionEvent) {
         saveCSV();
     }
 
+    /**
+     * this method will allow you to print the education overview
+     * @param actionEvent
+     */
     public void EOPrintButHandle(ActionEvent actionEvent) {
         printScreen();
     }
 
+    /**
+     * this method will take you to education creation
+     * @param actionEvent
+     * @throws IOException
+     */
     public void EOCreaNewButHandle(ActionEvent actionEvent) throws IOException{
         title = "Education creation";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/education creation.fxml"));
@@ -92,6 +128,11 @@ public class EducationOverviewController  extends Controller implements Initiali
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method will take you to education detail based on the selected education and retrieve the edcuation ID
+     * @param actionEvent
+     * @throws IOException
+     */
     public void EOSelectButHandle(ActionEvent actionEvent) throws IOException{
         Educations educations = EOTableView.getSelectionModel().getSelectedItem();
         KeeperOfKeys.getLoggedUserNameInstance().currentEducationID().setsEducationID(educations.getEduID());
@@ -100,10 +141,16 @@ public class EducationOverviewController  extends Controller implements Initiali
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
+
+    /**
+     * this will intialise the tableView associated with the education tables and the username and hence your permissions
+     * it also has a search function to facilitate the navigation through the different educations
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
-        System.out.println(username);
         ObservableList<Educations> educationList = FXCollections.observableArrayList(DBFacade.retrieveEducations());
         EOTableView.setItems(educationList);
 
