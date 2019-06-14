@@ -6,6 +6,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+/**
+ * this is the class for company creation controller test, made for testing company controller, as seen in its name.
+ */
 public class CompanyCreationControllerTest {
     public CompanyCreationController instance;
 
@@ -14,6 +17,9 @@ public class CompanyCreationControllerTest {
         instance = new CompanyCreationController();
     }
 
+    /**
+     * this method is testing the "company validation".
+     */
     @Test
     public void companyValidationEmpty() {
         String name = "";
@@ -32,6 +38,9 @@ boolean actual = instance.companyValidation(name,fieldOfExp,zipcode,CVR,pNum,cit
         assertEquals(expected,actual);
     }
 
+    /**
+     * this as well..
+     */
     @Test
     public void companyValidationTrue() {
         String name = "xh";
@@ -50,6 +59,9 @@ boolean actual = instance.companyValidation(name,fieldOfExp,zipcode,CVR,pNum,cit
         assertEquals(expected,actual);
     }
 
+    /**
+     * and the testing continuous.
+     */
     @Test
     public void companyValidationNull() {
         String name = null;
@@ -75,6 +87,9 @@ boolean actual = instance.companyValidation(name,fieldOfExp,zipcode,CVR,pNum,cit
         assertEquals(expected,actual);
     }
 
+    /**
+     * -||-
+     */
     @Test
     public void companyValidationPartial() {
         String name = "xhtf";

@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * contact detail controller class, used for details of contacts.
+ */
 public class ContactDetailController  extends Controller implements Initializable {
     @FXML
     TextArea ContactPersInfoArea;
@@ -21,6 +24,11 @@ public class ContactDetailController  extends Controller implements Initializabl
     String username;
     Integer contactID;
 
+    /**
+     * back to contact overview handler, self-explanatory
+     * @param actionEvent
+     * @throws IOException
+     */
     public void backToContactOverviewHandle(ActionEvent actionEvent) throws IOException {
         title = "Contact Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/contact overview.fxml"));
@@ -28,14 +36,27 @@ public class ContactDetailController  extends Controller implements Initializabl
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method is handling the "export contact" button,
+     * @param actionEvent
+     */
     public void ContactExportHandle(ActionEvent actionEvent) {
         saveCSV();
     }
 
+    /**
+     * this method is handling the "print" button
+     * @param actionEvent
+     */
     public void ContactPrintHandle(ActionEvent actionEvent) {
         printScreen();
     }
 
+    /**
+     * this method is handling the "edit" button.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ContactEditHandle(ActionEvent actionEvent) throws IOException{
         title = "Contact Modification";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/contact modification.fxml"));
@@ -43,12 +64,23 @@ public class ContactDetailController  extends Controller implements Initializabl
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method is handling the "remove" button
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ContactRemoveHandle(ActionEvent actionEvent) throws IOException{
         title = "Contact Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/contact overview.fxml"));
         fxmlLoading(fxmlLoader,title);
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
+
+    /**
+     * initializes.
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();

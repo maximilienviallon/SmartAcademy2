@@ -9,11 +9,19 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * class for log in controller.
+ */
 public class LogBrowserController  extends Controller implements Initializable {
     String title;
     FXMLLoader fxmlLoader;
     String username;
 
+    /**
+     * this method is handling the "back to overview" button.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void logBackToOverviewHandle(ActionEvent actionEvent) throws IOException {
         title = "Employee Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice overview.fxml"));
@@ -21,13 +29,27 @@ public class LogBrowserController  extends Controller implements Initializable {
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method is handling the "export" button.
+     * @param actionEvent
+     */
     public void logExportHandle(ActionEvent actionEvent) {
         saveCSV();
     }
 
+    /**
+     * this method is handling the "print" button.
+     * @param actionEvent
+     */
     public void logPrintHandle(ActionEvent actionEvent) {
         printScreen();
     }
+
+    /**
+     * initializes.
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();

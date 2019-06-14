@@ -73,6 +73,5 @@ public class CompanyModificationController  extends Controller implements Initia
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
-        System.out.println(username);
     }
 }

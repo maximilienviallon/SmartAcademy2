@@ -18,7 +18,11 @@ public class ContactCreationController  extends Controller implements Initializa
     FXMLLoader fxmlLoader;
     String username;
 
-
+    /**
+     * this method is handling the "save" button.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void contactCreationSaveHandle(ActionEvent actionEvent) throws IOException {
         title = "Contact Detail";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/contact detail.fxml"));
@@ -26,6 +30,11 @@ public class ContactCreationController  extends Controller implements Initializa
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method is handling the "cancel" button, leads back to contact overview.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void contactCreationCancelHandle(ActionEvent actionEvent)throws IOException {
         title = "Contact Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/contact Overview.fxml"));

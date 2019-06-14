@@ -24,6 +24,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * Company overview controller class. gives overview over companies.
+ */
 public class CompanyOverviewController extends Controller implements Initializable {
     @FXML
     public LogInController logInCont;
@@ -52,7 +55,11 @@ public class CompanyOverviewController extends Controller implements Initializab
     Integer companyID;
 
 
-
+    /**
+     * handler for "settings" button
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ComOSetButHandle(ActionEvent actionEvent) throws IOException{
         title = "Logged User Detail Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/logged user detail.fxml"));
@@ -60,6 +67,11 @@ public class CompanyOverviewController extends Controller implements Initializab
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method is handling the "Application overview" button, made to send the user to application overview, as name says.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ComOAppOverButHandle(ActionEvent actionEvent)throws IOException {
         title = "Apprentice Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/apprentice overview.fxml"));
@@ -67,6 +79,11 @@ public class CompanyOverviewController extends Controller implements Initializab
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method is handling the "user overview" button. leads you to the just mentioned overview.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ComOUseOverButHandle(ActionEvent actionEvent) throws IOException {
         title = "User Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/user overview.fxml"));
@@ -74,6 +91,11 @@ public class CompanyOverviewController extends Controller implements Initializab
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method is handling the "Education Overview" button, which leads you to said.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ComOEduOverButHandle(ActionEvent actionEvent) throws IOException{
         title = "Education Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/education overview.fxml"));
@@ -81,14 +103,27 @@ public class CompanyOverviewController extends Controller implements Initializab
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method is handling the "exp csv." button.
+     * @param actionEvent
+     */
     public void ComOExpCsvButHandle(ActionEvent actionEvent) {
         saveCSV();
     }
 
+    /**
+     * this method is handling the "print" button
+     * @param actionEvent
+     */
     public void ComOPrintButHandle(ActionEvent actionEvent) {
 printScreen();
     }
 
+    /**
+     * this method is handling the "Create new" button, to create new companies.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ComOCreaNewButHandle(ActionEvent actionEvent) throws IOException{
         title = "Company creation";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company creation.fxml"));
@@ -96,12 +131,16 @@ printScreen();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * this method is handling the "Select" button. which leads you to more details screen from selected company in this case.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ComOSelectButHandle(ActionEvent actionEvent) throws IOException{
         Companies companies = ComOTableView.getSelectionModel().getSelectedItem();
         try {
             KeeperOfKeys.getLoggedUserNameInstance().currentCompanyID().setsCompanyID(companies.getCompanyID());
         }catch(NullPointerException e){
-            System.err.println("you need to select a company");
         }
         title = "Company Detail";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/company detail.fxml"));
@@ -111,6 +150,11 @@ printScreen();
 
     }
 
+    /**
+     * this method is handling the "Contact overview" button, leads you to mentioned.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void ComOConOButHandle(ActionEvent actionEvent) throws IOException{
         title = "Contact Overview";
         fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/contact overview.fxml"));
@@ -118,7 +162,11 @@ printScreen();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
-
+    /**
+     * Initialize celldata, use filteredlist and sortedlist for searching/filtering
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = KeeperOfKeys.getLoggedUserNameInstance().currentLoggedUserName().getUserName();
@@ -142,7 +190,6 @@ printScreen();
         ComOSeaText.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(Companies -> { // If filter text is empty, display all.
                 if (newValue == null || newValue.isEmpty()) {
-                    System.out.println("return");
                     return true;
                 }
 
@@ -156,25 +203,18 @@ printScreen();
                 String lowerCaseFilter = newValue.toLowerCase();
 
                 if (Companies.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    //System.out.println("Name");
                     return true;
                 } else if (Companies.getCity().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    //System.out.println("City");
                     return true;
                 } else if (Companies.getCvr().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    //System.out.println("Cvr");
                     return true;
                 } else if (Companies.getFieldOfExpertise().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    //System.out.println("Expertise");
                     return true;
                 } else if (Companies.getpNum().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    //System.out.println("pNum");
                     return true;
                 } else if (Companies.getZipcode().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    //System.out.println("Zip");
                     return true;
                 }
-                System.out.println("False");
                 return false; // Does not match.
             });
         });//Wrap the FilteredList in a SortedList.
