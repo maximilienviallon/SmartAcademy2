@@ -2,6 +2,7 @@ package Persistence;
 
 import Domain.*;
 
+import javax.swing.*;
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -503,8 +504,30 @@ query += (" left join tblAMU on tblEducations.fldAMU = tblAMU.fldAMU left join t
         return retrievedMatrix;
     }
 
-    public static Integer insertCompany(){
+    public static Integer insertCompany(String name, String fieldOfExpertise, String zipcode, String cvr, String pNum, String city,String webpage, String street, String info){
         Integer returnedID = 1;
+        String query = ("insert into tblCompanies values ('"+ name +"','"+ fieldOfExpertise +"', '"+zipcode+"', '"+cvr+"', '"+pNum+"', '"+webpage+"', '"+street+"', '"+info+"');");
+        String query2 = ("BEGIN\n" +
+                "        IF NOT EXISTS (SELECT 1 FROM tblZipcode  WHERE tblZipcode.fldZipcode = '"+zipcode+"')\n" +
+                "        BEGIN\n" +
+                "        INSERT INTO tblZipcode VALUES ('"+zipcode+"','"+city+"')\n" +
+                "        END \n" +
+                "                END");
+        String query3 = ("IF EXISTS (select 1 from tblCompanies where tblCompanies.fldCompanyName = '"+name+"' and tblCompanies.fldCompanyZipcode='"+zipcode+"' and tblCompanies.fldCVRNum = '"+cvr+"' and (tblCompanies.fldPNum = '"+pNum+"' or tblCompanies.fldPNum is null) and (tblCompanies.fldFieldOfExpertise = '"+fieldOfExpertise+"' or tblCompanies.fldFieldOfExpertise is null) and tblCompanies.fldStreet = '"+street+"' and (tblCompanies.fldWebpage = '"+webpage+"' or tblCompanies.fldWebpage is null) and (tblCompanies.fldCompanyInfo = '"+info+"' or tblCompanies.fldCompanyInfo is null))\n" +
+                "BEGIN\n" +
+                "select TOP 1 tblCompanies.fldCompanyID from tblCompanies where tblCompanies.fldCompanyName = '"+name+"' and tblCompanies.fldCompanyZipcode='"+zipcode+"' and tblCompanies.fldCVRNum = '"+cvr+"' and (tblCompanies.fldPNum = '"+pNum+"' or tblCompanies.fldPNum is null) and (tblCompanies.fldFieldOfExpertise = '"+fieldOfExpertise+"' or tblCompanies.fldFieldOfExpertise is null) and tblCompanies.fldStreet = '"+street+"' and (tblCompanies.fldWebpage = '"+webpage+"' or tblCompanies.fldWebpage is null) and (tblCompanies.fldCompanyInfo = '"+info+"' or tblCompanies.fldCompanyInfo is null) order by tblCompanies.fldCompanyID desc\n" +
+                "END");
+        DB.execute(query2);
+        DB.execute(query);
+        DB.selectSQL(query3);
+        do{
+            String data = DB.getData();
+            if (data.equals(DB.NOMOREDATA)){
+                break;
+            }else{
+                returnedID = Integer.valueOf(data.substring(0,1));
+            }
+        } while(true);
         return returnedID;
     }
 }

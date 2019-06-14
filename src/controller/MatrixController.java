@@ -67,7 +67,6 @@ public class MatrixController  extends Controller implements Initializable {
         nameColumn.add(colProvider);
         colProvider.setText("Provider");
 
-
         for (Matrix object : matrixList) {
             colAMU.setCellValueFactory(param -> new SimpleStringProperty((param.getValue().getAMU().toString())));
             colEduTitle.setCellValueFactory(param -> new SimpleStringProperty((param.getValue().getName())));
@@ -82,15 +81,16 @@ public class MatrixController  extends Controller implements Initializable {
 
 
 
-            for (Matrix object : matrixList) {
-                for (int m = 3; m <= nameColumn.size()-1; m++) {
+        for (Matrix object : matrixList) {
+            for (int m = 3; m <= nameColumn.size() - 1; m++) {
                 for (int k = 0; k <= object.getPriorities().size() - 1; k++) {
+                    final int KK = k;
                     final String get = object.getPriorities().get(k);
-                    nameColumn.get(m).setCellValueFactory(param -> new SimpleStringProperty(get));
+
+                    nameColumn.get(m).setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getPriorities().get(KK)));
+
                     System.out.println(get);
-
                 }
-
             }
         }
 
