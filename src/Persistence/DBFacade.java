@@ -2,7 +2,6 @@ package Persistence;
 
 import Domain.*;
 
-import javax.swing.*;
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -80,7 +79,7 @@ public class DBFacade {
                 String pNum = (String) objects[5];
                 String city = (String) objects[6];
 
-                Companies companies = new Companies(companyID, name, fieldOfExpertise, zipcode, cvr, pNum, city,null,null,null);
+                Companies companies = new Companies(companyID, name, fieldOfExpertise, zipcode, cvr, pNum, city, null, null, null);
 
                 retrievedCompanies.add(companies);
             }
@@ -137,7 +136,7 @@ public class DBFacade {
                 String phone = (String) objects[4];
                 int apprenticeID = (int) objects[5];
 
-                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID,null, null);
+                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID, null, null);
 
                 retrievedApprentices.add(apprentices);
             }
@@ -165,7 +164,7 @@ public class DBFacade {
                 String email = (String) objects[3];
                 String phoneNo = (String) objects[4];
 
-                Contacts contacts = new Contacts(conID, companyID, name, email, phoneNo,null, null);
+                Contacts contacts = new Contacts(conID, companyID, name, email, phoneNo, null, null);
 
                 retrievedContacts.add(contacts);
             }
@@ -193,7 +192,7 @@ public class DBFacade {
                 String email = (String) objects[3];
                 String phoneNo = (String) objects[4];
 
-                Contacts contacts = new Contacts(conID, companyID, name, email, phoneNo,null, null);
+                Contacts contacts = new Contacts(conID, companyID, name, email, phoneNo, null, null);
 
                 retrievedContacts.add(contacts);
             }
@@ -224,7 +223,7 @@ public class DBFacade {
                 Integer AMU = (Integer) objects[6];
                 String zipcode = (String) objects[7];
 
-                Educations educations = new Educations(eduID,name,provider,city,eduStart,eduEnd,AMU,zipcode, null);
+                Educations educations = new Educations(eduID, name, provider, city, eduStart, eduEnd, AMU, zipcode, null);
 
                 retrievedEducations.add(educations);
             }
@@ -251,7 +250,7 @@ public class DBFacade {
                 Integer companyID = (Integer) objects[2];
 
 
-                Permissions permissions = new Permissions(permission,permissionID,companyID);
+                Permissions permissions = new Permissions(permission, permissionID, companyID);
 
                 retrievedPermissions.add(permissions);
             }
@@ -278,7 +277,7 @@ public class DBFacade {
                 Integer companyID = (Integer) objects[2];
 
 
-                Permissions permissions = new Permissions(permission,permissionID,companyID);
+                Permissions permissions = new Permissions(permission, permissionID, companyID);
 
                 retrievedPermissions.add(permissions);
             }
@@ -291,6 +290,7 @@ public class DBFacade {
         return retrievedPermissions;
 
     }
+
     public static ArrayList<Users> retrieveUsers() {
         ArrayList<Users> retrievedUsers = new ArrayList<>();
 
@@ -305,7 +305,7 @@ public class DBFacade {
                 String conName = (String) objects[3];
 
 
-                Users users = new Users(permission,username,apprenticeName,conName);
+                Users users = new Users(permission, username, apprenticeName, conName);
 
                 retrievedUsers.add(users);
             }
@@ -318,6 +318,7 @@ public class DBFacade {
         return retrievedUsers;
 
     }
+
     public static ArrayList<Companies> retrieveCompanyDetail(int requestedID) {
         ArrayList<Companies> retrievedCompanies = new ArrayList<>();
 
@@ -349,6 +350,7 @@ public class DBFacade {
         return retrievedCompanies;
 
     }
+
     public static ArrayList<Apprentices> retrieveApprenticeDetail(int selectedApprentice) {
         ArrayList<Apprentices> retrievedApprentices = new ArrayList<>();
 
@@ -366,7 +368,7 @@ public class DBFacade {
                 String generalExpertise = (String) objects[6];
                 int apprenticeID = (int) objects[7];
 
-                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID,workExperience, generalExpertise);
+                Apprentices apprentices = new Apprentices(CPR, name, companyID, email, phone, apprenticeID, workExperience, generalExpertise);
 
                 retrievedApprentices.add(apprentices);
             }
@@ -379,6 +381,7 @@ public class DBFacade {
         return retrievedApprentices;
 
     }
+
     public static ArrayList<Contacts> retrieveContactDetail(Integer selectedContact) {
         ArrayList<Contacts> retrievedContacts = new ArrayList<>();
 
@@ -395,7 +398,7 @@ public class DBFacade {
                 String landline = (String) objects[5];
                 String info = (String) objects[6];
 
-                Contacts contacts = new Contacts(conID, companyID, name, email, phoneNo,landline, info);
+                Contacts contacts = new Contacts(conID, companyID, name, email, phoneNo, landline, info);
 
                 retrievedContacts.add(contacts);
             }
@@ -408,6 +411,7 @@ public class DBFacade {
         return retrievedContacts;
 
     }
+
     public static ArrayList<Educations> retrieveEducationDetail(Integer selectedEducation) {
         ArrayList<Educations> retrievedEducations = new ArrayList<>();
 
@@ -426,7 +430,7 @@ public class DBFacade {
                 String zipcode = (String) objects[7];
                 String description = (String) objects[8];
 
-                Educations educations = new Educations(eduID,name,provider,city,eduStart,eduEnd,AMU,zipcode, description);
+                Educations educations = new Educations(eduID, name, provider, city, eduStart, eduEnd, AMU, zipcode, description);
 
                 retrievedEducations.add(educations);
             }
@@ -439,6 +443,7 @@ public class DBFacade {
         return retrievedEducations;
 
     }
+
     public static ArrayList<Users> retrieveUsersByPermissions(Integer selectedPermissions) {
         ArrayList<Users> retrievedUsers = new ArrayList<>();
 
@@ -453,7 +458,7 @@ public class DBFacade {
                 String conName = (String) objects[3];
 
 
-                Users users = new Users(permission,username,apprenticeName,conName);
+                Users users = new Users(permission, username, apprenticeName, conName);
 
                 retrievedUsers.add(users);
             }
@@ -465,6 +470,7 @@ public class DBFacade {
         }
         return retrievedUsers;
     }
+
     public static ArrayList<Matrix> retrieveMatrix(Integer selectedCompany) {
         ArrayList<Matrix> retrievedMatrix = new ArrayList<>();
         ArrayList<String> names = new ArrayList<>();
@@ -474,14 +480,14 @@ public class DBFacade {
             String query = (" from tblEducations ");
             String query2 = ("select tblApprentices.fldApprenticeID, tblApprentices.fldApprenticeName from tblApprentices where tblApprentices.fldCompanyID = " + selectedCompany);
             ArrayList<Object[]> usersQuery2 = DB.select(query2);
-            for (Object[] object:usersQuery2) {
+            for (Object[] object : usersQuery2) {
                 prequery += (" matrix" + object[0] + ".fldPriority,");
-query += (" left join (select * from tblMatrix where tblMatrix.fldApprenticeID = " + object[0] + ") matrix" + object[0] + " on tblEducations.fldEduID = matrix" + object[0] + ".fldEduID ");
+                query += (" left join (select * from tblMatrix where tblMatrix.fldApprenticeID = " + object[0] + ") matrix" + object[0] + " on tblEducations.fldEduID = matrix" + object[0] + ".fldEduID ");
                 names.add((String) object[1]);
             }
 
-query += (" left join tblAMU on tblEducations.fldAMU = tblAMU.fldAMU left join tblZipcode on tblEducations.fldEduZipcode = tblZipcode.fldZipcode where tblEducations.fldEduID in (select tblMatrix.fldEduID from tblMatrix where tblMatrix.fldApprenticeID in (select tblApprentices.fldApprenticeID from tblApprentices where tblApprentices.fldCompanyID = " + selectedCompany + "))");
-            query = prequery.substring(0,prequery.length()-1)+query;
+            query += (" left join tblAMU on tblEducations.fldAMU = tblAMU.fldAMU left join tblZipcode on tblEducations.fldEduZipcode = tblZipcode.fldZipcode where tblEducations.fldEduID in (select tblMatrix.fldEduID from tblMatrix where tblMatrix.fldApprenticeID in (select tblApprentices.fldApprenticeID from tblApprentices where tblApprentices.fldCompanyID = " + selectedCompany + "))");
+            query = prequery.substring(0, prequery.length() - 1) + query;
             ArrayList<Object[]> usersQuery = DB.select(query);
 
             for (Object[] objects : usersQuery) {
@@ -491,7 +497,7 @@ query += (" left join tblAMU on tblEducations.fldAMU = tblAMU.fldAMU left join t
                 String city = (String) objects[3];
                 priorities.add((String) objects[4]);
 
-                Matrix matrix = new Matrix(AMU,name,provider,city,names,priorities);
+                Matrix matrix = new Matrix(AMU, name, provider, city, names, priorities);
 
                 retrievedMatrix.add(matrix);
             }
@@ -504,30 +510,36 @@ query += (" left join tblAMU on tblEducations.fldAMU = tblAMU.fldAMU left join t
         return retrievedMatrix;
     }
 
-    public static Integer insertCompany(String name, String fieldOfExpertise, String zipcode, String cvr, String pNum, String city,String webpage, String street, String info){
+    public static Integer insertCompany(String name, String fieldOfExpertise, String zipcode, String cvr, String pNum, String city, String webpage, String street, String info) {
         Integer returnedID = 1;
-        String query = ("insert into tblCompanies values ('"+ name +"','"+ fieldOfExpertise +"', '"+zipcode+"', '"+cvr+"', '"+pNum+"', '"+webpage+"', '"+street+"', '"+info+"');");
+        String query = ("insert into tblCompanies values ('" + name + "','" + fieldOfExpertise + "', '" + zipcode + "', '" + cvr + "', '" + pNum + "', '" + webpage + "', '" + street + "', '" + info + "');");
         String query2 = ("BEGIN\n" +
-                "        IF NOT EXISTS (SELECT 1 FROM tblZipcode  WHERE tblZipcode.fldZipcode = '"+zipcode+"')\n" +
+                "        IF NOT EXISTS (SELECT 1 FROM tblZipcode  WHERE tblZipcode.fldZipcode = '" + zipcode + "')\n" +
                 "        BEGIN\n" +
-                "        INSERT INTO tblZipcode VALUES ('"+zipcode+"','"+city+"')\n" +
+                "        INSERT INTO tblZipcode VALUES ('" + zipcode + "','" + city + "')\n" +
                 "        END \n" +
                 "                END");
-        String query3 = ("IF EXISTS (select 1 from tblCompanies where tblCompanies.fldCompanyName = '"+name+"' and tblCompanies.fldCompanyZipcode='"+zipcode+"' and tblCompanies.fldCVRNum = '"+cvr+"' and (tblCompanies.fldPNum = '"+pNum+"' or tblCompanies.fldPNum is null) and (tblCompanies.fldFieldOfExpertise = '"+fieldOfExpertise+"' or tblCompanies.fldFieldOfExpertise is null) and tblCompanies.fldStreet = '"+street+"' and (tblCompanies.fldWebpage = '"+webpage+"' or tblCompanies.fldWebpage is null) and (tblCompanies.fldCompanyInfo = '"+info+"' or tblCompanies.fldCompanyInfo is null))\n" +
+        String query3 = ("IF EXISTS (select 1 from tblCompanies where tblCompanies.fldCompanyName = '" + name + "' and tblCompanies.fldCompanyZipcode='" + zipcode + "' and tblCompanies.fldCVRNum = '" + cvr + "' and (tblCompanies.fldPNum = '" + pNum + "' or tblCompanies.fldPNum is null) and (tblCompanies.fldFieldOfExpertise = '" + fieldOfExpertise + "' or tblCompanies.fldFieldOfExpertise is null) and tblCompanies.fldStreet = '" + street + "' and (tblCompanies.fldWebpage = '" + webpage + "' or tblCompanies.fldWebpage is null) and (tblCompanies.fldCompanyInfo = '" + info + "' or tblCompanies.fldCompanyInfo is null))\n" +
                 "BEGIN\n" +
-                "select TOP 1 tblCompanies.fldCompanyID from tblCompanies where tblCompanies.fldCompanyName = '"+name+"' and tblCompanies.fldCompanyZipcode='"+zipcode+"' and tblCompanies.fldCVRNum = '"+cvr+"' and (tblCompanies.fldPNum = '"+pNum+"' or tblCompanies.fldPNum is null) and (tblCompanies.fldFieldOfExpertise = '"+fieldOfExpertise+"' or tblCompanies.fldFieldOfExpertise is null) and tblCompanies.fldStreet = '"+street+"' and (tblCompanies.fldWebpage = '"+webpage+"' or tblCompanies.fldWebpage is null) and (tblCompanies.fldCompanyInfo = '"+info+"' or tblCompanies.fldCompanyInfo is null) order by tblCompanies.fldCompanyID desc\n" +
+                "select TOP 1 tblCompanies.fldCompanyID from tblCompanies where tblCompanies.fldCompanyName = '" + name + "' and tblCompanies.fldCompanyZipcode='" + zipcode + "' and tblCompanies.fldCVRNum = '" + cvr + "' and (tblCompanies.fldPNum = '" + pNum + "' or tblCompanies.fldPNum is null) and (tblCompanies.fldFieldOfExpertise = '" + fieldOfExpertise + "' or tblCompanies.fldFieldOfExpertise is null) and tblCompanies.fldStreet = '" + street + "' and (tblCompanies.fldWebpage = '" + webpage + "' or tblCompanies.fldWebpage is null) and (tblCompanies.fldCompanyInfo = '" + info + "' or tblCompanies.fldCompanyInfo is null) order by tblCompanies.fldCompanyID desc\n" +
                 "END");
         DB.execute(query2);
         DB.execute(query);
         DB.selectSQL(query3);
-        do{
+        do {
             String data = DB.getData();
-            if (data.equals(DB.NOMOREDATA)){
+            if (data.equals(DB.NOMOREDATA)) {
                 break;
-            }else{
-                returnedID = Integer.valueOf(data.substring(0,1));
+            } else {
+                returnedID = Integer.valueOf(data.trim());
             }
-        } while(true);
+        } while (true);
+
+        String query4 = ("insert into tblPermissions values ('Interviewer',"+returnedID.intValue()+");");
+        String query5 = ("insert into tblPermissions values ('HR',"+returnedID.intValue()+");");
+        DB.execute(query4);
+        DB.execute(query5);
+
         return returnedID;
     }
 }
