@@ -19,7 +19,7 @@ public class ApprenticeCreationController  extends Controller implements Initial
     Integer apprenticeID;
 
     /**
-     * this button creates a brand new apprentice based on user inputs
+     * this method creates a brand new apprentice based on user inputs
      * @param actionEvent
      * @throws IOException
      */
@@ -30,7 +30,7 @@ public class ApprenticeCreationController  extends Controller implements Initial
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
     /**
-     * this button deletes apprentices
+     * this method deletes apprentices
      * @param actionEvent
      * @throws IOException
      */
@@ -42,7 +42,7 @@ public class ApprenticeCreationController  extends Controller implements Initial
     }
 
     /**
-     * this class initialiizes the FXML and get's a username which is useful for a lot of the
+     * this method initialiizes the FXML and get's a username which is useful for a lot of the
      * db related functions as an identification
      * @param location
      * @param resources
